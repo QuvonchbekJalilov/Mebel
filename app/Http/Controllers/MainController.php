@@ -2,39 +2,68 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
-    public function index(){
-        return view('pages.index');
-    }
-    public function about(){
-        return view('pages.about');
-    }
-    public function contact(){
-        return view('pages.contact');
+    protected function language()
+    {
+        return app()->getLocale(); // Hozirgi tilni olish
     }
 
-    public function shop(){
-        return view('pages.shop');
-    }
-    public function shop_details(){
-        return view('pages.shop-details');
-    }
-    public function blog(){
-        return view('pages.blog');
-    }
-    public function blog_details(){
-        return view('pages.blog-details');
-    }
-    public function create(){
-        return view('category.create');
+    public function index()
+    {
+        $locale = $this->language();
+        return view('pages.index', compact('locale'));
     }
 
-    public function cart(){
-        return view('pages.cart');
+    public function about()
+    {
+        $locale = $this->language();
+        return view('pages.about', compact('locale'));
+    }
+
+    public function contact()
+    {
+        $locale = $this->language();
+        return view('pages.contact', compact('locale'));
+    }
+
+    public function shop()
+    {
+        $locale = $this->language();
+        return view('pages.shop', compact('locale'));
+    }
+
+    public function shop_details()
+    {
+        $locale = $this->language();
+        return view('pages.shop-details', compact('locale'));
+    }
+
+    public function blog()
+    {
+        $blogs = Blog::paginate(8);
+        $locale = $this->language(); // Hozirgi tilni olish
+        return view('pages.blog', compact('blogs', 'locale'));
+    }
+
+    public function blog_details()
+    {
+        $locale = $this->language();
+        return view('pages.blog-details', compact('locale'));
+    }
+
+    public function create()
+    {
+        $locale = $this->language();
+        return view('category.create', compact('locale'));
+    }
+
+    public function cart()
+    {
+        $locale = $this->language();
+        return view('pages.cart', compact('locale'));
     }
 }
-
-
