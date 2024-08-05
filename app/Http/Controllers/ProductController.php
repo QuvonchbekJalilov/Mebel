@@ -28,7 +28,6 @@ class ProductController extends Controller
 
     public function store(StoreProductRequest $request)
     {
-        dd($request->all());
         if ($request->file('image')) {
             $imagePath = $request->file('image')->store('images', 'public');
         }
@@ -42,7 +41,8 @@ class ProductController extends Controller
             'description_en' => $request->description_en,
             'image' => $imagePath,
             'category_id' => $request->category_id,
-            'sale' => $request->sale,
+            'price' => $request->price,
+            'best_seller' => $request->best_seller,
             'stock' => $request->stock
         ]);
 
@@ -84,8 +84,9 @@ class ProductController extends Controller
             'description_en' => $request->description_en,
             'image' => $imagePath ?? $product->image,
             'category_id' => $request->category_id,
-            'sale' => $request->sale,
-            'stock' => $request->stock,
+            'price' => $request->price,
+            'best_seller' => $request->best_seller,
+            'stock' => $request->stock
         ]);
 
 

@@ -23,7 +23,7 @@ return new class extends Migration
             $table->foreignId('category_id')->constrained()->cascadeOnDelete();
             $table->float('price');
             $table->integer('stock');
-            $table->boolean('best_seller')->default(False);
+            $table->string('best_seller');
             $table->timestamps();
         });
     }
