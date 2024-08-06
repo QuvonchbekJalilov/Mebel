@@ -80,6 +80,12 @@
                                                         <li class="single-list">
                                                             <a href="wishlist.html" class="single">Wishlist</a>
                                                         </li>
+                                                        <?php
+
+                                                            use App\Models\Blog;
+
+                                                            $blog = Blog::latest()->first();
+                                                        ?>
                                                         <li class="single-list">
                                                             <a href="{{ route('blog.details', $blog->id) }}" class="single">Blog Details</a>
                                                         </li>
