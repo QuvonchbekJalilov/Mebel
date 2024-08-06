@@ -1,10 +1,5 @@
 @extends('layouts.page')
-@section('title', 'Blog Page')
-@section('content')
-    <!-- Breadcrumbs S t a r t -->
-    <section class="breadcrumb-section breadcrumb-bg">
-        <div class="container">
-            <div class="row">
+WWWWass="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-text">
                         <h1 class="title wow fadeInUp" data-wow-delay="0.1s">Blog</h1>

@@ -31,7 +31,7 @@ Route::get('/shop_details/{id}', [MainController::class, 'shop_details'])->name(
 Route::get('/blog', [MainController::class, 'blog'])->name('blog');
 Route::get('/blog-details/{id}', [MainController::class, 'blogDetails'])->name('blog.details');
 Route::get('/contact', [MainController::class, 'contact'])->name('contact');
-Route::post('/orders', [OrderController::class, 'store']);
+Route::post('/orders', [OrderController::class, 'store'])->name('order.store');
 
 Route::get('/login', [AdminController::class, 'login'])->name('login');
 Route::post('/authenticate', [AdminController::class, 'authenticate'])->name('authenticate');
@@ -46,11 +46,9 @@ Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.index');
 // Route for adding an item to the cart
 Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('cart.add');
 
-// Route for updating cart items (PATCH method)
 Route::patch('/cart/update/{rowId}', [CartController::class, 'updateCartItem']);
-
-// Route for deleting cart items (DELETE method)
 Route::delete('/cart/remove/{rowId}', [CartController::class, 'removeCartItem']);
+
 
 // Route for deleting cart items (GET method, likely redundant)
 Route::get('/cart/delete/{rowId}', [CartController::class, 'deleteCartItem'])->name('cart.delete');

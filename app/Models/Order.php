@@ -14,6 +14,6 @@ class Order extends Model
         'last_name',
         'phone_number',
         'products', // Store products as JSON
-        'total_price', 10, 2,
+        'total_price',
     ];
 }

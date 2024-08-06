@@ -56,33 +56,29 @@ class CartController extends Controller
     public function updateCartItem(Request $request, $rowId)
     {
         $newQty = $request->input('qty');
-
-        // Ensure the cart item exists
         $item = Cart::get($rowId);
+
         if (!$item) {
             return response()->json(['success' => false, 'message' => 'Item not found'], 404);
         }
 
-        // Update the cart item quantity
         Cart::update($rowId, $newQty);
+        $product = Product::find($item->id);
+        $newTotalPrice = $product->price * $newQty;
 
-        $product = Product::find($item->id); // Get the product details
-        $newTotalPrice = $product->price * $item->qty;
-
-        // Calculate new cart subtotal
         $newSubtotal = floatval(Cart::subtotal());
 
         return response()->json([
             'success' => true,
-            'newTotalPrice' => number_format($newTotalPrice, 2), // Format to 2 decimal places
-            'newSubtotal' => number_format($newSubtotal, 2) // Format to 2 decimal places
+            'newTotalPrice' => number_format($newTotalPrice, 2),
+            'newSubtotal' => number_format($newSubtotal, 2)
         ]);
     }
 
 
+
     public function removeCartItem($rowId)
     {
-        // Ensure the cart item exists before removing
         if (!Cart::get($rowId)) {
             return response()->json(['success' => false, 'message' => 'Item not found'], 404);
         }

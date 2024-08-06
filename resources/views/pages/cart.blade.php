@@ -163,7 +163,10 @@ use Gloudemans\Shoppingcart\Facades\Cart;
                     <div class="summary-content">
                         <div class="subtotal-container">
                             <span class="subtotal-label">Umumiy Narxi:</span>
-                            <span class="subtotal-amount">{{ Cart::subtotal() }} so'm</span>
+                            <span class="subtotal-amount">{{ number_format($cartContent->sum(function($cart) {
+                $product = App\Models\Product::find($cart->id);
+                return $product->getDiscountedPrice() * $cart->qty;
+            }), 2) }} so'm</span>
                         </div>
                     </div>
                     <a href="{{ route('checkout') }}" class="btn btn-primary">Proceed to Checkout</a>
@@ -208,7 +211,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
                             @endphp
                             <tr>
                                 <td>{{ $productTitle }}</td>
-                                <td>{{ number_format($effectivePrice, 2) }} So'm</td>
+                                <td>{{ number_format($effectivePrice, 2) }} UZS</td>
                                 <td>{{ $cart->qty }}</td>
                             </tr>
                             @endforeach
@@ -218,8 +221,8 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 
                 <!-- Customer Information Form -->
                 <h4>Customer Information</h4>
-                <form id="orderForm">
-                    @csrf
+
+                <form id="orderForm" action="#" onsubmit="formSubmitDR()">
                     <div class="form-group">
                         <label for="first_name">First Name</label>
                         <input type="text" class="form-control" id="first_name" name="first_name" required>
@@ -234,8 +237,9 @@ use Gloudemans\Shoppingcart\Facades\Cart;
                     </div>
                     <input type="hidden" name="products" value="{{ json_encode($cartContent) }}">
                     <input type="hidden" name="total_price" value="{{ Cart::subtotal() }}">
-                    <button type="submit" class="btn btn-success">Place Order</button>
+                    <button type="submit" class="btn btn-primary">Place Order</button>
                 </form>
+
             </div>
         </div>
     </div>
@@ -243,7 +247,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Update quantity
+        // Quantity Update Functionality
         document.querySelectorAll('.increase-num, .decrease-num').forEach(function(button) {
             button.addEventListener('click', function() {
                 const rowId = this.dataset.rowid;
@@ -261,7 +265,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
             });
         });
 
-        // Remove item
+        // Remove Item Functionality
         document.querySelectorAll('.remove-item').forEach(function(button) {
             button.addEventListener('click', function() {
                 const rowId = this.dataset.rowid;
@@ -269,62 +273,75 @@ use Gloudemans\Shoppingcart\Facades\Cart;
             });
         });
 
-        // Open the checkout modal
+        // Open Checkout Modal
         document.querySelector('.btn-primary').addEventListener('click', function(event) {
             event.preventDefault();
             $('#checkoutModal').modal('show');
         });
 
-        // Submit order form
-        document.getElementById('orderForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const formData = new FormData(this);
-            fetch('/orders', {
-                    method: 'POST',
-                    headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        first_name: formData.get('first_name'),
-                        last_name: formData.get('last_name'),
-                        phone_number: formData.get('phone_number'),
-                        products: formData.get('products'),
-                        total_price: formData.get('total_price'),
-                    })
-                })
-                .then(response => {
-                    if (response.ok) {
-                        return response.json(); // Only parse JSON if the response is OK
-                    } else {
-                        // Handle HTML error response
-                        return response.text().then(html => {
-                            throw new Error('Server returned HTML: ' + html);
-                        });
-                    }
-                })
-                .then(data => {
-                    if (data.success) {
-                        alert('Order placed successfully!');
-                        window.location.href = '/order-success';
-                    } else {
-                        alert('Error placing order');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('An error occurred: ' + error.message);
-                });
 
+        // Submit order form
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('orderForm');
+
+            /* form.addEventListener('submit', function (event) {
+        event.preventDefault(); // Formaning standart submit holatini oldini oladi
+        
+        const firstName = document.getElementById('first_name').value;
+        const lastName = document.getElementById('last_name').value;
+        const phoneNumber = document.getElementById('phone_number').value;
+        const products = JSON.parse(document.querySelector('input[name="products"]').value);
+        const totalPrice = document.querySelector('input[name="total_price"]').value;
+       console.log(firstName, lastName, products, totalPrice);
+        submitOrder(firstName, lastName, phoneNumber, products, totalPrice);
+    });
+*/
+            /* function submitOrder(firstName, lastName, phoneNumber, products, totalPrice) {
+                 console.log('arguments: ' + firstName + ' ' + lastName);
+                 fetch('/orders', {
+                     method: 'POST',
+                     headers: {
+                         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                         'Content-Type': 'application/json',
+                     },
+                     body: JSON.stringify({
+                         first_name: firstName,
+                         last_name: lastName,
+                         phone_number: phoneNumber,
+                         products: products,
+                         total_price: totalPrice,
+                     })
+                 })
+                 .then(response => {
+                     console.log(response);
+                     if (response.ok) {
+                         return response.json();
+                     } else {
+                         return response.text().then(text => { throw new Error(text); });
+                     }
+                 })
+                 .then(data => {
+                     if (data.success) {
+                         alert('Order placed successfully!');
+                         window.location.href = '/order-success';
+                     } else {
+                         alert('Error placing order');
+                     }
+                 })
+                 .catch(error => {
+                     console.error('Error:', error);
+                     alert('An error occurred: ' + error.message);
+                 });
+             } */
         });
 
-        // Update cart quantity
+        // Update Cart Quantity
         function updateCartQuantity(rowId, qty) {
             fetch(`/cart/update/${rowId}`, {
                     method: 'PATCH',
                     headers: {
                         'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
                     },
                     body: JSON.stringify({
                         qty: qty
@@ -340,17 +357,17 @@ use Gloudemans\Shoppingcart\Facades\Cart;
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                    alert('An error occurred');
+                    alert('An error occurred: ' + error.message);
                 });
         }
 
-        // Remove cart item
+        // Remove Cart Item
         function removeCartItem(rowId) {
             fetch(`/cart/remove/${rowId}`, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
                     }
                 })
                 .then(response => response.json())
@@ -363,11 +380,14 @@ use Gloudemans\Shoppingcart\Facades\Cart;
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                    alert('An error occurred');
+                    alert('An error occurred: ' + error.message);
                 });
         }
+
     });
 </script>
+
+
 
 
 @endsection
