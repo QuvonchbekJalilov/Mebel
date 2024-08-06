@@ -61,6 +61,12 @@
                     <span class="menu-text"> Kontakt </span>
                 </a>
             </li>
+            <li class="menu-item">
+                <a href="{{ route('brands.index')}}" class="menu-link waves-effect waves-light">
+                    <span class="menu-icon"><i class="bx bx-brand"></i></span>
+                    <span class="menu-text"> Brendlar </span>
+                </a>
+            </li>
             
             <li class="menu-item">
                 <a href="/change/password" class="menu-link waves-effect waves-light">
