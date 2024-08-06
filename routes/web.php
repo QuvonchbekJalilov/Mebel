@@ -26,7 +26,7 @@ Route::get('/about', [MainController::class, 'about'])->name('about');
 Route::get('/shop', [MainController::class, 'shop'])->name('shop');
 Route::get('/shop_details', [MainController::class, 'shop_details'])->name('shop_details');
 Route::get('/blog', [MainController::class, 'blog'])->name('blog');
-Route::get('/blog_details', [MainController::class, 'blog_details'])->name('blog_details');
+Route::get('/blog-details/{id}', [MainController::class, 'blogDetails'])->name('blog.details');
 Route::get('/contact', [MainController::class, 'contact'])->name('contact');
 Route::get('/cart', [MainController::class, 'cart'])->name('cart');
 

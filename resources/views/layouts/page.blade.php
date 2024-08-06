@@ -81,7 +81,7 @@
                                                             <a href="wishlist.html" class="single">Wishlist</a>
                                                         </li>
                                                         <li class="single-list">
-                                                            <a href="{{route('blog_details')}}" class="single">Blog Details</a>
+                                                            <a href="{{ route('blog.details', $blog->id) }}" class="single">Blog Details</a>
                                                         </li>
                                                         <li class="single-list">
                                                             <a href="shop-details.html" class="single">Shop Details</a>
