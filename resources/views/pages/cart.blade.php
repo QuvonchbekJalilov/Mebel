@@ -98,7 +98,10 @@ use Gloudemans\Shoppingcart\Facades\Cart;
                             $locale = App::getLocale();
                             $titleField = 'title_' . $locale;
                             $productTitle = $product->$titleField ?? $product->title_en; // Fallback to 'title_en'
-                            $totalPrice = $product->price * $cart->qty;
+
+                            // Use the getDiscountedPrice method to get the effective price
+                            $effectivePrice = $product->getDiscountedPrice();
+                            $totalPrice = $effectivePrice * $cart->qty;
                             @endphp
                             <tr data-rowid="{{ $cart->rowId }}">
                                 <td class="cart-img">
@@ -111,18 +114,14 @@ use Gloudemans\Shoppingcart\Facades\Cart;
                                         <a href="{{ route('shop_details', $cart->id) }}">
                                             <p class="cart-pera mb-15">{{ $productTitle }}</p>
                                         </a>
-                                        <div class="ratting-section mb-18">
-                                            <div class="all-ratting">
-                                                @for ($i = 0; $i < 5; $i++) <svg xmlns="http://www.w3.org/2000/svg" width="15" height="14" viewBox="0 0 15 14" fill="none">
-                                                    <path d="M7.5 0L9.18386 5.18237H14.6329L10.2245 8.38525L11.9084 13.5676L7.5 10.3647L3.09161 13.5676L4.77547 8.38525L0.367076 5.18237H5.81614L7.5 0Z" fill="#FFA800"></path>
-                                                    </svg>
-                                                    @endfor
-                                            </div>
-                                            <div class="ratting-count">
-                                                <p class="pera">({{ $cart->options->rating_count ?? 0 }})</p>
-                                            </div>
-                                        </div>
-                                        <p class="cart-pera">${{ number_format($product->price, 2) }}</p>
+
+                                        <p class="cart-pera">
+                                            @if ($product->getDiscount())
+                                            <span class="discounted-price">{{ number_format($effectivePrice, 2) }} So'm</span>
+                                            @else
+                                            {{ number_format($effectivePrice, 2) }} So'm
+                                            @endif
+                                        </p>
                                     </div>
                                 </td>
                                 <td class="cart-qty">
@@ -154,6 +153,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
                                 </td>
                             </tr>
                             @endforeach
+
                         </tbody>
                     </table>
                 </div>
@@ -174,6 +174,72 @@ use Gloudemans\Shoppingcart\Facades\Cart;
     </div>
 </div>
 <!-- Cart area End -->
+
+<!-- Modal for Checkout -->
+<div class="modal fade" id="checkoutModal" tabindex="-1" role="dialog" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="checkoutModalLabel">Checkout</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Order Summary -->
+                <h4>Order Summary</h4>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Product Title</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($cartContent as $cart)
+                            @php
+                            $product = App\Models\Product::find($cart->id);
+                            $locale = App::getLocale();
+                            $titleField = 'title_' . $locale;
+                            $productTitle = $product->$titleField ?? $product->title_en;
+                            $effectivePrice = $product->getDiscountedPrice();
+                            @endphp
+                            <tr>
+                                <td>{{ $productTitle }}</td>
+                                <td>{{ number_format($effectivePrice, 2) }} So'm</td>
+                                <td>{{ $cart->qty }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Customer Information Form -->
+                <h4>Customer Information</h4>
+                <form id="orderForm">
+                    @csrf
+                    <div class="form-group">
+                        <label for="first_name">First Name</label>
+                        <input type="text" class="form-control" id="first_name" name="first_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="last_name">Last Name</label>
+                        <input type="text" class="form-control" id="last_name" name="last_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone_number">Phone Number</label>
+                        <input type="text" class="form-control" id="phone_number" name="phone_number" required>
+                    </div>
+                    <input type="hidden" name="products" value="{{ json_encode($cartContent) }}">
+                    <input type="hidden" name="total_price" value="{{ Cart::subtotal() }}">
+                    <button type="submit" class="btn btn-success">Place Order</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -201,6 +267,55 @@ use Gloudemans\Shoppingcart\Facades\Cart;
                 const rowId = this.dataset.rowid;
                 removeCartItem(rowId);
             });
+        });
+
+        // Open the checkout modal
+        document.querySelector('.btn-primary').addEventListener('click', function(event) {
+            event.preventDefault();
+            $('#checkoutModal').modal('show');
+        });
+
+        // Submit order form
+        document.getElementById('orderForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            fetch('/orders', {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        first_name: formData.get('first_name'),
+                        last_name: formData.get('last_name'),
+                        phone_number: formData.get('phone_number'),
+                        products: formData.get('products'),
+                        total_price: formData.get('total_price'),
+                    })
+                })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json(); // Only parse JSON if the response is OK
+                    } else {
+                        // Handle HTML error response
+                        return response.text().then(html => {
+                            throw new Error('Server returned HTML: ' + html);
+                        });
+                    }
+                })
+                .then(data => {
+                    if (data.success) {
+                        alert('Order placed successfully!');
+                        window.location.href = '/order-success';
+                    } else {
+                        alert('Error placing order');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred: ' + error.message);
+                });
+
         });
 
         // Update cart quantity
@@ -253,4 +368,6 @@ use Gloudemans\Shoppingcart\Facades\Cart;
         }
     });
 </script>
+
+
 @endsection
