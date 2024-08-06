@@ -9,6 +9,48 @@
 use Gloudemans\Shoppingcart\Facades\Cart;
 
 ?>
+
+<style>
+    .cart-summary {
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .summary-title {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        color: #333;
+        font-weight: 600;
+    }
+
+    .summary-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.25rem;
+    }
+
+    .subtotal-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .subtotal-label {
+        color: #555;
+    }
+
+    .subtotal-amount {
+        font-weight: 700;
+        color: #333;
+    }
+</style>
 <section class="breadcrumb-section breadcrumb-bg">
     <div class="container">
         <div class="row">
@@ -102,7 +144,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
                                 </td>
                                 <td class="cart-total">
                                     <div class="total-section">
-                                        <p class="total">{{ number_format($totalPrice, 2) }}</p>
+                                        <p class="total">{{ number_format($totalPrice, 2) }} so'm</p>
                                     </div>
                                 </td>
                                 <td class="cart-action">
@@ -118,12 +160,12 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 
                 <div class="cart-summary mt-3">
                     <h4>Cart Summary</h4>
-                    <ul class="list-unstyled">
-                        <li>Subtotal: <span>${{ number_format(floatval(Cart::subtotal()), 5) }}</span></li>
-                        <li>Tax: <span>${{ number_format(floatval(Cart::tax()), 5) }}</span></li>
-                        <li>Total: <span>${{ number_format(floatval(Cart::total()), 5) }}</span></li>
-
-                    </ul>
+                    <div class="summary-content">
+                        <div class="subtotal-container">
+                            <span class="subtotal-label">Umumiy Narxi:</span>
+                            <span class="subtotal-amount">{{ Cart::subtotal() }} so'm</span>
+                        </div>
+                    </div>
                     <a href="{{ route('checkout') }}" class="btn btn-primary">Proceed to Checkout</a>
                 </div>
                 @endif

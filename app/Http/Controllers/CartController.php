@@ -11,56 +11,57 @@ use Illuminate\Support\Facades\App;
 class CartController extends Controller
 {
     public function addToCart(Request $request)
-    {
-        $productId = $request->input('product_id');
-        $product = Product::findOrFail($productId);
-        Cart::add([
-            'id' => $product->id,
-            'name' => $product->title_ . App::getLocale(),
-            'qty' => 1,
-            'price' => $product->price,
-            'attributes' => [
-                'image' => $product->image ? $product->image : null,
-            ]
-        ]);
-
-        return redirect()->back()->with('success', 'Cart added successfully');
-    }
-
-    public function viewCart()
-    {
-        $cartContent = Cart::content();
-        $total  = Cart::subtotal();
-        return view('pages.cart', compact('cartContent', 'total'));
-    }
-
-    public function updateCart(Request $request, $rowId)
 {
-    Cart::update($rowId, $request->qty);
+    $productId = $request->input('product_id');
+    $product = Product::findOrFail($productId);
 
-    return response()->json(['success' => true]);
+    // Ensure locale handling is correct
+    $locale = App::getLocale();
+    $titleField = 'title_' . $locale;
+    $productTitle = $product->$titleField ?? $product->title_en; // Fallback to 'title_en'
+
+    // Adding item to the cart
+    Cart::add([
+        'id' => $product->id,
+        'name' => $productTitle,
+        'qty' => 1,
+        'price' => $product->price,
+        'options' => [
+            'image' => $product->image ?? null,
+            'rating_count' => $product->rating_count ?? 0 // Add any extra attributes you need
+        ]
+    ]);
+
+    return redirect()->back()->with('success', 'Cart added successfully');
 }
 
-public function removeCartItem($rowId)
-{
-    Cart::remove($rowId);
 
-    return response()->json(['success' => true]);
+public function viewCart()
+{
+    $cartContent = Cart::content();
+    $total = Cart::subtotal();
+    return view('pages.cart', compact('cartContent', 'total'));
 }
 
-    public function updateCartItem(Request $request)
+
+public function updateCartItem(Request $request, $rowId)
 {
-    $rowId = $request->input('rowId');
     $newQty = $request->input('qty');
     
+    // Ensure the cart item exists
+    $item = Cart::get($rowId);
+    if (!$item) {
+        return response()->json(['success' => false, 'message' => 'Item not found'], 404);
+    }
+
     // Update the cart item quantity
     Cart::update($rowId, $newQty);
 
-    $item = Cart::get($rowId);
-    $newTotalPrice = $item->price * $item->qty;
-    
+    $product = Product::find($item->id); // Get the product details
+    $newTotalPrice = $product->price * $item->qty;
+
     // Calculate new cart subtotal
-    $newSubtotal = Cart::subtotal();
+    $newSubtotal = floatval(Cart::subtotal());
 
     return response()->json([
         'success' => true,
@@ -70,11 +71,18 @@ public function removeCartItem($rowId)
 }
 
 
-
-    public function deleteCartItem($rowId)
-    {
-        Cart::remove($rowId);
-
-        return redirect()->route('cart.index')->with('success', 'Item removed from cart');
+public function removeCartItem($rowId)
+{
+    // Ensure the cart item exists before removing
+    if (!Cart::get($rowId)) {
+        return response()->json(['success' => false, 'message' => 'Item not found'], 404);
     }
+
+    Cart::remove($rowId);
+
+    return response()->json(['success' => true, 'newSubtotal' => number_format(Cart::subtotal(), 2)]);
+}
+
+
+    
 }
