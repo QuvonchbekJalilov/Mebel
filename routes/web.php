@@ -36,16 +36,22 @@ Route::post('/logout', [AdminController::class, 'logout'])->name('logout');
 Route::get('/change/password', [AdminController::class, 'changePassword']);
 Route::post('/change/password', [AdminController::class, 'changePasswordCheck']);
 
-
-Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('cart.add');
+Route::get('checkout', [CartController::class, 'checkout'])->name('checkout');
 // Route for viewing the cart
 Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.index');
 
-// Route for updating cart items
-Route::post('/update-cart-item', [CartController::class, 'updateCartItem'])->name('cart.update');
+// Route for adding an item to the cart
+Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('cart.add');
 
-// Route for deleting cart items
+// Route for updating cart items (PATCH method)
+Route::patch('/cart/update/{rowId}', [CartController::class, 'updateCartItem']);
+
+// Route for deleting cart items (DELETE method)
+Route::delete('/cart/remove/{rowId}', [CartController::class, 'removeCartItem']);
+
+// Route for deleting cart items (GET method, likely redundant)
 Route::get('/cart/delete/{rowId}', [CartController::class, 'deleteCartItem'])->name('cart.delete');
+
 
 
 Route::middleware(['checkAdmin:admin', 'auth'])->group(function () {
