@@ -57,58 +57,35 @@ $lang = \Illuminate\Support\Facades\App::getLocale()
                                             </div>
                                             <ul class="listing d-none d-lg-block" id="navigation">
                                                 <li class="single-list">
-                                                    <a href="/" class="single active">Home <i class=""></i></a>
+                                                    <a href="/" class="single active">{{__('app.home')}} <i class=""></i></a>
 
                                                 </li>
                                                 <li class="single-list">
-                                                    <a href="{{route('about')}}" class="single">About</a>
+                                                    <a href="{{route('about')}}" class="single">{{__('app.about')}}</a>
                                                 </li>
                                                 <li class="single-list">
-                                                    <a href="{{route('shop')}}" class="single">Shop</a>
+                                                    <a href="{{route('shop')}}" class="single">{{__('app.shop')}}</a>
                                                 </li>
                                                 <li class="single-list">
-                                                    <a href="{{route('blog')}}" class="single">Blog</a>
+                                                    <a href="{{route('blog')}}" class="single">{{__('app.blog')}}</a>
                                                 </li>
                                                 <li class="single-list">
-                                                    <a href="{{route('contact')}}" class="single">Contact</a>
+                                                    <a href="{{route('contact')}}" class="single">{{__('app.contact')}}</a>
                                                 </li>
 
 
-                                                <li class="d-block d-lg-none">
-                                                    <div class="login-wrapper">
-                                                        <a href="javascript:void(0)">
-                                                            <p class="pera text-color-primary">
-                                                                Wishlist
-                                                            </p>
-                                                        </a>
-                                                    </div>
-                                                </li>
-                                                <li class="d-block d-lg-none">
-                                                    <div class="login-wrapper">
-                                                        <a href="javascript:void(0)">
-                                                            <p class="pera text-color-primary">
-                                                                Track Order
-                                                            </p>
-                                                        </a>
-                                                    </div>
-                                                </li>
+
+
                                             </ul>
                                             <div class="d-none d-lg-block">
                                                 <div class="header-right">
-                                                    <div class="header-icon search-bar header-search-box">
-                                                        <p class="pera">Search</p>
-                                                        <div class="search-icon-two">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                                <path d="M22.785 23.9941C22.5326 23.8063 22.2509 23.6479 22.0337 23.4249C19.9089 21.3181 17.8017 19.1996 15.6886 17.0869C15.624 17.0224 15.583 16.9344 15.5301 16.8522C13.0884 18.7242 10.4177 19.3991 7.47701 18.7653C5.02937 18.2372 3.07479 16.8991 1.67195 14.8334C-1.0046 10.9192 -0.370684 5.87229 2.88109 2.71505C6.52026 -0.811896 11.932 -0.817765 15.5712 2.2045C19.3747 5.36174 20.3021 11.1539 16.8978 15.4672C16.9564 15.5318 17.0151 15.5963 17.0797 15.6609C19.1928 17.7736 21.3117 19.8862 23.4189 22.0106C23.642 22.2395 23.8063 22.5211 24 22.7794C24 22.9202 24 23.061 24 23.2019C23.865 23.6009 23.6009 23.865 23.2017 24C23.0667 23.9941 22.9259 23.9941 22.785 23.9941ZM17.0034 9.49314C16.9799 5.34413 13.6166 1.99323 9.49616 2.00497C5.35807 2.02258 1.99478 5.39108 2.01238 9.51075C2.02999 13.648 5.35807 17.0048 9.51377 16.993C13.7164 16.9813 16.9799 13.6069 17.0034 9.49314Z" fill="#13172B" />
-                                                            </svg>
-                                                        </div>
-                                                    </div>
+
                                                     <div class="header-icon">
                                                         <a href="{{ route('cart.index')}}">
                                                             <svg width="22" height="24" viewBox="0 0 22 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                 <path d="M19.7472 6.21264C19.5903 5.81551 19.2308 5.78119 17.464 5.78119H15.9959V5.15364C15.9959 4.17798 15.8541 3.49649 15.5099 2.79539C14.8872 1.52556 13.8443 0.638157 12.4926 0.226322C11.8345 0.0302096 10.8524 -0.053138 10.255 0.0351124C8.59958 0.290058 7.18715 1.31474 6.46828 2.77578C6.11896 3.49159 5.97721 4.17798 5.97721 5.15364V5.7861H4.50403C2.73722 5.7861 2.37778 5.82042 2.22084 6.23225C2.13984 6.4921 1.38047 12.0764 1.05647 14.4837C0.772972 16.5821 0.509722 18.5628 0.317347 20.0532C-0.0167771 22.6223 -0.00665214 22.6615 0.00347284 22.7057V22.7106C0.0490353 22.8773 0.499597 23.3136 0.636284 23.4411L1.2286 24H20.7091L21.1495 23.6225C21.3469 23.4509 22 22.8675 22 22.5782C22 22.3821 19.7877 6.32541 19.7472 6.21264ZM20.4003 22.2056C20.3952 22.2399 20.3547 22.3429 20.2838 22.4164L20.1826 22.5243H1.79053L1.52728 22.2497L2.56509 14.7435C2.92959 12.0715 3.25359 9.74266 3.44597 8.35026C3.53203 7.74231 3.57253 7.43344 3.59278 7.28145C4.27622 7.27655 7.26309 7.27165 10.979 7.27165H18.3702L18.3803 7.32558C18.4613 7.7178 20.3648 21.7692 20.4003 22.2056ZM7.50102 5.7861V5.22718C7.50102 4.84966 7.55165 4.32997 7.60734 4.08973C7.90602 2.86403 8.92358 1.86876 10.1943 1.55008C10.7258 1.4226 11.5966 1.46673 12.1281 1.65304H12.1332C12.6901 1.83444 13.1457 2.12861 13.5659 2.57967C14.2443 3.29547 14.4721 3.93774 14.4721 5.12422V5.7861H7.50102Z" fill="#13172B"></path>
                                                             </svg>
-                                                            <?php 
+                                                            <?php
                                                                 use Gloudemans\Shoppingcart\Facades\Cart;
                                                             ?>
                                                             <div class="count"><span class="count-num">{{ Cart::content()->count()}}</span>

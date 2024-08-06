@@ -5,19 +5,19 @@
 
 
 @section('content')
-   
+
         <!-- Breadcrumbs S t a r t -->
         <section class="breadcrumb-section breadcrumb-bg">
             <div class="container">
                 <div class="row">
 					<div class="col-lg-12">
                         <div class="breadcrumb-text">
-                            <h1 class="title wow fadeInUp" data-wow-delay="0.1s">About Us</h1>
+                            <h1 class="title wow fadeInUp" data-wow-delay="0.1s">{{__('app.about')}}</h1>
                             <nav aria-label="breadcrumb" class="breadcrumb-nav wow fadeInUp" data-wow-delay="0.0s">
                                 <ul class="breadcrumb listing">
-                                    <li class="breadcrumb-item single-list"><a href="/" class="single">Home</a></li>
+                                    <li class="breadcrumb-item single-list"><a href="/" class="single">{{__('app.home')}}</a></li>
                                     <li class="breadcrumb-item single-list" aria-current="page"><a href="javascript:void(0)"
-                                            class="single active">About Us</a></li>
+                                            class="single active">{{__('app.about')}}</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -27,69 +27,61 @@
         </section>
         <!-- End-of Breadcrumbs-->
 
-		<!-- Goal area S t a r t -->
-		<section class="goal-area position-relative">
-			<div class="container">
-				<div class="row g-4">
-					<div class="col-xxl-3 col-md-4 col-sm-6">
-						<div class="goal-card wow fadeInUp" data-wow-delay="0.0s">
-							<div class="circle-icon">
-								<img src="assets/images/goal/icon-1.png" alt="img">
-							</div>
-							<a href="javascript:void(0)">
-								<h4 class="title line-clamp-1 text-color-primary">Original Product</h4>
-								<p class="pera text-color-tertiary line-clamp-2">There are many variations of passages
-									of our
-									Lorem Ipsum available but the.</p>
-							</a>
-						</div>
-					</div>
-					<div class="col-xxl-3 col-md-4 col-sm-6">
-						<div class="goal-card wow fadeInUp" data-wow-delay="0.0s">
-							<div class="circle-icon">
-								<img src="assets/images/goal/icon-2.png" alt="img">
-							</div>
-							<a href="javascript:void(0)">
-								<h4 class="title line-clamp-1 text-color-primary">Satisfaction Guarantee</h4>
-								<p class="pera text-color-tertiary line-clamp-2">There are many variations of passages
-									of our
-									Lorem Ipsum available but the.</p>
-							</a>
-						</div>
-					</div>
-					<div class="col-xxl-3 col-md-4 col-sm-6">
-						<div class="goal-card wow fadeInUp" data-wow-delay="0.1s">
-							<div class="circle-icon">
-								<img src="assets/images/goal/icon-3.png" alt="img">
-							</div>
-							<a href="javascript:void(0)">
-								<h4 class="title line-clamp-1 text-color-primary">New Arrival Everyday</h4>
-								<p class="pera text-color-tertiary line-clamp-2">There are many variations of passages
-									of our
-									Lorem Ipsum available but the.</p>
-							</a>
-						</div>
-					</div>
-					<div class="col-xxl-3 col-md-4 col-sm-6">
-						<div class="goal-card wow fadeInUp" data-wow-delay="0.2s">
-							<div class="circle-icon">
-								<img src="assets/images/goal/icon-4.png" alt="img">
-							</div>
-							<a href="javascript:void(0)">
-								<h4 class="title line-clamp-1 text-color-primary">Fast & Free Shipping</h4>
-								<p class="pera text-color-tertiary line-clamp-2">There are many variations of passages
-									of our
-									Lorem Ipsum available but the.</p>
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="shape routedOne">
-				<img src="assets/images/goal/shape.png" alt="img">
-			</div>
-		</section>
-		<!-- End-of goal-->
+        <!-- Goal area S t a r t -->
+        <section class="goal-area position-relative">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-xxl-3 col-md-4 col-sm-6">
+                        <div class="goal-card wow fadeInUp" data-wow-delay="0.0s">
+                            <div class="circle-icon">
+                                <img src="assets/images/goal/icon-1.png" alt="img">
+                            </div>
+                            <a href="javascript:void(0)">
+                                <h4 class="title line-clamp-1 text-color-primary">Original Products</h4>
+                                <p class="pera text-color-tertiary line-clamp-2">We offer a wide range of original products, ensuring the highest quality for our customers.</p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-xxl-3 col-md-4 col-sm-6">
+                        <div class="goal-card wow fadeInUp" data-wow-delay="0.0s">
+                            <div class="circle-icon">
+                                <img src="assets/images/goal/icon-2.png" alt="img">
+                            </div>
+                            <a href="javascript:void(0)">
+                                <h4 class="title line-clamp-1 text-color-primary">Satisfaction Guarantee</h4>
+                                <p class="pera text-color-tertiary line-clamp-2">Your satisfaction is our priority. We guarantee high-quality products and excellent customer service.</p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-xxl-3 col-md-4 col-sm-6">
+                        <div class="goal-card wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="circle-icon">
+                                <img src="assets/images/goal/icon-3.png" alt="img">
+                            </div>
+                            <a href="javascript:void(0)">
+                                <h4 class="title line-clamp-1 text-color-primary">New Arrivals Every Day</h4>
+                                <p class="pera text-color-tertiary line-clamp-2">Discover our latest collections with new arrivals every day, offering you the best in furniture design.</p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-xxl-3 col-md-4 col-sm-6">
+                        <div class="goal-card wow fadeInUp" data-wow-delay="0.2s">
+                            <div class="circle-icon">
+                                <img src="assets/images/goal/icon-4.png" alt="img">
+                            </div>
+                            <a href="javascript:void(0)">
+                                <h4 class="title line-clamp-1 text-color-primary">Fast & Free Shipping</h4>
+                                <p class="pera text-color-tertiary line-clamp-2">Enjoy fast and free shipping on all orders, ensuring your furniture arrives safely and on time.</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="shape routedOne">
+                <img src="assets/images/goal/shape.png" alt="img">
+            </div>
+        </section>
+        <!-- End-of goal-->
 
         <!-- About area S t a r t -->
         <section class="about-area bottom-padding1">
@@ -124,14 +116,10 @@
                     </div>
                     <div class="col-xl-6">
                         <div class="about-caption">
-                            <p class="heading">Our About Us</p>
+                            <p class="heading">About Us</p>
                             <div class="section-title">
-                                <h4 class="title">We believe in pure and organic quality</h4>
-                                <p class="pera">There are many variations of passages of Lorem Ipsum available, but the
-                                    majority have
-                                    suffered alteration in some form, by injected humour, or randomised words which
-                                    don't look even
-                                    slightl believable. If you are going to use a passage of Lorem Ipsum, you need</p>
+                                <h4 class="title">Pure and Organic Quality</h4>
+                                <p class="pera">At our furniture company in Uzbekistan, we believe in offering pure and organic quality products. Our furniture pieces are crafted with precision and care, ensuring durability and timeless beauty. Join us in embracing a lifestyle of elegance and comfort.</p>
                             </div>
                         </div>
                         <div class="goal-card">
@@ -139,10 +127,8 @@
                                 <img src="assets/images/icon/about-icon-1.png" alt="img">
                             </div>
                             <a href="javascript:void(0)">
-                                <h4 class="title line-clamp-1 text-color-primary">Products Return Policy</h4>
-                                <p class="pera text-color-tertiary line-clamp-2">Sure there isn't anything embarrassing
-                                    hidden in the
-                                    middle of text.</p>
+                                <h4 class="title line-clamp-1 text-color-primary">Product Return Policy</h4>
+                                <p class="pera text-color-tertiary line-clamp-2">We offer a hassle-free return policy to ensure your satisfaction. If you're not completely happy with your purchase, we are here to help.</p>
                             </a>
                         </div>
                         <div class="goal-card mb-0">
@@ -150,10 +136,8 @@
                                 <img src="assets/images/icon/about-icon-2.png" alt="img">
                             </div>
                             <a href="javascript:void(0)">
-                                <h4 class="title line-clamp-1 text-color-primary">100% Qualityful Furniture</h4>
-                                <p class="pera text-color-tertiary line-clamp-2">Sure there isn't anything embarrassing
-                                    hidden in the
-                                    middle of text.</p>
+                                <h4 class="title line-clamp-1 text-color-primary">100% Quality Furniture</h4>
+                                <p class="pera text-color-tertiary line-clamp-2">Our furniture is made with the highest standards of quality, providing you with pieces that are both beautiful and long-lasting.</p>
                             </a>
                         </div>
                     </div>
@@ -164,6 +148,7 @@
             </div>
         </section>
         <!-- End-of about-->
+
 
         <!-- Product-budget area S t a r t -->
         <section class="product-budget-area section-padding2 product-bg">
@@ -486,7 +471,7 @@
                             </div>
                             <div class="swiper-button-next swiper-common-btn"><i class="ri-arrow-right-s-line"></i></div>
                             <div class="swiper-button-prev swiper-common-btn"><i class="ri-arrow-left-s-line"></i></div>
-                        </div>						
+                        </div>
 					</div>
 				</div>
             </div>
@@ -539,7 +524,7 @@
                             </div>
                             <div class="swiper-button-next swiper-common-btn"><i class="ri-arrow-right-s-line"></i></div>
                             <div class="swiper-button-prev swiper-common-btn"><i class="ri-arrow-left-s-line"></i></div>
-                        </div>						
+                        </div>
 					</div>
 				</div>
             </div>
@@ -678,7 +663,7 @@
                                 </div>
                             </div>
                             <div class="swiper-pagination"></div>
-                        </div>					
+                        </div>
 					</div>
 				</div>
             </div>
@@ -716,13 +701,13 @@
                                     </a>
                                 </div>
                             </div>
-                        </div>					
+                        </div>
 					</div>
 				</div>
             </div>
         </section>
         <!-- End-of subscription-->
-  
-   
+
+
 
     @endsection
