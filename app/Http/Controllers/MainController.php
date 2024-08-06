@@ -58,8 +58,9 @@ class MainController extends Controller
     {
         $locale = $this->language(); // Agar bu metod mavjud bo'lsa
         $blog = Blog::findOrFail($id); // `Blog` modelidan blogni ID bo'yicha topamiz
-        $categories = Category::latest()->take(6)->get();
-
+        $categories = Product::selectRaw('category_id, COUNT(*) as count')
+            ->groupBy('category_id')
+            ->get();
         return view('pages.blog-details', compact('locale', 'blog', 'categories'));
     }
 
