@@ -1,7 +1,6 @@
 <?php
 $lang = \Illuminate\Support\Facades\App::getLocale()
 ?>
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -12,6 +11,8 @@ $lang = \Illuminate\Support\Facades\App::getLocale()
     <meta name="keywords" content="...">
     <meta name="author" content="PointTheme">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <!-- Title -->
     <title>@yield('title')</title>
     <link rel="icon" type="image/x-icon" sizes="20x20" href="/frontend/assets/images/icon/favicon.svg">

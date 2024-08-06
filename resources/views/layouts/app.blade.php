@@ -1,7 +1,6 @@
 <?php
 $lang = \Illuminate\Support\Facades\App::getLocale()
 ?>
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -12,6 +11,8 @@ $lang = \Illuminate\Support\Facades\App::getLocale()
     <meta name="description" content="....">
     <meta name="keywords" content="...">
     <meta name="author" content="PointTheme">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Title -->
     <title>@yield('title')</title>
