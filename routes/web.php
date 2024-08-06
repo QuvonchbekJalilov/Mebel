@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DiscountController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 
 /*
@@ -29,6 +31,7 @@ Route::get('/shop_details/{id}', [MainController::class, 'shop_details'])->name(
 Route::get('/blog', [MainController::class, 'blog'])->name('blog');
 Route::get('/blog-details/{id}', [MainController::class, 'blogDetails'])->name('blog.details');
 Route::get('/contact', [MainController::class, 'contact'])->name('contact');
+Route::post('/orders', [OrderController::class, 'store']);
 
 Route::get('/login', [AdminController::class, 'login'])->name('login');
 Route::post('/authenticate', [AdminController::class, 'authenticate'])->name('authenticate');
@@ -62,6 +65,7 @@ Route::middleware(['checkAdmin:admin', 'auth'])->group(function () {
         Route::resource('blogs', BlogController::class);
         Route::resource('contacts', ContactController::class);
         Route::resource('discounts', DiscountController::class);
+        Route::resource('brands', BrandController::class);
     });
 });
 
