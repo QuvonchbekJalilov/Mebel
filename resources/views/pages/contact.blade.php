@@ -37,7 +37,10 @@
                                 <div class="col-xl-6">
                                     <div class="contact-card">
                                         <div class="circle-icon">
-                                            <img src="{{ asset('assets/images/icon/' . ($loop->index == 0 ? 'call.png' : ($loop->index == 1 ? 'mail.png' : ($loop->index == 2 ? 'map.png' : 'time.png'))) }}" alt="img">
+                                            @php
+                                                $image = $loop->index == 0 ? 'call.png' : ($loop->index == 1 ? 'mail.png' : ($loop->index == 2 ? 'map.png' : 'time.png'));
+                                            @endphp
+                                            <img src="{{ asset('storage/' . $image) }}" alt="img">
                                         </div>
                                         <a href="javascript:void(0)">
                                             <p class="pera text-color-tertiary">
@@ -60,25 +63,76 @@
                             <div class="comment-box">
                                 <h4 class="title">Get In Touch With Us</h4>
                                 <p class="pera">Duis gravida augue velit eu dignissim felis posuere quis. Integ ante urna gravid nec est tincidunt orci at turpis gravida. Phasellus acdr egestas odio.</p>
-                                <form class="custom-form">
+                                <form class="custom-form" onsubmit="sendphone(event)">
                                     <div class="row g-4">
                                         <div class="col-xl-4 col-sm-6">
-                                            <input class="form-control custom-form-control" type="text" placeholder="Name*">
+                                            <input id="last_name" class="form-control custom-form-control" type="text" placeholder="Name*" required>
                                         </div>
                                         <div class="col-xl-4 col-sm-6">
-                                            <input class="form-control custom-form-control" type="text" placeholder="Email*">
+                                            <input id="email" class="form-control custom-form-control" type="text" placeholder="Email*" required>
                                         </div>
                                         <div class="col-xl-4 col-sm-6">
-                                            <input class="form-control custom-form-control" type="text" placeholder="Phone Number*">
+                                            <input id="phone_number_footer" class="form-control custom-form-control" type="text" placeholder="Phone Number*" required>
                                         </div>
                                         <div class="col-12">
                                             <textarea class="form-control custom-form-control custom-form-textarea" placeholder="Comment" id="floatingTextarea2"></textarea>
                                         </div>
                                         <div class="col-12 mt-36">
-                                            <a href="javascript:void(0)" class="submit-btn d-inline-block">Send Message</a>
+                                            <button type="submit" class="submit-btn d-inline-block">Send Message</button>
                                         </div>
                                     </div>
                                 </form>
+
+                                <script>
+                                    function sendphone(event) {
+                                        event.preventDefault(); // Prevent default form submission
+
+                                        const phone_number_footer = document.getElementById('phone_number_footer').value;
+                                        const last_name = document.getElementById('last_name').value;
+                                        const email = document.getElementById('email').value;
+                                        const comment = document.getElementById('floatingTextarea2').value;
+
+                                        if (!last_name || !phone_number_footer || !email) {
+                                            alert('Iltimos, barcha maydonlarni to\'ldiring.');
+                                            return;
+                                        }
+
+                                        const message = `Bog\'lanish uchun raqam qoldirishdi:\n\nIsm: ${last_name}\nTelefon raqam: ${phone_number_footer}\nEmail: ${email}\nIzoh: ${comment}`;
+                                        const telegramBotToken = '6904907827:AAEOkfw0h_6I5V418lQ0Z3ws9WbSbXNDtvE'; // Bu yerga o'zingizning bot tokeningizni qo'ying
+                                        const telegramChatId = '6583641407'; // Bu yerga o'zingizning chat ID ni qo'ying
+
+                                        const url = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`;
+                                        const data = {
+                                            chat_id: telegramChatId,
+                                            text: message
+                                        };
+
+                                        fetch(url, {
+                                            method: 'POST',
+                                            headers: {
+                                                'Content-Type': 'application/json'
+                                            },
+                                            body: JSON.stringify(data)
+                                        })
+                                            .then(response => response.json())
+                                            .then(data => {
+                                                if (data.ok) {
+                                                    alert('Xabar yuborildi!');
+                                                    document.getElementById('last_name').value = '';
+                                                    document.getElementById('phone_number_footer').value = '';
+                                                    document.getElementById('email').value = '';
+                                                    document.getElementById('floatingTextarea2').value = '';
+                                                } else {
+                                                    alert('Xatolik yuz berdi. Iltimos, qaytadan urinib ko\'ring.');
+                                                }
+                                            })
+                                            .catch(error => {
+                                                console.error('Xatolik:', error);
+                                                alert('Xatolik yuz berdi. Iltimos, qaytadan urinib ko\'ring.');
+                                            });
+                                    }
+                                </script>
+
                             </div>
                         </section>
                     </div>
