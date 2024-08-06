@@ -36,7 +36,7 @@
                         <h5 class="mb-0" style="color: white !important;">Blog Qo'shish Formasi</h5>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('blogs.store') }}" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
+                        <form action="{{ route('blogs.store') }}" method="post" class="needs-validation" enctype="multipart/form-data" novalidate onsubmit="updateEditorContent()">
                             @csrf
 
                             <!-- Uzbek Title -->
@@ -166,7 +166,7 @@
             document.getElementById('text_en').value = editorEn.root.innerHTML;
         }
 
-        document.querySelector('form').addEventListener('submit', function() {
+        document.querySelector('form').addEventListener('submit', function(event) {
             updateEditorContent();
         });
     </script>

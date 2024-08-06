@@ -37,7 +37,7 @@
                         <h5 class="mb-0" style="color: white !important;">Blogni Tahrirlash Formasi</h5>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('blogs.update', $blog->id) }}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+                        <form action="{{ route('blogs.update', $blog->id) }}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate  onsubmit="updateEditorContent()">
                             @csrf
                             @method('PUT')
 
