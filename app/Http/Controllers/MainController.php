@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -17,7 +18,8 @@ class MainController extends Controller
     }
 
     public function shop(){
-        return view('pages.shop');
+        $products = Product::paginate(20);
+        return view('pages.shop', compact('products'));
     }
     public function shop_details(){
         return view('pages.shop-details');

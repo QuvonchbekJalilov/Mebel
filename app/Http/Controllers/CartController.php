@@ -1,66 +1,66 @@
 <?php
 
-namespace App\Http\Controllers\frontend;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
-use Illuminate\Mail\Mailables\Content;
+use Illuminate\Support\Facades\App;
 
 class CartController extends Controller
 {
     public function addToCart(Request $request)
     {
-
         $productId = $request->input('product_id');
         $product = Product::findOrFail($productId);
-
-        $cart = Cart::add([
+        Cart::add([
             'id' => $product->id,
-            'name' => $product->name,
-
-            'qty' => 1, // Ensure 'quantity' key is set to 1
+            'name' => $product->title_ . App::getLocale(),
+            'qty' => 1,
             'price' => $product->price,
             'attributes' => [
-                'image' => $product->photos->isNotEmpty() ? $product->photos->first()->path : null,
+                'image' => $product->image ? $product->image : null,
             ]
         ]);
 
-        return redirect()->route('shop')->with('success', 'Cart added successfully');
+        return redirect()->back()->with('success', 'Cart added successfully');
     }
 
     public function viewCart()
     {
-
         $cartContent = Cart::content();
         $total  = Cart::subtotal();
-        return view('frontend.cart', compact('cartContent', 'total'));
+        return view('pages.cart', compact('cartContent', 'total'));
     }
 
     public function updateCartItem(Request $request)
     {
         $rowId = $request->input('rowId');
         $action = $request->input('action');
-
-        $item = Cart::get($rowId);
+        $cart = Cart::get($rowId);
 
         if ($action === 'increment') {
-            Cart::update($rowId, $item->qty + 1);
-        } elseif ($action === 'decrement' && $item->qty > 1) {
-            Cart::update($rowId, $item->qty - 1);
+            Cart::update($rowId, $cart->qty + 1);
+        } else if ($action === 'decrement') {
+            $newQty = max($cart->qty - 1, 1); // Ensure quantity doesn't go below 1
+            Cart::update($rowId, $newQty);
         }
 
-        return redirect()->route('viewCart')->with('success', 'Item quantity updated');
+        $item = Cart::get($rowId);
+        $newTotalPrice = $item->price * $item->qty;
+
+        return response()->json([
+            'success' => true,
+            'newTotalPrice' => number_format($newTotalPrice, 2) // Format to 2 decimal places
+        ]);
     }
 
-    public function deleteCartItem(Request $request)
+
+    public function deleteCartItem($rowId)
     {
-        $rowId = $request->input('rowId');
-        // Remove the item from the cart
         Cart::remove($rowId);
 
-        // Redirect back to the cart page or any other desired page
-        return redirect()->route('viewCart')->with('success', 'Item removed from cart');
+        return redirect()->route('cart.index')->with('success', 'Item removed from cart');
     }
 }
