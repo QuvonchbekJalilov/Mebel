@@ -35,6 +35,7 @@
                                     stroke="#071516" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </div>
+{{--                        --}}
                         <div class="row g-4">
                             <div class="col-12">
                                 <div class="blog-details-section">
