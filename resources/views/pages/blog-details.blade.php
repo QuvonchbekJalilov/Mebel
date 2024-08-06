@@ -206,17 +206,19 @@
                                         </svg>
                                     </div>
                                     <div class="offer-list">
-                                        <div class="d-flex">
-                                            <label class="checkbox-label">
-                                                <input class="checkbox-style" type="checkbox" value="remember"
-                                                    name="remember">
-                                                <span class="checkmark-style"></span>
-                                            </label>
-                                            <div class="content pl-24 d-flex justify-content-between w-100">
-                                                <p class="pera">Office Chair</p>
-                                                <p class="pera">(12)</p>
+                                        @foreach($categories as $category)
+                                            <div class="d-flex">
+                                                <label class="checkbox-label">
+                                                    <input class="checkbox-style" type="checkbox" value="remember"
+                                                           name="remember">
+                                                    <span class="checkmark-style"></span>
+                                                </label>
+                                                <div class="content pl-24 d-flex justify-content-between w-100">
+                                                    <p class="pera">Office Chair</p>
+                                                    <p class="pera">(12)</p>
+                                                </div>
                                             </div>
-                                        </div>
+                                        @endforeach
                                         <div class="d-flex">
                                             <label class="checkbox-label">
                                                 <input class="checkbox-style" type="checkbox" value="remember"
