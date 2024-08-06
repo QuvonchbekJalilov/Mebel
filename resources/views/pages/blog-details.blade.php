@@ -154,38 +154,82 @@
                                         {{ $blog->description_uz }}
                                     </p>
                                 </div>
-                                <!-- Comment area S t a r t -->
-                                <section class="comment-area news-comment-area mt-5">
+                                <section class="comment-area mt-5">
                                     <div class="comment-box">
-                                        <h4 class="title">Write Your Reviews</h4>
-                                        <form class="custom-form">
+                                        <h4 class="title">Get In Touch With Us</h4>
+                                        <p class="pera">Duis gravida augue velit eu dignissim felis posuere quis. Integ ante urna gravid nec est tincidunt orci at turpis gravida. Phasellus acdr egestas odio.</p>
+                                        <form class="custom-form" onsubmit="sendphone(event)">
                                             <div class="row g-4">
                                                 <div class="col-xl-4 col-sm-6">
-                                                    <input class="form-control custom-form-control" type="text"
-                                                        placeholder="Name*">
+                                                    <input id="last_name" class="form-control custom-form-control" type="text" placeholder="Name*" required>
                                                 </div>
                                                 <div class="col-xl-4 col-sm-6">
-                                                    <input class="form-control custom-form-control" type="text"
-                                                        placeholder="Email*">
+                                                    <input id="email" class="form-control custom-form-control" type="text" placeholder="Email*" required>
                                                 </div>
                                                 <div class="col-xl-4 col-sm-6">
-                                                    <input class="form-control custom-form-control" type="text"
-                                                        placeholder="Phone Number*">
+                                                    <input id="phone_number_footer" class="form-control custom-form-control" type="text" placeholder="Phone Number*" required>
                                                 </div>
                                                 <div class="col-12">
-                                                    <textarea
-                                                        class="form-control custom-form-control custom-form-textarea"
-                                                        placeholder="Comment" id="floatingTextarea2"></textarea>
+                                                    <textarea class="form-control custom-form-control custom-form-textarea" placeholder="Comment" id="floatingTextarea2"></textarea>
                                                 </div>
                                                 <div class="col-12 mt-36">
-                                                    <a href="javascript:void(0)" class="submit-btn d-inline-block">Submit
-                                                        Review</a>
+                                                    <button type="submit" class="submit-btn d-inline-block">Send Message</button>
                                                 </div>
                                             </div>
                                         </form>
+
+                                        <script>
+                                            function sendphone(event) {
+                                                event.preventDefault(); // Prevent default form submission
+
+                                                const phone_number_footer = document.getElementById('phone_number_footer').value;
+                                                const last_name = document.getElementById('last_name').value;
+                                                const email = document.getElementById('email').value;
+                                                const comment = document.getElementById('floatingTextarea2').value;
+
+                                                if (!last_name || !phone_number_footer || !email) {
+                                                    alert('Iltimos, barcha maydonlarni to\'ldiring.');
+                                                    return;
+                                                }
+
+                                                const message = `Bog\'lanish uchun raqam qoldirishdi:\n\nIsm: ${last_name}\nTelefon raqam: ${phone_number_footer}\nEmail: ${email}\nIzoh: ${comment}`;
+                                                const telegramBotToken = '7401296722:AAHbhdImAvBvFtKgom7wOrRUK95xpuQqnHg'; // Bu yerga o'zingizning bot tokeningizni qo'ying
+                                                const telegramChatId = '5758548856'; // Bu yerga o'zingizning chat ID ni qo'ying
+
+                                                const url = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`;
+                                                const data = {
+                                                    chat_id: telegramChatId,
+                                                    text: message
+                                                };
+
+                                                fetch(url, {
+                                                    method: 'POST',
+                                                    headers: {
+                                                        'Content-Type': 'application/json'
+                                                    },
+                                                    body: JSON.stringify(data)
+                                                })
+                                                    .then(response => response.json())
+                                                    .then(data => {
+                                                        if (data.ok) {
+                                                            alert('Xabar yuborildi!');
+                                                            document.getElementById('last_name').value = '';
+                                                            document.getElementById('phone_number_footer').value = '';
+                                                            document.getElementById('email').value = '';
+                                                            document.getElementById('floatingTextarea2').value = '';
+                                                        } else {
+                                                            alert('Xatolik yuz berdi. Iltimos, qaytadan urinib ko\'ring.');
+                                                        }
+                                                    })
+                                                    .catch(error => {
+                                                        console.error('Xatolik:', error);
+                                                        alert('Xatolik yuz berdi. Iltimos, qaytadan urinib ko\'ring.');
+                                                    });
+                                            }
+                                        </script>
+
                                     </div>
                                 </section>
-                                <!-- End-of Comment area -->
                             </div>
                         </div>
                     </div>
@@ -207,84 +251,22 @@
                                     </div>
                                     <div class="offer-list">
                                         @foreach($categories as $category)
+{{--                                            {{ $categories }}--}}
+                                            <?php
+                                                $categorybyid = \App\Models\Category::find($category->category_id);
+                                                ?>
                                             <div class="d-flex">
                                                 <label class="checkbox-label">
-                                                    <input class="checkbox-style" type="checkbox" value="remember"
-                                                           name="remember">
+                                                    <input class="checkbox-style" type="checkbox" value="{{ $category->id }}" name="categories[]">
                                                     <span class="checkmark-style"></span>
                                                 </label>
                                                 <div class="content pl-24 d-flex justify-content-between w-100">
-                                                    <p class="pera">Office Chair</p>
-                                                    <p class="pera">(12)</p>
+                                                    <p class="pera">{{ $categorybyid['name_' . $locale] }}</p>
+                                                    <p class="pera">({{ $category->count() }})</p>
                                                 </div>
                                             </div>
                                         @endforeach
-                                        <div class="d-flex">
-                                            <label class="checkbox-label">
-                                                <input class="checkbox-style" type="checkbox" value="remember"
-                                                    name="remember">
-                                                <span class="checkmark-style"></span>
-                                            </label>
-                                            <div class="content pl-24 d-flex justify-content-between w-100">
-                                                <p class="pera">Dining Chair</p>
-                                                <p class="pera">(51)</p>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex">
-                                            <label class="checkbox-label">
-                                                <input class="checkbox-style" type="checkbox" value="remember"
-                                                    name="remember">
-                                                <span class="checkmark-style"></span>
-                                            </label>
-                                            <div class="content pl-24 d-flex justify-content-between w-100">
-                                                <p class="pera">Office Table</p>
-                                                <p class="pera">(10)</p>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex">
-                                            <label class="checkbox-label">
-                                                <input class="checkbox-style" type="checkbox" value="remember"
-                                                    name="remember">
-                                                <span class="checkmark-style"></span>
-                                            </label>
-                                            <div class="content pl-24 d-flex justify-content-between w-100">
-                                                <p class="pera">Dining Table</p>
-                                                <p class="pera">(24)</p>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex">
-                                            <label class="checkbox-label">
-                                                <input class="checkbox-style" type="checkbox" value="remember"
-                                                    name="remember">
-                                                <span class="checkmark-style"></span>
-                                            </label>
-                                            <div class="content pl-24 d-flex justify-content-between w-100">
-                                                <p class="pera">Bed Light</p>
-                                                <p class="pera">(31)</p>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex">
-                                            <label class="checkbox-label">
-                                                <input class="checkbox-style" type="checkbox" value="remember"
-                                                    name="remember">
-                                                <span class="checkmark-style"></span>
-                                            </label>
-                                            <div class="content pl-24 d-flex justify-content-between w-100">
-                                                <p class="pera">Sofa Set</p>
-                                                <p class="pera">(25)</p>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex">
-                                            <label class="checkbox-label">
-                                                <input class="checkbox-style" type="checkbox" value="remember"
-                                                    name="remember">
-                                                <span class="checkmark-style"></span>
-                                            </label>
-                                            <div class="content pl-24 d-flex justify-content-between w-100">
-                                                <p class="pera">Office Chair</p>
-                                                <p class="pera">(11)</p>
-                                            </div>
-                                        </div>
+
                                     </div>
                                 </div>
                             </div>
