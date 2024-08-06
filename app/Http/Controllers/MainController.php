@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -26,8 +27,9 @@ class MainController extends Controller
 
     public function contact()
     {
+        $contacts = Contact::all();
         $locale = $this->language();
-        return view('pages.contact', compact('locale'));
+        return view('pages.contact', compact('locale', 'contacts'));
     }
 
     public function shop()
@@ -49,10 +51,12 @@ class MainController extends Controller
         return view('pages.blog', compact('blogs', 'locale'));
     }
 
-    public function blog_details()
+    public function blogDetails($id)
     {
-        $locale = $this->language();
-        return view('pages.blog-details', compact('locale'));
+        $locale = $this->language(); // Agar bu metod mavjud bo'lsa
+        $blog = Blog::findOrFail($id); // `Blog` modelidan blogni ID bo'yicha topamiz
+
+        return view('pages.blog-details', compact('locale', 'blog'));
     }
 
     public function create()
