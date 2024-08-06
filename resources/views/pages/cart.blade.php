@@ -4,6 +4,11 @@
 
 @section('content')
 <!-- Breadcrumbs Start -->
+<?php
+
+use Gloudemans\Shoppingcart\Facades\Cart;
+
+?>
 <section class="breadcrumb-section breadcrumb-bg">
     <div class="container">
         <div class="row">
@@ -28,6 +33,11 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
+                @if($cartContent->isEmpty())
+                <div class="alert alert-info">
+                    Your shopping cart is empty.
+                </div>
+                @else
                 <div class="table-responsive">
                     <table class="table product-cart-table">
                         <thead>
@@ -42,36 +52,35 @@
                         <tbody>
                             @foreach ($cartContent as $cart)
                             @php
-                                $product = App\Models\Product::find($cart->id);
-                                $locale = App::getLocale();
-                                $titleField = 'title_' . $locale;
-                                $productTitle = $product->$titleField ?? $product->title_en; // Fallback to 'title_en'
-                                $totalPrice = $product->price * $cart->qty;
+                            $product = App\Models\Product::find($cart->id);
+                            $locale = App::getLocale();
+                            $titleField = 'title_' . $locale;
+                            $productTitle = $product->$titleField ?? $product->title_en; // Fallback to 'title_en'
+                            $totalPrice = $product->price * $cart->qty;
                             @endphp
                             <tr data-rowid="{{ $cart->rowId }}">
                                 <td class="cart-img">
                                     <div class="thumb-img">
-                                        <img src="/storage/{{ $product->image }}" alt="img">
+                                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $productTitle }}">
                                     </div>
                                 </td>
                                 <td class="cart-info">
                                     <div class="cart-box">
-                                        <a href="{{ route('shop_details', $cart->product_id) }}">
+                                        <a href="{{ route('shop_details', $cart->id) }}">
                                             <p class="cart-pera mb-15">{{ $productTitle }}</p>
                                         </a>
                                         <div class="ratting-section mb-18">
                                             <div class="all-ratting">
-                                                @for ($i = 0; $i < 5; $i++) 
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="14" viewBox="0 0 15 14" fill="none">
-                                                        <path d="M7.5 0L9.18386 5.18237H14.6329L10.2245 8.38525L11.9084 13.5676L7.5 10.3647L3.09161 13.5676L4.77547 8.38525L0.367076 5.18237H5.81614L7.5 0Z" fill="#FFA800"></path>
+                                                @for ($i = 0; $i < 5; $i++) <svg xmlns="http://www.w3.org/2000/svg" width="15" height="14" viewBox="0 0 15 14" fill="none">
+                                                    <path d="M7.5 0L9.18386 5.18237H14.6329L10.2245 8.38525L11.9084 13.5676L7.5 10.3647L3.09161 13.5676L4.77547 8.38525L0.367076 5.18237H5.81614L7.5 0Z" fill="#FFA800"></path>
                                                     </svg>
-                                                @endfor
+                                                    @endfor
                                             </div>
                                             <div class="ratting-count">
-                                                <p class="pera">({{ $cart->rating_count }})</p>
+                                                <p class="pera">({{ $cart->options->rating_count ?? 0 }})</p>
                                             </div>
                                         </div>
-                                        <p class="cart-pera">${{ $product->price }}</p>
+                                        <p class="cart-pera">${{ number_format($product->price, 2) }}</p>
                                     </div>
                                 </td>
                                 <td class="cart-qty">
@@ -85,75 +94,121 @@
                                             <input type="text" name="qty" value="{{ $cart->qty }}" class="num-count" readonly>
                                             <button class="increase-num" data-rowid="{{ $cart->rowId }}" data-action="increment">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="6" viewBox="0 0 12 6" fill="none">
-                                                    <path d="M0 5.36618C0.0532405 5.553 0.143084 5.71647 0.319443 5.84199C0.618921 6.04924 1.0515 6.05508 1.35098 5.84491C1.40755 5.80404 1.46411 5.76026 1.51735 5.71355C2.97481 4.43501 4.4356 3.15355 5.89306 1.875C5.92633 1.84581 5.95295 1.81078 6.03281 1.75824C6.0561 1.79327 6.06941 1.83705 6.10269 1.86625C7.57346 3.15938 9.04755 4.4496 10.5183 5.74274C10.7779 5.97043 11.0773 6.058 11.4367 5.95875C11.9591 5.8128 12.1721 5.22315 11.8427 4.83784C11.8061 4.79405 11.7628 4.75318 11.7196 4.71232C10.0225 3.2236 8.32881 1.73489 6.63177 0.249093C6.32231 -0.0223789 5.92966 -0.0749219 5.57361 0.106059C5.4871 0.149845 5.41056 0.214063 5.34069 0.275363C3.69356 1.72029 2.04976 3.16522 0.399304 4.60723C0.216289 4.76778 0.0532405 4.93125 0 5.16185C0 5.22899 0 5.29613 0 5.36618Z" fill="currentColor"></path>
+                                                    <path d="M0 5.36618C0.0532405 5.553 0.143084 5.71647 0.319443 5.84199C0.618921 6.04924 1.0515 6.05508 1.35098 5.84491C1.40755 5.80404 1.46411 5.76026 1.51735 5.71355C2.97481 4.43501 4.4356 3.15355 5.89306 1.875C5.92633 1.84581 5.95295 1.81078 6.03281 1.75824C6.0561 1.79327 6.06941 1.83705 6.10269 1.86625C7.57346 3.15938 9.04755 4.4496 10.5183 5.74274C10.7779 5.97043 11.0773 6.058 11.4367 5.95875C11.9591 5.8128 12.1721 5.22315 11.8427 4.83784C11.8061 4.79405 11.7628 4.75318 11.7196 4.71232C10.0225 3.2236 8.32881 1.73489 6.63177 0.249093C6.32231 -0.0223789 5.92966 -0.0749219 5.57361 0.106059C5.4871 0.149845 5.41056 0.214063 5.34069 0.275363C3.69356 1.72029 2.04976 3.16522 0.399312 4.60723C0.206302 4.76778 0.0431832 4.93125 0 5.16185C0 5.22898 0 5.29512 0 5.36618Z" fill="currentColor"></path>
                                                 </svg>
                                             </button>
                                         </div>
                                     </div>
                                 </td>
                                 <td class="cart-total">
-                                    <p class="cart-pera total-price">${{ $totalPrice }}</p>
+                                    <div class="total-section">
+                                        <p class="total">{{ number_format($totalPrice, 2) }}</p>
+                                    </div>
                                 </td>
                                 <td class="cart-action">
-                                    <a href="{{ route('cart.delete', $cart->rowId) }}" class="cart-action-btn">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16" fill="none">
-                                            <path d="M1 2C0.447715 2 0 2.44772 0 3V4C0 4.55228 0.447715 5 1 5H2.25L2.439 13.934C2.46397 14.3906 2.74084 14.7827 3.16505 14.9784C3.50462 15.1354 3.94349 15.2617 4.38242 15.3254L9.882 15.8727C10.3171 15.9335 10.7667 15.7706 11.0896 15.4182C11.463 15.0183 11.7376 14.5382 11.8176 14.0166L11.875 13.7921L12 5H13C13.5523 5 14 4.55228 14 4V3C14 2.44772 13.5523 2 13 2H1Z" fill="#FF5B5B"></path>
-                                        </svg>
-                                    </a>
+                                    <button class="btn btn-danger btn-sm remove-item" data-rowid="{{ $cart->rowId }}">
+                                        <i class="fa fa-trash"></i> Remove
+                                    </button>
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
+
+                <div class="cart-summary mt-3">
+                    <h4>Cart Summary</h4>
+                    <ul class="list-unstyled">
+                        <li>Subtotal: <span>${{ number_format(floatval(Cart::subtotal()), 5) }}</span></li>
+                        <li>Tax: <span>${{ number_format(floatval(Cart::tax()), 5) }}</span></li>
+                        <li>Total: <span>${{ number_format(floatval(Cart::total()), 5) }}</span></li>
+
+                    </ul>
+                    <a href="{{ route('checkout') }}" class="btn btn-primary">Proceed to Checkout</a>
+                </div>
+                @endif
             </div>
         </div>
     </div>
 </div>
-<!-- End-of Cart area -->
+<!-- Cart area End -->
 
-<!-- Add this script at the bottom of your Blade template -->
-@section('scripts')
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-$(document).ready(function() {
-    $('.quantity-btn').on('click', 'button', function(event) {
-        event.preventDefault(); // Prevent default button behavior
-        
-        var $button = $(this);
-        var $row = $button.closest('tr');
-        var rowId = $row.data('rowid');
-        var action = $button.data('action');
-        var $qtyInput = $row.find('input[name="qty"]');
-        var currentQty = parseInt($qtyInput.val(), 10);
-        var newQty = action === 'increment' ? currentQty + 1 : (currentQty - 1 > 0 ? currentQty - 1 : 1);
-        
-        if (newQty === currentQty) return; // No change in quantity
+    document.addEventListener('DOMContentLoaded', function() {
+        // Update quantity
+        document.querySelectorAll('.increase-num, .decrease-num').forEach(function(button) {
+            button.addEventListener('click', function() {
+                const rowId = this.dataset.rowid;
+                const action = this.dataset.action;
+                const input = this.closest('.quantity-btn').querySelector('.num-count');
+                let qty = parseInt(input.value);
 
-        $.ajax({
-            url: "{{ route('cart.update') }}",
-            type: 'POST',
-            data: {
-                _token: '{{ csrf_token() }}',
-                rowId: rowId,
-                qty: newQty
-            },
-            success: function(response) {
-                if (response.success) {
-                    $qtyInput.val(newQty); // Updated quantity without leading zeros
-                    $row.find('.total-price').text('$' + response.newTotalPrice);
-                } else {
-                    alert('Failed to update cart item: ' + response.message);
+                if (action === 'increment') {
+                    qty++;
+                } else if (action === 'decrement' && qty > 1) {
+                    qty--;
                 }
-            },
-            error: function(xhr, status, error) {
-                console.error('AJAX Error:', status, error);
-                alert('An error occurred while updating the cart item.');
-            }
-        });
-    });
-});
-</script>
-@endsection
 
+                updateCartQuantity(rowId, qty);
+            });
+        });
+
+        // Remove item
+        document.querySelectorAll('.remove-item').forEach(function(button) {
+            button.addEventListener('click', function() {
+                const rowId = this.dataset.rowid;
+                removeCartItem(rowId);
+            });
+        });
+
+        // Update cart quantity
+        function updateCartQuantity(rowId, qty) {
+            fetch(`/cart/update/${rowId}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    body: JSON.stringify({
+                        qty: qty
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        location.reload();
+                    } else {
+                        alert('Error updating cart');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred');
+                });
+        }
+
+        // Remove cart item
+        function removeCartItem(rowId) {
+            fetch(`/cart/remove/${rowId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        location.reload();
+                    } else {
+                        alert('Error removing item');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred');
+                });
+        }
+    });
+</script>
 @endsection

@@ -36,6 +36,9 @@ Route::post('/logout', [AdminController::class, 'logout'])->name('logout');
 Route::get('/change/password', [AdminController::class, 'changePassword']);
 Route::post('/change/password', [AdminController::class, 'changePasswordCheck']);
 
+Route::get('checkout', [CartController::class, 'checkout'])->name('checkout');
+Route::patch('/cart/update/{rowId}', [CartController::class, 'updateCart']);
+Route::delete('/cart/remove/{rowId}', [CartController::class, 'removeCartItem']);
 
 Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('cart.add');
 // Route for viewing the cart

@@ -34,27 +34,41 @@ class CartController extends Controller
         return view('pages.cart', compact('cartContent', 'total'));
     }
 
+    public function updateCart(Request $request, $rowId)
+{
+    Cart::update($rowId, $request->qty);
+
+    return response()->json(['success' => true]);
+}
+
+public function removeCartItem($rowId)
+{
+    Cart::remove($rowId);
+
+    return response()->json(['success' => true]);
+}
+
     public function updateCartItem(Request $request)
-    {
-        $rowId = $request->input('rowId');
-        $action = $request->input('action');
-        $cart = Cart::get($rowId);
+{
+    $rowId = $request->input('rowId');
+    $newQty = $request->input('qty');
+    
+    // Update the cart item quantity
+    Cart::update($rowId, $newQty);
 
-        if ($action === 'increment') {
-            Cart::update($rowId, $cart->qty + 1);
-        } else if ($action === 'decrement') {
-            $newQty = max($cart->qty - 1, 1); // Ensure quantity doesn't go below 1
-            Cart::update($rowId, $newQty);
-        }
+    $item = Cart::get($rowId);
+    $newTotalPrice = $item->price * $item->qty;
+    
+    // Calculate new cart subtotal
+    $newSubtotal = Cart::subtotal();
 
-        $item = Cart::get($rowId);
-        $newTotalPrice = $item->price * $item->qty;
+    return response()->json([
+        'success' => true,
+        'newTotalPrice' => number_format($newTotalPrice, 2), // Format to 2 decimal places
+        'newSubtotal' => number_format($newSubtotal, 2) // Format to 2 decimal places
+    ]);
+}
 
-        return response()->json([
-            'success' => true,
-            'newTotalPrice' => number_format($newTotalPrice, 2) // Format to 2 decimal places
-        ]);
-    }
 
 
     public function deleteCartItem($rowId)
