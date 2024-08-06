@@ -29,7 +29,6 @@ Route::get('/shop_details', [MainController::class, 'shop_details'])->name('shop
 Route::get('/blog', [MainController::class, 'blog'])->name('blog');
 Route::get('/blog-details/{id}', [MainController::class, 'blogDetails'])->name('blog.details');
 Route::get('/contact', [MainController::class, 'contact'])->name('contact');
-Route::get('/cart', [MainController::class, 'cart'])->name('cart');
 
 Route::get('/login', [AdminController::class, 'login'])->name('login');
 Route::post('/authenticate', [AdminController::class, 'authenticate'])->name('authenticate');
