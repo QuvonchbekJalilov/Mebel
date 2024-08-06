@@ -151,7 +151,7 @@
                                         <img src="{{ asset('storage/' . $blog->image) }}" alt="img">
                                     </div>
                                     <p class="common-pera">
-                                        {{ $blog->description_uz }}
+                                        {!! $blog['description_' . $locale] !!}
                                     </p>
                                 </div>
                                 <section class="comment-area mt-5">

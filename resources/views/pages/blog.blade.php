@@ -57,13 +57,7 @@
                                             </h4>
                                         </a>
                                         <p>
-                                            @if($locale == 'uz')
-                                                {{ $blog->description_uz }}
-                                            @elseif($locale == 'ru')
-                                                {{ $blog->description_ru }}
-                                            @else
-                                                {{ $blog->description_en }}
-                                            @endif
+                                            {!! \Illuminate\Support\Str::words($blog['description_' . $locale], 20, '...') !!}
                                         </p>
                                     </div>
                                     <a href="{{ route('blog.details', $blog->id) }}" class="read-more-text">
