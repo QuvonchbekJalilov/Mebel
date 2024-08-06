@@ -1,3 +1,7 @@
+<?php
+$lang = \Illuminate\Support\Facades\App::getLocale()
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -115,11 +119,19 @@
                                                     <div class="col-auto">
                                                         <div class="header-right">
                                                             <div class="currency-menu">
-                                                                <select class="form-select nice-select" id="languageSelect" onchange="changeLanguage()">
-                                                                    <option value="#" onclick="changeLanguage('eng')">EN</option>
-                                                                    <option value="#" onclick="changeLanguage('ru')">RU</option>
-                                                                    <option value="#" onclick="changeLanguage('uz')">UZ</option>
-                                                                </select>
+                                                                <div class="dropdown mx-3">
+                                                                    <button class="btn btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                        @if($lang == 'en') English @endif
+                                                                        @if($lang == 'ru') Русский @endif
+                                                                        @if($lang == 'uz') Uzbek @endif
+
+                                                                    </button>
+                                                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                                        <li><a class="dropdown-item " href="/uz">Uzbek</a></li>
+                                                                        <li><a class="dropdown-item" href="/ru">Русский</a></li>
+                                                                        <li><a class="dropdown-item" href="/en">English</a></li>
+                                                                    </ul>
+                                                                </div>
                                                             </div>
 
                                                         </div>
