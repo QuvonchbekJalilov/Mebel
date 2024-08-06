@@ -98,8 +98,8 @@
                                         }
 
                                         const message = `Bog\'lanish uchun raqam qoldirishdi:\n\nIsm: ${last_name}\nTelefon raqam: ${phone_number_footer}\nEmail: ${email}\nIzoh: ${comment}`;
-                                        const telegramBotToken = '6904907827:AAEOkfw0h_6I5V418lQ0Z3ws9WbSbXNDtvE'; // Bu yerga o'zingizning bot tokeningizni qo'ying
-                                        const telegramChatId = '6583641407'; // Bu yerga o'zingizning chat ID ni qo'ying
+                                        const telegramBotToken = '7401296722:AAHbhdImAvBvFtKgom7wOrRUK95xpuQqnHg'; // Bu yerga o'zingizning bot tokeningizni qo'ying
+                                        const telegramChatId = '5758548856'; // Bu yerga o'zingizning chat ID ni qo'ying
 
                                         const url = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`;
                                         const data = {
