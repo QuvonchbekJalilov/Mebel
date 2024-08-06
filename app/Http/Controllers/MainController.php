@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Contact;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -36,7 +37,8 @@ class MainController extends Controller
     public function shop()
     {
         $locale = $this->language();
-        return view('pages.shop', compact('locale'));
+        $products = Product::all();
+        return view('pages.shop', compact('locale', 'products'));
     }
 
     public function shop_details()
