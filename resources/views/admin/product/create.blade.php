@@ -34,7 +34,7 @@
                         <h5 class="mb-0" style="color: white !important;">Blog Qo'shish Formasi</h5>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('blogs.store') }}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+                        <form action="{{ route('blogs.store') }}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate  onsubmit="updateEditorContent()">
                             @csrf
 
                             <!-- Uzbek Title -->
