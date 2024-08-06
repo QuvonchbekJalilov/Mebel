@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Blog;
-use App\Models\Contact;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -32,10 +30,8 @@ class MainController extends Controller
         return view('pages.contact', compact('locale', 'contacts'));
     }
 
-    public function shop()
-    {
-        $locale = $this->language();
-        return view('pages.shop', compact('locale'));
+    public function shop(){
+        return view('pages.shop');
     }
 
     public function shop_details()

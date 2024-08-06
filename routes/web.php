@@ -5,6 +5,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DiscountController;
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\MainController;
@@ -21,7 +22,7 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('/', [MainController::class, 'index']);
+Route::get('/', [MainController::class, 'index'])->name('home');
 Route::get('/about', [MainController::class, 'about'])->name('about');
 Route::get('/shop', [MainController::class, 'shop'])->name('shop');
 Route::get('/shop_details', [MainController::class, 'shop_details'])->name('shop_details');
@@ -35,6 +36,17 @@ Route::post('/authenticate', [AdminController::class, 'authenticate'])->name('au
 Route::post('/logout', [AdminController::class, 'logout'])->name('logout');
 Route::get('/change/password', [AdminController::class, 'changePassword']);
 Route::post('/change/password', [AdminController::class, 'changePasswordCheck']);
+
+
+Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('cart.add');
+// Route for viewing the cart
+Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.index');
+
+// Route for updating cart items
+Route::post('/update-cart-item', [CartController::class, 'updateCartItem'])->name('cart.update');
+
+// Route for deleting cart items
+Route::get('/cart/delete/{rowId}', [CartController::class, 'deleteCartItem'])->name('cart.delete');
 
 
 Route::middleware(['checkAdmin:admin', 'auth'])->group(function () {
