@@ -24,14 +24,6 @@
 </head>
 
 <body>
-    <div class="loading-page" id="preloader-active">
-        <div class="counter">
-            <img src="./frontend/assets/images/logo/logo.png" alt="img">
-            <span class="number">0%</span>
-            <span class="line"></span>
-            <span class="line"></span>
-        </div>
-    </div>
     <header>
         <div class="header-area-two">
             <div class="main-header">
@@ -46,7 +38,7 @@
                                             <!-- Logo-->
                                             <div class="position-relative">
                                                 <div class="logo logo-large light-logo">
-                                                    <a href="index.html"><img src="./frontend/assets/images/logo/logo-2.png" alt="logo"></a>
+                                                    <a href="javascript:void(0)"><img src="./frontend/assets/images/logo/logo-2.png" alt="logo"></a>
                                                 </div>
                                             </div>
                                             <div class="search-header-position d-block d-lg-none">
@@ -73,55 +65,13 @@
                                                     <a href="{{route('blog')}}" class="single">Blog</a>
                                                 </li>
                                                 <li class="single-list">
-                                                    <a href="javascript:void(0)" class="single">Pages <i class="ri-arrow-down-s-line"></i></a>
-                                                    <ul class="submenu">
-                                                        <li class="single-list">
-                                                            <a href="wishlist.html" class="single">Wishlist</a>
-                                                        </li>
-                                                        <?php
-
-                                                            use App\Models\Blog;
-
-                                                            $blog = Blog::latest()->first();
-                                                        ?>
-                                                        <li class="single-list">
-                                                            <a href="{{ route('blog.details', $blog->id) }}" class="single">Blog Details</a>
-                                                        </li>
-                                                        <li class="single-list">
-                                                            <a href="shop-details.html" class="single">Shop Details</a>
-                                                        </li>
-                                                        <li class="single-list">
-                                                            <a href="order-track.html" class="single">Order Track</a>
-                                                        </li>
-                                                        <li class="single-list">
-                                                            <a href="shopping-cart.html" class="single">Shopping
-                                                                Cart</a>
-                                                        </li>
-                                                        <li class="single-list">
-                                                            <a href="checkout.html" class="single">Checkout</a>
-                                                        </li>
-
-
-                                                        <li class="single-list">
-                                                            <a href="faq.html" class="single">FAQs</a>
-                                                        </li>
-                                                        <li class="single-list">
-                                                            <a href="privacy-policy.html" class="single">privacy
-                                                                policy</a>
-                                                        </li>
-                                                        <li class="single-list">
-                                                            <a href="terms-condition.html" class="single">terms-condition</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li class="single-list">
                                                     <a href="{{route('contact')}}" class="single">Contact</a>
                                                 </li>
 
 
                                                 <li class="d-block d-lg-none">
                                                     <div class="login-wrapper">
-                                                        <a href="wishlist.html">
+                                                        <a href="javascript:void(0)">
                                                             <p class="pera text-color-primary">
                                                                 Wishlist
                                                             </p>
@@ -130,7 +80,7 @@
                                                 </li>
                                                 <li class="d-block d-lg-none">
                                                     <div class="login-wrapper">
-                                                        <a href="order-track.html">
+                                                        <a href="javascript:void(0)">
                                                             <p class="pera text-color-primary">
                                                                 Track Order
                                                             </p>
@@ -532,7 +482,7 @@
                         <div class="col-xl-6">
                             <div class="footer-menu-section">
                                 <div class="logo logo-large light-logo">
-                                    <a href="index.html"><img src="./frontend/assets/images/logo/logo-dark.png" alt="logo"></a>
+                                    <a href="javascript:void(0)"><img src="./frontend/assets/images/logo/logo-dark.png" alt="logo"></a>
                                 </div>
                                 <div class="footer-social-section">
                                     <h4 class="title">Follow Us</h4>
