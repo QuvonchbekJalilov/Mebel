@@ -57,56 +57,27 @@ $lang = \Illuminate\Support\Facades\App::getLocale()
                                             </div>
                                             <ul class="listing d-none d-lg-block" id="navigation">
                                                 <li class="single-list">
-                                                    <a href="/" class="single">Home <i
+                                                    <a href="/" class="single">{{__('app.home')}} <i
                                                             class=""></i></a>
                                                     
                                                 </li>
                                                 <li class="single-list">
-                                                    <a href="{{route('about')}}" class="single active">About</a>
+                                                    <a href="{{route('about')}}" class="single active">{{__('app.about')}}</a>
                                                 </li>
                                                 <li class="single-list">
-                                                    <a href="{{route('shop')}}" class="single">Shop</a>
+                                                    <a href="{{route('shop')}}" class="single">{{__('app.shop')}}</a>
                                                 </li>
                                                 <li class="single-list">
-                                                    <a href="{{route('blog')}}" class="single">Blog</a>
+                                                    <a href="{{route('blog')}}" class="single">{{__('app.blog')}}</a>
                                                 </li>
                                                 <li class="single-list">
-                                                    <a href="{{route('contact')}}" class="single">Contact</a>
+                                                    <a href="{{route('contact')}}" class="single">{{__('app.contact')}}</a>
                                                 </li>
-                                               
-                                               
-                                                <li class="d-block d-lg-none">
-                                                    <div class="login-wrapper">
-                                                        <a href="javascript:void(0)">
-                                                            <p class="pera text-color-primary">
-                                                                Wishlist
-                                                            </p>
-                                                        </a>
-                                                    </div>
-                                                </li>
-                                                <li class="d-block d-lg-none">
-                                                    <div class="login-wrapper">
-                                                        <a href="javascript:void(0)">
-                                                            <p class="pera text-color-primary">
-                                                                Track Order
-                                                            </p>
-                                                        </a>
-                                                    </div>
-                                                </li>
+
                                             </ul>
                                             <div class="d-none d-lg-block">
                                                 <div class="header-right">
-                                                    <div class="header-icon search-bar header-search-box">
-                                                        <p class="pera">Search</p>
-                                                        <div class="search-icon-two">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                height="24" viewBox="0 0 24 24" fill="none">
-                                                                <path
-                                                                    d="M22.785 23.9941C22.5326 23.8063 22.2509 23.6479 22.0337 23.4249C19.9089 21.3181 17.8017 19.1996 15.6886 17.0869C15.624 17.0224 15.583 16.9344 15.5301 16.8522C13.0884 18.7242 10.4177 19.3991 7.47701 18.7653C5.02937 18.2372 3.07479 16.8991 1.67195 14.8334C-1.0046 10.9192 -0.370684 5.87229 2.88109 2.71505C6.52026 -0.811896 11.932 -0.817765 15.5712 2.2045C19.3747 5.36174 20.3021 11.1539 16.8978 15.4672C16.9564 15.5318 17.0151 15.5963 17.0797 15.6609C19.1928 17.7736 21.3117 19.8862 23.4189 22.0106C23.642 22.2395 23.8063 22.5211 24 22.7794C24 22.9202 24 23.061 24 23.2019C23.865 23.6009 23.6009 23.865 23.2017 24C23.0667 23.9941 22.9259 23.9941 22.785 23.9941ZM17.0034 9.49314C16.9799 5.34413 13.6166 1.99323 9.49616 2.00497C5.35807 2.02258 1.99478 5.39108 2.01238 9.51075C2.02999 13.648 5.35807 17.0048 9.51377 16.993C13.7164 16.9813 16.9799 13.6069 17.0034 9.49314Z"
-                                                                    fill="#13172B" />
-                                                            </svg>
-                                                        </div>
-                                                    </div>
+
                                                    
                                                     <div class="header-icon">
                                                         <a href="{{ route('cart.index')}}">
