@@ -41,10 +41,11 @@ class MainController extends Controller
         return view('pages.shop', compact('locale', 'products'));
     }
 
-    public function shop_details()
+    public function shop_details($id)
     {
         $locale = $this->language();
-        return view('pages.shop-details', compact('locale'));
+        $product = Product::findOrFail($id);
+        return view('pages.shop-details', compact('locale', 'product'));
     }
 
     public function blog()

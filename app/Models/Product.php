@@ -13,13 +13,13 @@ class Product extends Model
     protected $fillable = [
         'title_uz',
         'title_ru',
-        'title_en' ,
+        'title_en',
         'description_uz',
         'description_ru',
-        'description_en' ,
-        'image', 
-        'category_id', 
-        'price', 
+        'description_en',
+        'image',
+        'category_id',
+        'price',
         'best_seller',
         'stock'
     ];
@@ -36,15 +36,35 @@ class Product extends Model
 
     public function getDiscount()
     {
-        if ($this->discount) {
-            if ($this->discount->from == null && $this->discount->to == null) {
-                return $this->discount;
-            }
+        $discount = $this->discount;
 
-            if (Carbon::now()->between(Carbon::parse($this->discount->from), Carbon::parse($this->discount->to))) {
-                return $this->discount;
+        if ($discount) {
+            $now = Carbon::now();
+            if ($discount->from && $discount->to) {
+                if ($now->between(Carbon::parse($discount->from), Carbon::parse($discount->to))) {
+                    return $discount;
+                }
+            } elseif ($discount->from === null && $discount->to === null) {
+                return $discount;
             }
         }
         return null;
+    }
+
+    public function getDiscountedPrice()
+    {
+        $discount = $this->getDiscount();
+
+        if ($discount) {
+            if ($discount->percentage) {
+                $discountAmount = ($this->price * $discount->percentage) / 100;
+            } else {
+                $discountAmount = $discount->sum;
+            }
+
+            return $this->price - $discountAmount;
+        }
+
+        return $this->price;
     }
 }

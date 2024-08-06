@@ -44,16 +44,15 @@
                                     <!-- Show discounted price if available -->
                                     @if($product->getDiscount())
                                     <h4 class="price text-color-primary">
-                                        ${{ number_format($product->price - $product->getDiscount()->amount, 2) }}
-                                        <span class="text-muted text-decoration-line-through">${{ number_format($product->price, 2) }}</span>
+                                        {{ $product->getDiscountedPrice() }} So'm
+                                        <span class="text-muted text-decoration-line-through">{{ $product->price }} So'm</span>
                                     </h4>
                                     @else
-                                    <h4 class="price text-color-primary">${{ number_format($product->price, 2) }}</h4>
+                                    <h4 class="price text-color-primary">{{ $product->price }} So'm</h4>
                                     @endif
+
                                 </div>
-                                <button class="wishlist-icon">
-                                    <img src="{{ asset('assets/images/icon/wish-icon-2.png') }}" alt="wishlist icon">
-                                </button>
+
                             </div>
                             <div class="product-img-card best-product-img-card">
                                 <a href="{{ route('shop_details', ['id' => $product->id]) }}" class="zoomImg">
@@ -77,44 +76,25 @@
                                 </div>
                             </div>
                             <a href="{{ route('shop_details', ['id' => $product->id]) }}">
-                                <h4 class="product-title line-clamp-1">{{ $product->title_en }}</h4>
+                                <h4 class="product-title line-clamp-1">{{ $product['title_'.App::getLocale()] }}</h4>
                             </a>
-                            <div class="product-review">
-                                <div class="product-ratting">
-                                    @for ($i = 0; $i < 5; $i++) <i class="ri-star-s-fill{{ $i < $product->rating ? '' : ' text-muted' }}"></i>
-                                        @endfor
-                                </div>
-                                <p class="count-ratting">({{ $product->reviews_count }})</p>
-                            </div>
+
                             <div class="cart-card best-product-cart-card d-none d-md-block">
                                 <a href="{{ route('shop_details', ['id' => $product->id]) }}">
                                     <h4 class="product-title line-clamp-1">{{ $product->title_en }}</h4>
                                 </a>
-                                <div class="product-review">
-                                    <div class="product-ratting">
-                                        @for ($i = 0; $i < 5; $i++) <i class="ri-star-s-fill{{ $i < $product->rating ? '' : ' text-muted' }}"></i>
-                                            @endfor
-                                    </div>
-                                    <p class="count-ratting">({{ $product->reviews_count }})</p>
-                                </div>
+
                                 <div class="button-section">
-                                    <form action="{{ route('cart.add')}}" method="POST">
+                                    <form action="{{ route('cart.add') }}" method="POST" class="add-to-cart-form">
                                         @csrf
                                         <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                        <input type="hidden" name="qty" value="1" class="qty-input">
                                         <button type="submit" class="cart-btn" name="submit" value="addtocart">Add to Cart</button>
                                     </form>
-                                    <div class="fill-pill-btn qty-btn">
-                                        <div class="qty-container best-product-qty-container">
-                                            <div class="qty-btn-minus qty-btn mr-1">
-                                                <i class="ri-subtract-fill"></i>
-                                            </div>
-                                            <input type="text" name="qty" value="1" class="input-qty input-rounded">
-                                            <div class="qty-btn-plus qty-btn ml-1">
-                                                <i class="ri-add-fill"></i>
-                                            </div>
-                                        </div>
-                                    </div>
+
                                 </div>
+
+
                             </div>
                             <div class="button-section d-block d-md-none">
                                 <form action="{{ route('cart.add')}}" method="POST">
