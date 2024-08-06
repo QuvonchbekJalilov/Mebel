@@ -23,17 +23,17 @@
         <!-- end page title -->
 
         @if (session('error'))
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            {{ session('error') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ session('error') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
         @endif
 
         <div class="row">
             <div class="col-lg-12">
                 <div class="card shadow-sm">
                     <div class="card-header bg-primary text-white">
-                        <h5 class="mb-0" style="color: white !important;">Blogni Tahrirlash Formasi</h5>
+                        <h5 class="mb-0" style="color: white !important;">Blog Tahrirlash Formasi</h5>
                     </div>
                     <div class="card-body">
                         <form action="{{ route('blogs.update', $blog->id) }}" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
@@ -73,37 +73,49 @@
                             <div class="mb-4">
                                 <h5 class="fw-bold">Blog Haqida Batafsil</h5>
                                 <div class="row">
-                                    <!-- Uzbek Description -->
-                                    <div class="col-lg-4 mb-3">
-                                        <label for="description_uz" class="form-label">Tavsif (O'zbek tilida)</label>
-                                        <textarea name="description_uz" id="description_uz" class="form-control" placeholder="Blog haqida batafsil ma'lumot">{{ old('description_uz', $blog->description_uz) }}</textarea>
+                                    <div class="col-12">
+                                        <div class="card mb-4">
+                                            <div class="card-body">
+                                                <h4 class="header-title">Description_uz</h4>
+                                                <div id="editor_uz" style="height: 300px;">{!! old('description_uz', $blog->description_uz) !!}</div>
+                                                <input type="hidden" name="description_uz" id="text_uz">
+                                            </div>
+                                        </div>
                                     </div>
-                                    <!-- Russian Description -->
-                                    <div class="col-lg-4 mb-3">
-                                        <label for="description_ru" class="form-label">Tavsif (Rus tilida)</label>
-                                        <textarea name="description_ru" id="description_ru" class="form-control" placeholder="Blog haqida batafsil ma'lumot">{{ old('description_ru', $blog->description_ru) }}</textarea>
+                                    <div class="col-12">
+                                        <div class="card mb-4">
+                                            <div class="card-body">
+                                                <h4 class="header-title">Description_ru</h4>
+                                                <div id="editor_ru" style="height: 300px;">{!! old('description_ru', $blog->description_ru) !!}</div>
+                                                <input type="hidden" name="description_ru" id="text_ru">
+                                            </div>
+                                        </div>
                                     </div>
-                                    <!-- English Description -->
-                                    <div class="col-lg-4 mb-3">
-                                        <label for="description_en" class="form-label">Tavsif (Ingliz tilida)</label>
-                                        <textarea name="description_en" id="description_en" class="form-control" placeholder="Blog haqida batafsil ma'lumot">{{ old('description_en', $blog->description_en) }}</textarea>
+                                    <div class="col-12">
+                                        <div class="card mb-4">
+                                            <div class="card-body">
+                                                <h4 class="header-title">Description_en</h4>
+                                                <div id="editor_en" style="height: 300px;">{!! old('description_en', $blog->description_en) !!}</div>
+                                                <input type="hidden" name="description_en" id="text_en">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Image Upload -->
                             <div class="mb-4">
-                                <label for="fileInput" class="form-label fw-bold">Blog Rasmni Yangilash</label>
+                                <label for="fileInput" class="form-label fw-bold">Blog Rasmni Tanlash</label>
                                 <div class="custom-file">
                                     <input id="fileInput" name="image" type="file" class="custom-file-input" onchange="displayFileName()">
-                                    <label class="custom-file-label" id="photoLabel" for="fileInput">{{ $blog->image ? $blog->image : 'Rasm tanlash' }}</label>
+                                    <label class="custom-file-label" id="photoLabel" for="fileInput">Rasm tanlash</label>
                                     <div class="invalid-feedback">
-                                        Rasm tanlash shart emas.
+                                        Rasm tanlash shart.
                                     </div>
                                 </div>
                                 <div id="imagePreview" class="mt-3">
                                     @if ($blog->image)
-                                        <img src="{{ asset('storage/' . $blog->image) }}" alt="Hozirgi rasm" class="img-thumbnail preview-image" style="max-height: 150px;">
+                                        <img src="{{ asset('storage/' . $blog->image) }}" class="img-thumbnail preview-image" alt="Current Image">
                                     @endif
                                 </div>
                             </div>
@@ -129,14 +141,13 @@
                                 function displayFileName() {
                                     const input = document.getElementById('fileInput');
                                     const label = document.getElementById('photoLabel');
-                                    const fileName = input.files[0] ? input.files[0].name : '{{ $blog->image ? $blog->image : 'Rasm tanlash' }}';
+                                    const fileName = input.files[0] ? input.files[0].name : 'Rasm tanlash';
                                     label.textContent = fileName;
                                 }
                             </script>
-
                             <!-- Submit and Cancel Buttons -->
                             <div class="mt-4">
-                                <button class="btn btn-success btn-lg" type="submit">Yangilash</button>
+                                <button class="btn btn-success btn-lg" type="submit">Saqlash</button>
                                 <a href="{{ route('blogs.index') }}" class="btn btn-outline-secondary btn-lg">Bekor qilish</a>
                             </div>
                         </form>
@@ -146,4 +157,22 @@
         </div> <!-- end row -->
 
     </div> <!-- container -->
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+
+    <script>
+        var editorUz = new Quill('#editor_uz', { theme: 'snow' });
+        var editorRu = new Quill('#editor_ru', { theme: 'snow' });
+        var editorEn = new Quill('#editor_en', { theme: 'snow' });
+
+        function updateEditorContent() {
+            document.getElementById('text_uz').value = editorUz.root.innerHTML;
+            document.getElementById('text_ru').value = editorRu.root.innerHTML;
+            document.getElementById('text_en').value = editorEn.root.innerHTML;
+        }
+
+        document.querySelector('form').addEventListener('submit', function() {
+            updateEditorContent();
+        });
+    </script>
 </x-layouts.admin>
