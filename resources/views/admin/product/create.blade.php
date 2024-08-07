@@ -100,7 +100,7 @@
 
                                 <div class="col-lg-6 mb-3">
                                     <label for="stock" class="form-label fw-bold">Zaxira</label>
-                                    <input type="number" class="form-control" id="stock" name="stock" placeholder="Zaxira" required>
+                                    <input type="text" class="form-control" id="stock" name="stock" placeholder="Zaxira" required>
                                     <div class="invalid-feedback">
                                         Ushbu maydon to'ldirilishi shart.
                                     </div>

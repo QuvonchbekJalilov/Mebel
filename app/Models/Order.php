@@ -16,4 +16,8 @@ class Order extends Model
         'products', // Store products as JSON
         'total_price',
     ];
+
+    protected $casts = [
+        'products' => 'array',
+    ];
 }

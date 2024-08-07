@@ -25,7 +25,7 @@ class StoreProductRequest extends FormRequest
             'image' => 'nullable|image|max:4048',
             'category_id' => 'required|integer|exists:categories,id', // Ensures category_id is present, is an integer, and exists in categories table
             'sale' => 'nullable|string',
-            'stock' => 'nullable|integer',
+            'stock' => 'nullable',
         ];
     }
 }
