@@ -5,9 +5,9 @@ return [
 
 //    Navbar
 'home' => 'Bosh sahifa',
-'about' => 'Haqida',
+'about' => 'Biz haqimizda',
 'blog' => 'Blog',
-'shop' => 'Do\'kon',
+'shop' => 'Market',
 'contact' => 'Aloqa',
 'read_more' => 'Batafsil',
 'category' => 'Kategoriyalar',
