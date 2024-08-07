@@ -1,5 +1,10 @@
 @extends('layouts.page')
-WWWWass="row">
+@section('title', 'Blog Page')
+@section('content')
+    <!-- Breadcrumbs S t a r t -->
+    <section class="breadcrumb-section breadcrumb-bg">
+        <div class="container">
+            <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-text">
                         <h1 class="title wow fadeInUp" data-wow-delay="0.1s">Blog</h1>
@@ -95,7 +100,7 @@ WWWWass="row">
                             </div>
                         </div>
                         <div class="right-wrapper">
-                            <img src="assets/img/discount/discount-img.png" alt="img" class="img">
+                            <img src="/frontend/assets/images/logo/logo-2.png" alt="logo">
                         </div>
                     </div>
                 </div>

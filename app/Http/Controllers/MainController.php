@@ -19,11 +19,12 @@ class MainController extends Controller
 
     public function index()
     {
-        $locale = $this->language();
         $brands = Brand::all();
         $products = Product::where('best_seller', 'on')->get();
         $news = Blog::all();
-        return view('pages.index', compact('locale', 'brands', 'products', 'news'));
+        $locale = $this->language();
+        $sell = Product::where('best_seller', 'of')->get();
+        return view('pages.index', compact('locale', 'brands', 'products', 'news','sell'));
     }
 
     public function about()
