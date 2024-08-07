@@ -75,11 +75,15 @@ use Gloudemans\Shoppingcart\Facades\Cart;
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
+                
                 @if($cartContent->isEmpty())
                 <div class="alert alert-info">
-                    Your shopping cart is empty.
+                    Savatda hozircha mahsulot yoʻq
                 </div>
                 @else
+
+
+
                 <div class="table-responsive">
                     <table class="table product-cart-table">
                         <thead>
@@ -306,7 +310,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
                 .then(data => {
                     if (data.success) {
                         alert('Order placed successfully!');
-                        location.reload();
+                        window.location.href = "{{ route('shop') }}"; // Redirect to orders page
                     } else {
                         alert('Order creation failed. Please try again.');
                     }
@@ -316,8 +320,6 @@ use Gloudemans\Shoppingcart\Facades\Cart;
                     alert('An error occurred: ' + error.message);
                 });
         }
-
-
 
         // Update Cart Quantity
         function updateCartQuantity(rowId, qty) {

@@ -15,11 +15,16 @@ class CartController extends Controller
         // Validate the input
         $request->validate([
             'product_id' => 'required|exists:products,id',
-            'qty' => 'required|integer|min:1'
+            'qty' => 'nullable'
         ]);
 
         $productId = $request->input('product_id');
         $quantity = $request->input('qty'); // Get the quantity from the form input
+
+        // Trim leading zeros from the quantity
+        $quantity = ltrim($quantity, '0');
+        // Ensure the quantity is not empty after trimming (fallback to 1 if needed)
+        $quantity = $quantity ?: 1;
 
         $product = Product::findOrFail($productId);
 
@@ -32,16 +37,13 @@ class CartController extends Controller
         Cart::add([
             'id' => $product->id,
             'name' => $productTitle,
-            'qty' => $quantity, // Use the dynamic quantity here
+            'qty' => $quantity, // Use the cleaned quantity here
             'price' => $product->price,
-            'options' => [
-                'image' => $product->image ?? null,
-                'rating_count' => $product->rating_count ?? 0 // Add any extra attributes you need
-            ]
         ]);
 
         return redirect()->back()->with('success', 'Item added to cart successfully');
     }
+
 
 
 
