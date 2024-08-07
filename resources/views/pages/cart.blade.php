@@ -221,8 +221,8 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 
                 <!-- Customer Information Form -->
                 <h4>Customer Information</h4>
-
-                <form id="orderForm" action="#" onsubmit="formSubmitDR()">
+                <form id="orderForm" action="{{ route('order.store') }}" method="POST" onsubmit="formSubmitDR(event)">
+                    @csrf
                     <div class="form-group">
                         <label for="first_name">First Name</label>
                         <input type="text" class="form-control" id="first_name" name="first_name" required>
@@ -235,10 +235,21 @@ use Gloudemans\Shoppingcart\Facades\Cart;
                         <label for="phone_number">Phone Number</label>
                         <input type="text" class="form-control" id="phone_number" name="phone_number" required>
                     </div>
-                    <input type="hidden" name="products" value="{{ json_encode($cartContent) }}">
+
+                    <!-- Hidden fields for product data -->
+                    @foreach ($cartContent as $cart)
+                    <input type="hidden" name="products[{{ $cart->id }}][id]" value="{{ $cart->id }}">
+                    <input type="hidden" name="products[{{ $cart->id }}][quantity]" value="{{ $cart->qty }}">
+                    <input type="hidden" name="products[{{ $cart->id }}][total_price]" value="{{ $cart->qty * $cart->price }}">
+                    @endforeach
+
                     <input type="hidden" name="total_price" value="{{ Cart::subtotal() }}">
+
                     <button type="submit" class="btn btn-primary">Place Order</button>
                 </form>
+
+
+
 
             </div>
         </div>
@@ -279,61 +290,34 @@ use Gloudemans\Shoppingcart\Facades\Cart;
             $('#checkoutModal').modal('show');
         });
 
+        function formSubmitDR(event) {
+            event.preventDefault(); // Prevent default form submission
 
-        // Submit order form
-        document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById('orderForm');
+            const formData = new FormData(document.getElementById('orderForm'));
 
-            /* form.addEventListener('submit', function (event) {
-        event.preventDefault(); // Formaning standart submit holatini oldini oladi
-        
-        const firstName = document.getElementById('first_name').value;
-        const lastName = document.getElementById('last_name').value;
-        const phoneNumber = document.getElementById('phone_number').value;
-        const products = JSON.parse(document.querySelector('input[name="products"]').value);
-        const totalPrice = document.querySelector('input[name="total_price"]').value;
-       console.log(firstName, lastName, products, totalPrice);
-        submitOrder(firstName, lastName, phoneNumber, products, totalPrice);
-    });
-*/
-            /* function submitOrder(firstName, lastName, phoneNumber, products, totalPrice) {
-                 console.log('arguments: ' + firstName + ' ' + lastName);
-                 fetch('/orders', {
-                     method: 'POST',
-                     headers: {
-                         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                         'Content-Type': 'application/json',
-                     },
-                     body: JSON.stringify({
-                         first_name: firstName,
-                         last_name: lastName,
-                         phone_number: phoneNumber,
-                         products: products,
-                         total_price: totalPrice,
-                     })
-                 })
-                 .then(response => {
-                     console.log(response);
-                     if (response.ok) {
-                         return response.json();
-                     } else {
-                         return response.text().then(text => { throw new Error(text); });
-                     }
-                 })
-                 .then(data => {
-                     if (data.success) {
-                         alert('Order placed successfully!');
-                         window.location.href = '/order-success';
-                     } else {
-                         alert('Error placing order');
-                     }
-                 })
-                 .catch(error => {
-                     console.error('Error:', error);
-                     alert('An error occurred: ' + error.message);
-                 });
-             } */
-        });
+            fetch("{{ route('order.store') }}", {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                    },
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Order placed successfully!');
+                        location.reload();
+                    } else {
+                        alert('Order creation failed. Please try again.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred: ' + error.message);
+                });
+        }
+
+
 
         // Update Cart Quantity
         function updateCartQuantity(rowId, qty) {
