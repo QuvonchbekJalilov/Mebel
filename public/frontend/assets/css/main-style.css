@@ -23840,8 +23840,8 @@ input[type=number] {
       flex-wrap: wrap;
 }
 .product-details-area .xzoom-gallery-box {
-  width: 120px;
-  height: 106px;
+  width: 1000px;
+  height: 500px;
   border-radius: 10px;
   background-color: var(--primary-soft-color-two);
   display: -webkit-box;
@@ -23855,7 +23855,7 @@ input[type=number] {
           align-items: center;
 }
 .product-details-area .xzoom-gallery-box img {
-  width: 80px;
+  width: 370px;
 }
 .product-details-area .xzoom-gallery {
   margin-bottom: 0;

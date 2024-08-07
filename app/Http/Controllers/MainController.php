@@ -45,14 +45,18 @@ class MainController extends Controller
     {
         $locale = $this->language();
         $products = Product::where('stock', '>', 0)->paginate(10);
-        return view('pages.shop', compact('locale', 'products'));
+        $categories = Product::selectRaw('category_id, COUNT(*) as count')
+            ->groupBy('category_id')
+            ->get();
+        return view('pages.shop', compact('locale', 'products', 'categories'));
     }
 
     public function shop_details($id)
     {
         $locale = $this->language();
         $product = Product::findOrFail($id);
-        return view('pages.shop-details', compact('locale', 'product'));
+        $relatedProducts = Product::where('category_id', $product->category_id)->paginate(15);
+        return view('pages.shop-details', compact('locale', 'product', 'relatedProducts'));
     }
 
     public function blog()

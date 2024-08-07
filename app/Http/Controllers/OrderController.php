@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Order;
@@ -10,7 +11,8 @@ use Illuminate\Support\Facades\DB; // Import DB for transactions
 
 class OrderController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $orders = Order::orderBy('id', 'DESC')->paginate(10);
 
         return view('admin.order.index', compact('orders'));
@@ -95,5 +97,19 @@ class OrderController extends Controller
 
             return redirect()->back()->with('error', 'Order creation failed. Please try again.');
         }
+    }
+
+    public function updateStatus(Request $request)
+    {
+        $request->validate([
+            'id' => 'required|exists:orders,id',
+            'status' => 'required|string'
+        ]);
+
+        $order = Order::find($request->id);
+        $order->status = $request->status;
+        $order->save();
+
+        return response()->json(['success' => true]);
     }
 }

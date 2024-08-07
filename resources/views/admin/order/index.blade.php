@@ -33,7 +33,7 @@
                                     <th>Mahsulotlar</th>
                                     <th>Jami Narx</th>
                                     <th>Yaratilgan Sana</th>
-                                    <th>Amallar</th>
+                                    <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -67,12 +67,14 @@
                                     <td>{{ number_format($order->total_price, 2) }}</td>
                                     <td>{{ $order->created_at->format('d-m-Y H:i') }}</td>
                                     <td>
-                                        <div class="d-flex align-items-center">
-                                            <a href="{{ route('orders.show', $order->id) }}" class="btn btn-sm btn-info me-2">
-                                                <i class="mdi mdi-eye"></i> Ko'rish
-                                            </a>
-                                        </div>
+                                        <select class="form-select status-dropdown" data-order-id="{{ $order->id }}">
+                                            <option value="yangi" {{ $order->status === 'yangi' ? 'selected' : '' }}>Yangi</option>
+                                            <option value="ko\'rildi" {{ $order->status === 'ko\'rildi' ? 'selected' : '' }}>Ko'rildi</option>
+                                            <option value="yetkazildi" {{ $order->status === 'yetkazildi' ? 'selected' : '' }}>Yetkazildi</option>
+
+                                        </select>
                                     </td>
+                                    
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -84,4 +86,35 @@
             </div> <!-- end col -->
         </div> <!-- end row -->
     </div> <!-- container -->
+
+    <!-- Include jQuery and script for AJAX -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.status-dropdown').change(function() {
+                var orderId = $(this).data('order-id');
+                var newStatus = $(this).val();
+
+                $.ajax({
+                    url: '{{ route('orders.updateStatus') }}',
+                    type: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        id: orderId,
+                        status: newStatus
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            alert('Status updated successfully');
+                        } else {
+                            alert('Error updating status');
+                        }
+                    },
+                    error: function(xhr) {
+                        alert('An error occurred');
+                    }
+                });
+            });
+        });
+    </script>
 </x-layouts.admin>
