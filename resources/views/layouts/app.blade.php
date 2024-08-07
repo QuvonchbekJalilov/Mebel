@@ -57,26 +57,29 @@ $lang = \Illuminate\Support\Facades\App::getLocale()
                                             </div>
                                             <ul class="listing d-none d-lg-block" id="navigation">
                                                 <li class="single-list">
-                                                    <a href="/" class="single active">{{__('app.home')}} <i class=""></i></a>
+                                                    <a href="/" class="single {{ Request::is('/') ? 'active' : '' }}">{{__('app.home')}}</a>
 
                                                 </li>
                                                 <li class="single-list">
-                                                    <a href="{{route('about')}}" class="single">{{__('app.about')}}</a>
+                                                    <a href="{{route('about')}}" class="single  {{ Request::routeIs('about') ? 'active' : '' }}">{{__('app.about')}}</a>
                                                 </li>
                                                 <li class="single-list">
-                                                    <a href="{{route('shop')}}" class="single">{{__('app.shop')}}</a>
+                                                    <a href="{{route('shop')}}" class="single  {{ Request::routeIs('shop') ? 'active' : '' }}">{{__('app.shop')}}</a>
                                                 </li>
                                                 <li class="single-list">
-                                                    <a href="{{route('blog')}}" class="single">{{__('app.blog')}}</a>
+                                                    <a href="{{route('blog')}}" class="single  {{ Request::routeIs('blog') ? 'active' : '' }}">{{__('app.blog')}}</a>
                                                 </li>
                                                 <li class="single-list">
-                                                    <a href="{{route('contact')}}" class="single">{{__('app.contact')}}</a>
+                                                    <a href="{{route('contact')}}" class="single  {{ Request::routeIs('contact') ? 'active' : '' }}">{{__('app.contact')}}</a>
                                                 </li>
-
-
-
 
                                             </ul>
+                                            <style>
+                                                .menu-list.active {
+                                                    font-weight: bold;
+                                                    color: #your-active-color;
+                                                }
+                                            </style>
                                             <div class="d-none d-lg-block">
                                                 <div class="header-right">
 
@@ -114,16 +117,6 @@ $lang = \Illuminate\Support\Facades\App::getLocale()
 
                                                         </div>
                                                     </div>
-
-
-
-
-
-
-
-
-
-
                                                 </div>
                                             </div>
                                         </div>
@@ -510,24 +503,34 @@ $lang = \Illuminate\Support\Facades\App::getLocale()
                                     </ul>
                                 </div>
                                 <div class="footer-menu">
-                                    <ul class="menu-lists">
-                                        <li class="list">
-                                            <a href="/" class="menu-list">Home</a>
+                                    <ul class="listing d-none d-lg-block" id="navigation">
+                                        <li class="single-list">
+                                            <a href="/" class="single {{ Request::is('/') ? 'active' : '' }}">{{__('app.home')}}</a>
+
                                         </li>
-                                        <li class="list">
-                                            <a href=" {{route('about')}}" class="menu-list">About</a>
+                                        <li class="single-list">
+                                            <a href="{{route('about')}}" class="single  {{ Request::routeIs('about') ? 'active' : '' }}">{{__('app.about')}}</a>
                                         </li>
-                                        <li class="list">
-                                            <a href="{{route('shop')}}" class="menu-list">Shop</a>
+                                        <li class="single-list">
+                                            <a href="{{route('shop')}}" class="single  {{ Request::routeIs('shop') ? 'active' : '' }}">{{__('app.shop')}}</a>
                                         </li>
-                                        <li class="list">
-                                            <a href="{{route('blog')}}" class="menu-list">Blog</a>
+                                        <li class="single-list">
+                                            <a href="{{route('blog')}}" class="single  {{ Request::routeIs('blog') ? 'active' : '' }}">{{__('app.blog')}}</a>
                                         </li>
-                                        <li class="list">
-                                            <a href="{{route('contact')}}" class="menu-list">Contact</a>
+                                        <li class="single-list">
+                                            <a href="{{route('contact')}}" class="single  {{ Request::routeIs('contact') ? 'active' : '' }}">{{__('app.contact')}}</a>
                                         </li>
+
                                     </ul>
                                 </div>
+
+                                <style>
+                                    .menu-list.active {
+                                        font-weight: bold;
+                                        color: #your-active-color;
+                                    }
+                                </style>
+
                             </div>
                         </div>
                         <div class="col-xl-2 offset-xl-1 col-lg-4 col-sm-6">
