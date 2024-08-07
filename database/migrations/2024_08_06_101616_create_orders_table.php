@@ -16,8 +16,9 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('phone_number');
-            $table->json('products'); // Store products as JSON
-            $table->decimal('total_price', 15, 2);
+            $table->string('status')->default('yangi');
+            $table->text('products'); // Store products as JSON
+            $table->float('total_price');
             $table->timestamps();
         });
     }

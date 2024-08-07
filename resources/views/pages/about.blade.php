@@ -34,7 +34,7 @@
                     <div class="col-xxl-3 col-md-4 col-sm-6">
                         <div class="goal-card wow fadeInUp" data-wow-delay="0.0s">
                             <div class="circle-icon">
-                                <img src="assets/images/goal/icon-1.png" alt="img">
+                                <img src="/image/BRB-1.png" alt="img" style="width: 80px;border-radius: 50%;height: 80px;">
                             </div>
                             <a href="javascript:void(0)">
                                 <h4 class="title line-clamp-1 text-color-primary">Original Products</h4>
@@ -45,7 +45,7 @@
                     <div class="col-xxl-3 col-md-4 col-sm-6">
                         <div class="goal-card wow fadeInUp" data-wow-delay="0.0s">
                             <div class="circle-icon">
-                                <img src="assets/images/goal/icon-2.png" alt="img">
+                                <img src="/image/BRB-2.png" alt="img" style="width: 80px;border-radius: 50%;height: 80px;">
                             </div>
                             <a href="javascript:void(0)">
                                 <h4 class="title line-clamp-1 text-color-primary">Satisfaction Guarantee</h4>
@@ -56,7 +56,7 @@
                     <div class="col-xxl-3 col-md-4 col-sm-6">
                         <div class="goal-card wow fadeInUp" data-wow-delay="0.1s">
                             <div class="circle-icon">
-                                <img src="assets/images/goal/icon-3.png" alt="img">
+                                <img src="/image/5.png" alt="img" style="width: 80px;border-radius: 50%;height: 80px;">
                             </div>
                             <a href="javascript:void(0)">
                                 <h4 class="title line-clamp-1 text-color-primary">New Arrivals Every Day</h4>
@@ -67,7 +67,7 @@
                     <div class="col-xxl-3 col-md-4 col-sm-6">
                         <div class="goal-card wow fadeInUp" data-wow-delay="0.2s">
                             <div class="circle-icon">
-                                <img src="assets/images/goal/icon-4.png" alt="img">
+                                <img src="/image/3.png" alt="img" style="width: 80px;border-radius: 50%;height: 80px;">
                             </div>
                             <a href="javascript:void(0)">
                                 <h4 class="title line-clamp-1 text-color-primary">Fast & Free Shipping</h4>
@@ -78,7 +78,7 @@
                 </div>
             </div>
             <div class="shape routedOne">
-                <img src="assets/images/goal/shape.png" alt="img">
+                <img src="/image/Yangi_sergeli-1.png" alt="img" style="width: 100px;height: 100px;border-radius: 50%">
             </div>
         </section>
         <!-- End-of goal-->
@@ -91,15 +91,15 @@
                         <div class="row g-4">
                             <div class="col-md-6">
                                 <div class="about-gallery w-296 mb-30 wow fadeInUp" data-wow-delay="0.0s">
-                                    <img src="assets/images/gallery/about-1.png" alt="img">
+                                    <img src="/image/Yangi_Sergeli-2.png" alt="img">
                                 </div>
                                 <div class="about-gallery w-296 wow fadeInUp" data-wow-delay="0.1s">
-                                    <img src="assets/images/gallery/about-2.png" alt="img">
+                                    <img src="/image/Yangi_Sergeli-2.png" alt="img">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="about-gallery w-319 mb-30 mt-96 position-relative wow fadeInUp" data-wow-delay="0.2s">
-                                    <img src="assets/images/gallery/about-3.png" alt="img">
+                                    <img src="/image/Yangi_Sergeli-2.png" alt="img">
                                     <div class="main-circle">
                                         <div class="curve">
                                             <h1 class="curve-text">Service Furniture Creative Design</h1>
@@ -109,7 +109,7 @@
                                     </div>
                                 </div>
                                 <div class="about-gallery w-319 wow fadeInUp" data-wow-delay="0.3s">
-                                    <img src="assets/images/gallery/about-4.png" alt="img">
+                                    <img src="/image/Yangi_Sergeli-2.png" alt="img">
                                 </div>
                             </div>
                         </div>
@@ -124,7 +124,7 @@
                         </div>
                         <div class="goal-card">
                             <div class="circle-icon">
-                                <img src="assets/images/icon/about-icon-1.png" alt="img">
+                                <img src="/image/MSMA-2.png" alt="img" style="width: 70px;height: 70px;border-radius: 50%">
                             </div>
                             <a href="javascript:void(0)">
                                 <h4 class="title line-clamp-1 text-color-primary">Product Return Policy</h4>
@@ -133,7 +133,7 @@
                         </div>
                         <div class="goal-card mb-0">
                             <div class="circle-icon">
-                                <img src="assets/images/icon/about-icon-2.png" alt="img">
+                                <img src="/image/MSMA-2.png" alt="img" style="width: 70px;height: 70px;border-radius: 50%">
                             </div>
                             <a href="javascript:void(0)">
                                 <h4 class="title line-clamp-1 text-color-primary">100% Quality Furniture</h4>
@@ -144,7 +144,7 @@
                 </div>
             </div>
             <div class="shape routedOne">
-                <img src="assets/images/goal/shape.png" alt="img">
+                <img src="/image/MSMA-2.png" alt="img" style="width: 70px;height: 70px;border-radius: 50%">
             </div>
         </section>
         <!-- End-of about-->
@@ -163,7 +163,7 @@
                 <div class="easy-step-section position-relative">
                     <div class="goal-card wow fadeInLeft" data-wow-delay="0.0s">
                         <div class="circle-icon">
-                            <img src="assets/images/icon/about-icon-3.png" alt="img">
+                            <img src="/image/MSMA-2.png" alt="img" style="width: 100px;height: 100px;border-radius: 50%">
                             <div class="count">
                                 <span class="num">01</span>
                             </div>
@@ -186,7 +186,7 @@
                     </div>
                     <div class="goal-card wow fadeInLeft" data-wow-delay="0.1s">
                         <div class="circle-icon">
-                            <img src="assets/images/icon/about-icon-3.png" alt="img">
+                            <img src="/image/MSMA-2.png" alt="img" style="width: 100px;height: 100px;border-radius: 50%">
                             <div class="count">
                                 <span class="num">02</span>
                             </div>
@@ -209,7 +209,7 @@
                     </div>
                     <div class="goal-card wow fadeInLeft" data-wow-delay="0.3s">
                         <div class="circle-icon">
-                            <img src="assets/images/icon/about-icon-3.png" alt="img">
+                            <img src="/image/MSMA-2.png" alt="img" style="width: 100px;height: 100px;border-radius: 50%">
                             <div class="count">
                                 <span class="num">03</span>
                             </div>
@@ -240,9 +240,9 @@
                                     <div class="team-card">
                                         <div class="team-img position-relative">
                                             <a href="javascript:void(0)">
-                                                <img src="assets/images/gallery/team-1.png" alt="img">
+                                                <img src="/image/MSMA-2.png" alt="img" style="width: 100px;height: 100px;border-radius: 50%">
                                                 <div class="team-shape">
-                                                    <img src="assets/images/gallery/team-shape.png" alt="img">
+                                                    <img src="/image/MGM-1.png" alt="img" style="width: 100px;height: 100px;border-radius: 50%">
                                                 </div>
                                                 <div class="social-link">
                                                     <div class="circle-icon">
@@ -269,9 +269,9 @@
                                     <div class="team-card">
                                         <div class="team-img position-relative">
                                             <a href="javascript:void(0)">
-                                                <img src="assets/images/gallery/team-2.png" alt="img">
+                                                <img src="/image/MGM-1.png" alt="img" style="width: 100px;height: 100px;border-radius: 50%">
                                                 <div class="team-shape">
-                                                    <img src="assets/images/gallery/team-shape.png" alt="img">
+                                                    <img src="/image/MSMA-2.png" alt="img" style="width: 100px;height: 100px;border-radius: 50%">
                                                 </div>
                                                 <div class="social-link">
                                                     <div class="circle-icon">
@@ -298,9 +298,9 @@
                                     <div class="team-card">
                                         <div class="team-img position-relative">
                                             <a href="javascript:void(0)">
-                                                <img src="assets/images/gallery/team-3.png" alt="img">
+                                                <img src="/image/MGM-3.png" alt="img" style="width: 100px;height: 100px;border-radius: 50%">
                                                 <div class="team-shape">
-                                                    <img src="assets/images/gallery/team-shape.png" alt="img">
+                                                    <img src="/image/chef_catering-1.png" alt="img" style="width: 100px;height: 100px;border-radius: 50%">
                                                 </div>
                                                 <div class="social-link">
                                                     <div class="circle-icon">
@@ -327,9 +327,9 @@
                                     <div class="team-card">
                                         <div class="team-img position-relative">
                                             <a href="javascript:void(0)">
-                                                <img src="assets/images/gallery/team-4.png" alt="img">
+                                                <img src="/image/chef_catering-2.png" alt="img" style="width: 100px;height: 100px;border-radius: 50%">
                                                 <div class="team-shape">
-                                                    <img src="assets/images/gallery/team-shape.png" alt="img">
+                                                    <img src="/image/3.png" alt="img" style="width: 100px;height: 100px;border-radius: 50%">
                                                 </div>
                                                 <div class="social-link">
                                                     <div class="circle-icon">
@@ -482,53 +482,30 @@
         <section class="brand-area pt-0">
             <div class="container">
                 <div class="row">
-					<div class="col-lg-12">
+                    <div class="col-lg-12">
                         <div class="section-title">
                             <h4 class="title">Brands</h4>
                         </div>
                         <div class="swiper brandSwiper-active">
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <img src="assets/images/brand/1.svg" alt="img">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="assets/images/brand/2.svg" alt="img">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="assets/images/brand/3.svg" alt="img">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="assets/images/brand/4.svg" alt="img">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="assets/images/brand/5.svg" alt="img">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="assets/images/brand/6.svg" alt="img">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="assets/images/brand/7.svg" alt="img">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="assets/images/brand/8.svg" alt="img">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="assets/images/brand/1.svg" alt="img">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="assets/images/brand/2.svg" alt="img">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="assets/images/brand/3.svg" alt="img">
-                                </div>
+                                @foreach($brands as $brand)
+                                    <div class="swiper-slide">
+                                        <img src="{{ asset('storage/' . $brand->image) }}" alt="{{ $brand->name }}">
+                                    </div>
+                                @endforeach
                             </div>
-                            <div class="swiper-button-next swiper-common-btn"><i class="ri-arrow-right-s-line"></i></div>
-                            <div class="swiper-button-prev swiper-common-btn"><i class="ri-arrow-left-s-line"></i></div>
+                            <div class="swiper-button-next swiper-common-btn">
+                                <i class="ri-arrow-right-s-line"></i>
+                            </div>
+                            <div class="swiper-button-prev swiper-common-btn">
+                                <i class="ri-arrow-left-s-line"></i>
+                            </div>
                         </div>
-					</div>
-				</div>
+                    </div>
+                </div>
             </div>
         </section>
+
         <!-- End of Brand -->
 
         <!-- Testimonial S t a r t -->
@@ -544,7 +521,7 @@
                                 <div class="swiper-slide">
                                     <div class="testimonial-card">
                                         <div class="shape routedOne">
-                                            <img src="assets/images/icon/quote.png" alt="img">
+                                            <img src="/frontend/assets/images/logo/logo-2.png" alt="logo" style="width: 70px;height: 70px;border-radius: 50%">
                                         </div>
                                         <p class="pera line-clamp-4">
                                             All the Lorem Ipsum generatolrs on the In our ternet repeat predefined chunks as
@@ -555,7 +532,7 @@
                                         </p>
                                         <div class="user-info">
                                             <div class="user-img">
-                                                <img src="assets/images/gallery/testimonial-1.png" alt="img">
+                                                <img src="/frontend/assets/images/logo/logo-2.png" alt="logo">
                                             </div>
                                             <h4 class="user-name line-clamp-1">Rhodes Jhon</h4>
                                         </div>
@@ -564,7 +541,7 @@
                                 <div class="swiper-slide">
                                     <div class="testimonial-card">
                                         <div class="shape routedOne">
-                                            <img src="assets/images/icon/quote.png" alt="img">
+                                            <img src="/frontend/assets/images/logo/logo-2.png" alt="logo" style="width: 70px;height: 70px;border-radius: 50%">
                                         </div>
                                         <p class="pera line-clamp-4">
                                             All the Lorem Ipsum generatolrs on the In our ternet repeat predefined chunks as
@@ -575,7 +552,7 @@
                                         </p>
                                         <div class="user-info">
                                             <div class="user-img">
-                                                <img src="assets/images/gallery/testimonial-2.png" alt="img">
+                                                <img src="/frontend/assets/images/logo/logo-2.png" alt="logo">
                                             </div>
                                             <h4 class="user-name line-clamp-1">Steel Golden Agave</h4>
                                         </div>
@@ -584,7 +561,7 @@
                                 <div class="swiper-slide">
                                     <div class="testimonial-card">
                                         <div class="shape routedOne">
-                                            <img src="assets/images/icon/quote.png" alt="img">
+                                            <img src="/frontend/assets/images/logo/logo-2.png" alt="logo" style="width: 70px;height: 70px;border-radius: 50%">
                                         </div>
                                         <p class="pera line-clamp-4">
                                             All the Lorem Ipsum generatolrs on the In our ternet repeat predefined chunks as
@@ -595,7 +572,7 @@
                                         </p>
                                         <div class="user-info">
                                             <div class="user-img">
-                                                <img src="assets/images/gallery/testimonial-3.png" alt="img">
+                                                <img src="/frontend/assets/images/logo/logo-2.png" alt="logo">
                                             </div>
                                             <h4 class="user-name line-clamp-1">Juliyet Jhon</h4>
                                         </div>
@@ -604,7 +581,7 @@
                                 <div class="swiper-slide">
                                     <div class="testimonial-card">
                                         <div class="shape routedOne">
-                                            <img src="assets/images/icon/quote.png" alt="img">
+                                            <img src="/frontend/assets/images/logo/logo-2.png" alt="logo" style="width: 70px;height: 70px;border-radius: 50%">
                                         </div>
                                         <p class="pera line-clamp-4">
                                             All the Lorem Ipsum generatolrs on the In our ternet repeat predefined chunks as
@@ -615,7 +592,7 @@
                                         </p>
                                         <div class="user-info">
                                             <div class="user-img">
-                                                <img src="assets/images/gallery/testimonial-1.png" alt="img">
+                                                <img src="/frontend/assets/images/logo/logo-2.png" alt="logo">
                                             </div>
                                             <h4 class="user-name line-clamp-1">Rhodes Jhon</h4>
                                         </div>
@@ -624,7 +601,7 @@
                                 <div class="swiper-slide">
                                     <div class="testimonial-card">
                                         <div class="shape routedOne">
-                                            <img src="assets/images/icon/quote.png" alt="img">
+                                            <img src="/frontend/assets/images/logo/logo-2.png" alt="logo" style="width: 70px;height: 70px;border-radius: 50%">
                                         </div>
                                         <p class="pera line-clamp-4">
                                             All the Lorem Ipsum generatolrs on the In our ternet repeat predefined chunks as
@@ -635,7 +612,7 @@
                                         </p>
                                         <div class="user-info">
                                             <div class="user-img">
-                                                <img src="assets/images/gallery/testimonial-2.png" alt="img">
+                                                <img src="/frontend/assets/images/logo/logo-2.png" alt="logo">
                                             </div>
                                             <h4 class="user-name line-clamp-1">Steel Golden Agave</h4>
                                         </div>
@@ -644,7 +621,7 @@
                                 <div class="swiper-slide">
                                     <div class="testimonial-card">
                                         <div class="shape routedOne">
-                                            <img src="assets/images/icon/quote.png" alt="img">
+                                            <img src="/frontend/assets/images/logo/logo-2.png" alt="logo" style="width: 70px;height: 70px;border-radius: 50%">
                                         </div>
                                         <p class="pera line-clamp-4">
                                             All the Lorem Ipsum generatolrs on the In our ternet repeat predefined chunks as
@@ -655,7 +632,7 @@
                                         </p>
                                         <div class="user-info">
                                             <div class="user-img">
-                                                <img src="assets/images/gallery/testimonial-3.png" alt="img">
+                                                <img src="/frontend/assets/images/logo/logo-2.png" alt="logo">
                                             </div>
                                             <h4 class="user-name line-clamp-1">Juliyet Jhon</h4>
                                         </div>
@@ -674,40 +651,28 @@
         <section class="subscription-area subscription-bg">
             <div class="container">
                 <div class="row">
-					<div class="col-lg-12">
+                    <div class="col-lg-12">
                         <div class="subscription-wrapper">
                             <div class="left-wrapper">
                                 <div class="subscription-content">
-                                    <h4 class="title">Get a surprise discount</h4>
-                                    <p class="pera">Join our email subscription now</p>
+                                    <h4 class="title">{{__('app.call')}}</h4>
+                                    {{--                                <p class="pera">Join our email subscription now</p>--}}
                                 </div>
                                 <div class="subscription-input-section">
-                                    <input type="text" class="subscription-input" placeholder="Enter your email address">
-                                    <button type="submit" class="subscribe-btn"><span class="btn-text">Subscribe</span><span
-                                            class="icon"><i class="ri-arrow-right-line"></i></span></button>
+                                    <input type="text" class="subscription-input" placeholder="{{__('app.enter_phone')}}">
+                                    <button type="submit" class="subscribe-btn">
+                                        <span class="btn-text">{{__('app.subscribe')}}</span>
+                                        <span class="icon"><i class="ri-arrow-right-line"></i></span>
+                                    </button>
                                 </div>
                             </div>
                             <div class="right-wrapper">
-                                <div class="subscription-content">
-                                    <h4 class="title">Download App</h4>
-                                    <p class="pera">Save $3 With App & New User only</p>
-                                </div>
-                                <div class="download-app">
-                                    <a href="javascript:void(0)" target="_blank">
-                                        <img src="assets/images/icon/google-play.png" alt="img">
-                                    </a>
-                                    <a href="javascript:void(0)" target="_blank">
-                                        <img src="assets/images/icon/app-store.png" alt="img">
-                                    </a>
-                                </div>
+                                <img src="/frontend/assets/images/logo/logo-2.png" alt="logo">
                             </div>
                         </div>
-					</div>
-				</div>
+                    </div>
+                </div>
             </div>
         </section>
         <!-- End-of subscription-->
-
-
-
     @endsection

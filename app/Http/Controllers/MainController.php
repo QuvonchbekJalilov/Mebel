@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Contact;
 use App\Models\Product;
@@ -19,13 +20,17 @@ class MainController extends Controller
     public function index()
     {
         $locale = $this->language();
-        return view('pages.index', compact('locale'));
+        $brands = Brand::all();
+        $products = Product::where('best_seller', 'on')->get();
+        $news = Blog::all();
+        return view('pages.index', compact('locale', 'brands', 'products', 'news'));
     }
 
     public function about()
     {
+        $brands = Brand::all();
         $locale = $this->language();
-        return view('pages.about', compact('locale'));
+        return view('pages.about', compact('locale', 'brands'));
     }
 
     public function contact()
