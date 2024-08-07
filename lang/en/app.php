@@ -23,4 +23,5 @@ return [
     'get_text' => 'Join our email subscription now',
     'enter_phone' => 'Enter your phone number',
     'subscribe' => 'Subscribe',
+
 ];
