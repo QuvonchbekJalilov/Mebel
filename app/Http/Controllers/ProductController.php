@@ -28,6 +28,7 @@ class ProductController extends Controller
 
     public function store(StoreProductRequest $request)
     {
+        dd($request->all());
         if ($request->file('image')) {
             $imagePath = $request->file('image')->store('images', 'public');
         }
