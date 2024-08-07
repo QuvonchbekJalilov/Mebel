@@ -100,7 +100,7 @@
                             </div>
                         </div>
                         <div class="right-wrapper">
-                            <img src="assets/img/discount/discount-img.png" alt="img" class="img">
+                            <img src="/frontend/assets/images/logo/logo-2.png" alt="logo">
                         </div>
                     </div>
                 </div>
