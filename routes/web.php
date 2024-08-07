@@ -32,6 +32,7 @@ Route::get('/blog', [MainController::class, 'blog'])->name('blog');
 Route::get('/blog-details/{id}', [MainController::class, 'blogDetails'])->name('blog.details');
 Route::get('/contact', [MainController::class, 'contact'])->name('contact');
 Route::post('/orders', [OrderController::class, 'store'])->name('order.store');
+Route::post('/orders/update-status', [OrderController::class, 'updateStatus'])->name('orders.updateStatus');
 
 Route::get('/login', [AdminController::class, 'login'])->name('login');
 Route::post('/authenticate', [AdminController::class, 'authenticate'])->name('authenticate');

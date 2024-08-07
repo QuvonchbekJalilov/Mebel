@@ -142,37 +142,22 @@
                             </svg>
                         </div>
                         <div class="offer-list">
-                            
+                            @foreach($categories as $category)
+                            {{-- {{ $categories }}--}}
+                            <?php
+                            $categorybyid = \App\Models\Category::find($category->category_id);
+                            ?>
                             <div class="d-flex">
                                 <label class="checkbox-label">
-                                    <input class="checkbox-style" type="checkbox" value="remember" name="remember">
+                                    <input class="checkbox-style" type="checkbox" value="{{ $category->id }}" name="categories[]">
                                     <span class="checkmark-style"></span>
                                 </label>
                                 <div class="content pl-24 d-flex justify-content-between w-100">
-                                    <p class="pera">Bed Light</p>
-                                    <p class="pera">(31)</p>
+                                    <p class="pera">{{ $categorybyid['name_' . $locale] }}</p>
+                                    <p class="pera">({{ $category->count() }})</p>
                                 </div>
                             </div>
-                            <div class="d-flex">
-                                <label class="checkbox-label">
-                                    <input class="checkbox-style" type="checkbox" value="remember" name="remember">
-                                    <span class="checkmark-style"></span>
-                                </label>
-                                <div class="content pl-24 d-flex justify-content-between w-100">
-                                    <p class="pera">Sofa Set</p>
-                                    <p class="pera">(25)</p>
-                                </div>
-                            </div>
-                            <div class="d-flex">
-                                <label class="checkbox-label">
-                                    <input class="checkbox-style" type="checkbox" value="remember" name="remember">
-                                    <span class="checkmark-style"></span>
-                                </label>
-                                <div class="content pl-24 d-flex justify-content-between w-100">
-                                    <p class="pera">Office Chair</p>
-                                    <p class="pera">(11)</p>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="search-section">
