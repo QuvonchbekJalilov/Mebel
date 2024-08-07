@@ -25,6 +25,34 @@ $lang = \Illuminate\Support\Facades\App::getLocale()
     <link rel="stylesheet" type="text/css" href="/frontend/assets/css/plugin.css">
     <!-- Main CSS -->
     <link rel="stylesheet" type="text/css" href="/frontend/assets/css/main-style.css">
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <!-- Include your custom styles -->
+    <style>
+        .search-section {
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .range-bar {
+            margin-bottom: 10px;
+        }
+        .range-value {
+            font-size: 14px;
+        }
+        .product {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 
 <body>
