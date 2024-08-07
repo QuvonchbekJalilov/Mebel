@@ -61,9 +61,7 @@
                                     @else
                                     <h4 class="price text-color-primary">{{ $product->price }} So'm</h4>
                                     @endif
-
                                 </div>
-
                             </div>
                             <div class="product-img-card best-product-img-card">
                                 <a href="{{ route('shop_details', ['id' => $product->id]) }}" class="zoomImg">
@@ -160,6 +158,7 @@
                             @endforeach
                         </div>
                     </div>
+                    <!-- Price Filter Section -->
                     <div class="search-section">
                         <div class="heading">
                             <h4 class="title">Price Filter</h4>
@@ -171,161 +170,63 @@
                             <div id="slider-range" class="range-bar"></div>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="range-value">
-                                    <p class="pera">price: </p> <input type="text" id="amount" readonly>
+                                    <p class="pera">Price: </p>
+                                    <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="search-section">
-                        <div class="heading">
-                            <h4 class="title">Color</h4>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="10" viewBox="0 0 20 10" fill="none">
-                                <path d="M20 1.05636C19.9113 0.744994 19.7615 0.47255 19.4676 0.263351C18.9685 -0.0820697 18.2475 -0.0917998 17.7484 0.258486C17.6541 0.326597 17.5598 0.399573 17.4711 0.477415C15.042 2.60832 12.6073 4.74409 10.1782 6.875C10.1228 6.92365 10.0784 6.98203 9.94531 7.0696C9.90649 7.01122 9.88431 6.93824 9.82885 6.88959C7.37757 4.73436 4.92074 2.58399 2.46946 0.428762C2.03688 0.0492861 1.53775 -0.0966664 0.938797 0.0687463C0.0680942 0.312 -0.286842 1.29475 0.262201 1.93694C0.323206 2.00991 0.395302 2.07802 0.467398 2.14614C3.2958 4.62733 6.11865 7.10852 8.94705 9.58485C9.46282 10.0373 10.1172 10.1249 10.7106 9.82323C10.8548 9.75026 10.9824 9.64323 11.0989 9.54106C13.8441 7.13285 16.5837 4.72463 19.3345 2.32128C19.6395 2.0537 19.9113 1.78126 20 1.39692C20 1.28502 20 1.17312 20 1.05636Z" fill="currentColor" />
-                            </svg>
-                        </div>
-                        <div class="color-section">
-                            <div class="color-checkbox">
-                                <input class="check-color" type="checkbox" id="checkbox1">
-                                <div></div>
-                            </div>
-                            <div class="color-checkbox">
-                                <input class="check-color" type="checkbox" id="checkbox2">
-                                <div></div>
-                            </div>
-                            <div class="color-checkbox">
-                                <input class="check-color" type="checkbox" id="checkbox3">
-                                <div></div>
-                            </div>
-                            <div class="color-checkbox">
-                                <input class="check-color" type="checkbox" id="checkbox4">
-                                <div></div>
-                            </div>
-                            <div class="color-checkbox">
-                                <input class="check-color" type="checkbox" id="checkbox5">
-                                <div></div>
-                            </div>
-                            <div class="color-checkbox">
-                                <input class="check-color" type="checkbox" id="checkbox6">
-                                <div></div>
-                            </div>
-                            <div class="color-checkbox">
-                                <input class="check-color" type="checkbox" id="checkbox7">
-                                <div></div>
-                            </div>
-                            <div class="color-checkbox">
-                                <input class="check-color" type="checkbox" id="checkbox8">
-                                <div></div>
-                            </div>
-                            <div class="color-checkbox">
-                                <input class="check-color" type="checkbox" id="checkbox9">
-                                <div></div>
-                            </div>
-                            <div class="color-checkbox">
-                                <input class="check-color" type="checkbox" id="checkbox10">
-                                <div></div>
-                            </div>
-                        </div>
 
-                    </div>
-                    <div class="search-section">
-                        <div class="heading">
-                            <h4 class="title">Manufactures</h4>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="10" viewBox="0 0 20 10" fill="none">
-                                <path d="M20 1.05636C19.9113 0.744994 19.7615 0.47255 19.4676 0.263351C18.9685 -0.0820697 18.2475 -0.0917998 17.7484 0.258486C17.6541 0.326597 17.5598 0.399573 17.4711 0.477415C15.042 2.60832 12.6073 4.74409 10.1782 6.875C10.1228 6.92365 10.0784 6.98203 9.94531 7.0696C9.90649 7.01122 9.88431 6.93824 9.82885 6.88959C7.37757 4.73436 4.92074 2.58399 2.46946 0.428762C2.03688 0.0492861 1.53775 -0.0966664 0.938797 0.0687463C0.0680942 0.312 -0.286842 1.29475 0.262201 1.93694C0.323206 2.00991 0.395302 2.07802 0.467398 2.14614C3.2958 4.62733 6.11865 7.10852 8.94705 9.58485C9.46282 10.0373 10.1172 10.1249 10.7106 9.82323C10.8548 9.75026 10.9824 9.64323 11.0989 9.54106C13.8441 7.13285 16.5837 4.72463 19.3345 2.32128C19.6395 2.0537 19.9113 1.78126 20 1.39692C20 1.28502 20 1.17312 20 1.05636Z" fill="currentColor" />
-                            </svg>
-                        </div>
-                        <div class="offer-list">
-                            <div class="d-flex">
-                                <label class="checkbox-label">
-                                    <input class="checkbox-style" type="checkbox" value="remember" name="remember">
-                                    <span class="checkmark-style"></span>
-                                </label>
-                                <div class="content pl-24 d-flex justify-content-between w-100">
-                                    <p class="pera">Hatil Furniture</p>
-                                    <p class="pera">(14)</p>
-                                </div>
-                            </div>
-                            <div class="d-flex">
-                                <label class="checkbox-label">
-                                    <input class="checkbox-style" type="checkbox" value="remember" name="remember">
-                                    <span class="checkmark-style"></span>
-                                </label>
-                                <div class="content pl-24 d-flex justify-content-between w-100">
-                                    <p class="pera">Navana Furniture</p>
-                                    <p class="pera">(22)</p>
-                                </div>
-                            </div>
-                            <div class="d-flex">
-                                <label class="checkbox-label">
-                                    <input class="checkbox-style" type="checkbox" value="remember" name="remember">
-                                    <span class="checkmark-style"></span>
-                                </label>
-                                <div class="content pl-24 d-flex justify-content-between w-100">
-                                    <p class="pera">Akhtar Furnishers</p>
-                                    <p class="pera">(10)</p>
-                                </div>
-                            </div>
-                            <div class="d-flex">
-                                <label class="checkbox-label">
-                                    <input class="checkbox-style" type="checkbox" value="remember" name="remember">
-                                    <span class="checkmark-style"></span>
-                                </label>
-                                <div class="content pl-24 d-flex justify-content-between w-100">
-                                    <p class="pera">Lamp Lighting</p>
-                                    <p class="pera">(51)</p>
-                                </div>
-                            </div>
-                            <div class="d-flex">
-                                <label class="checkbox-label">
-                                    <input class="checkbox-style" type="checkbox" value="remember" name="remember">
-                                    <span class="checkmark-style"></span>
-                                </label>
-                                <div class="content pl-24 d-flex justify-content-between w-100">
-                                    <p class="pera">Otobi Furniture</p>
-                                    <p class="pera">(42)</p>
-                                </div>
-                            </div>
-                            <div class="d-flex">
-                                <label class="checkbox-label">
-                                    <input class="checkbox-style" type="checkbox" value="remember" name="remember">
-                                    <span class="checkmark-style"></span>
-                                </label>
-                                <div class="content pl-24 d-flex justify-content-between w-100">
-                                    <p class="pera">Nadia Furniture</p>
-                                    <p class="pera">(25)</p>
-                                </div>
-                            </div>
-                            <div class="d-flex">
-                                <label class="checkbox-label">
-                                    <input class="checkbox-style" type="checkbox" value="remember" name="remember">
-                                    <span class="checkmark-style"></span>
-                                </label>
-                                <div class="content pl-24 d-flex justify-content-between w-100">
-                                    <p class="pera">Regal Furniture</p>
-                                    <p class="pera">(62)</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="cover"></div>
             </div>
         </div>
-        <!-- pagination -->
+        
+        <!-- Pagination Controls -->
+        @if ($products->lastPage() > 1)
         <nav class="pagination-nav">
             <ul class="pagination">
-                <li class="page-item">
-                    <a class="page-link next" href="javascript:void(0)" aria-label="Previous"><i class="ri-arrow-left-s-line"></i></a>
+                <!-- Previous Page Link -->
+                @if ($products->onFirstPage())
+                <li class="page-item disabled" aria-disabled="true" aria-label="Previous">
+                    <span class="page-link" aria-hidden="true"><i class="ri-arrow-left-s-line"></i></span>
                 </li>
-                <li class="page-item" aria-current="page"><span class="page-link active">01</span></li>
-                <li class="page-item"><a class="page-link" href="javascript:void(0)">02</a></li>
-                <li class="page-item"><a class="page-link" href="javascript:void(0)">03</a></li>
+                @else
                 <li class="page-item">
-                    <a class="page-link next" href="javascript:void(0)" aria-label="Next"><i class="ri-arrow-right-s-line"></i></a>
+                    <a class="page-link prev" href="{{ $products->previousPageUrl() }}" aria-label="Previous">
+                        <i class="ri-arrow-left-s-line"></i>
+                    </a>
                 </li>
+                @endif
+
+                <!-- Page Numbers -->
+                @foreach ($products->getUrlRange(1, $products->lastPage()) as $page => $url)
+                @if ($page == $products->currentPage())
+                <li class="page-item active" aria-current="page">
+                    <span class="page-link">{{ str_pad($page, 2, '0', STR_PAD_LEFT) }}</span>
+                </li>
+                @else
+                <li class="page-item">
+                    <a class="page-link" href="{{ $url }}">{{ str_pad($page, 2, '0', STR_PAD_LEFT) }}</a>
+                </li>
+                @endif
+                @endforeach
+
+                <!-- Next Page Link -->
+                @if ($products->hasMorePages())
+                <li class="page-item">
+                    <a class="page-link next" href="{{ $products->nextPageUrl() }}" aria-label="Next">
+                        <i class="ri-arrow-right-s-line"></i>
+                    </a>
+                </li>
+                @else
+                <li class="page-item disabled" aria-disabled="true" aria-label="Next">
+                    <span class="page-link" aria-hidden="true"><i class="ri-arrow-right-s-line"></i></span>
+                </li>
+                @endif
             </ul>
         </nav>
-        <!-- End pagination -->
+        @endif
     </div>
 </section>
 <!-- End-of goal-->
