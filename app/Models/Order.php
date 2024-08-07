@@ -20,4 +20,10 @@ class Order extends Model
     protected $casts = [
         'products' => 'array',
     ];
+
+    // In Order.php model
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'id', 'product_id');
+    }
 }

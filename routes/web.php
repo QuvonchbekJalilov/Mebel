@@ -64,6 +64,8 @@ Route::middleware(['checkAdmin:admin', 'auth'])->group(function () {
         Route::resource('contacts', ContactController::class);
         Route::resource('discounts', DiscountController::class);
         Route::resource('brands', BrandController::class);
+        Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+        Route::get('/orders/{orderId}', [OrderController::class, 'show'])->name('orders.show');
     });
 });
 

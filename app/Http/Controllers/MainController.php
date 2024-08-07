@@ -43,7 +43,7 @@ class MainController extends Controller
     public function shop()
     {
         $locale = $this->language();
-        $products = Product::all();
+        $products = Product::where('stock', '>', 0)->paginate(10);
         return view('pages.shop', compact('locale', 'products'));
     }
 

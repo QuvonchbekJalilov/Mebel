@@ -25,6 +25,17 @@
     </div>
 </section>
 <!-- End-of Breadcrumbs-->
+@if(session('success'))
+<div class="alert alert-success">
+    {{ session('success') }}
+</div>
+@endif
+
+@if(session('error'))
+<div class="alert alert-danger">
+    {{ session('error') }}
+</div>
+@endif
 <!-- product area S t a r t -->
 <section class="product-area section-padding">
     <div class="container">
@@ -131,46 +142,7 @@
                             </svg>
                         </div>
                         <div class="offer-list">
-                            <div class="d-flex">
-                                <label class="checkbox-label">
-                                    <input class="checkbox-style" type="checkbox" value="remember" name="remember">
-                                    <span class="checkmark-style"></span>
-                                </label>
-                                <div class="content pl-24 d-flex justify-content-between w-100">
-                                    <p class="pera">Office Chair</p>
-                                    <p class="pera">(12)</p>
-                                </div>
-                            </div>
-                            <div class="d-flex">
-                                <label class="checkbox-label">
-                                    <input class="checkbox-style" type="checkbox" value="remember" name="remember">
-                                    <span class="checkmark-style"></span>
-                                </label>
-                                <div class="content pl-24 d-flex justify-content-between w-100">
-                                    <p class="pera">Dining Chair</p>
-                                    <p class="pera">(51)</p>
-                                </div>
-                            </div>
-                            <div class="d-flex">
-                                <label class="checkbox-label">
-                                    <input class="checkbox-style" type="checkbox" value="remember" name="remember">
-                                    <span class="checkmark-style"></span>
-                                </label>
-                                <div class="content pl-24 d-flex justify-content-between w-100">
-                                    <p class="pera">Office Table</p>
-                                    <p class="pera">(10)</p>
-                                </div>
-                            </div>
-                            <div class="d-flex">
-                                <label class="checkbox-label">
-                                    <input class="checkbox-style" type="checkbox" value="remember" name="remember">
-                                    <span class="checkmark-style"></span>
-                                </label>
-                                <div class="content pl-24 d-flex justify-content-between w-100">
-                                    <p class="pera">Dining Table</p>
-                                    <p class="pera">(24)</p>
-                                </div>
-                            </div>
+                            
                             <div class="d-flex">
                                 <label class="checkbox-label">
                                     <input class="checkbox-style" type="checkbox" value="remember" name="remember">

@@ -27,7 +27,7 @@
                         <h5 class="mb-0" style="color: white !important;">Mahsulot Tafsilotlari</h5>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('products.update', $product->id) }}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+                        <form action="{{ route('products.update', $product->id) }}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate onchange="updateEditorContent()">
                             @csrf
                             @method('PUT')
                             <div class="row mb-4">
@@ -103,7 +103,7 @@
 
                                 <div class="col-lg-6 mb-3">
                                     <label for="stock" class="form-label fw-bold">Zaxira</label>
-                                    <input type="number" class="form-control" id="stock" name="stock" value="{{ $product->stock }}" placeholder="Zaxira" required>
+                                    <input type="text" class="form-control" id="stock" name="stock" value="{{ $product->stock }}" placeholder="Zaxira" required>
                                     <div class="invalid-feedback">
                                         Ushbu maydon to'ldirilishi shart.
                                     </div>
