@@ -536,16 +536,12 @@ $lang = \Illuminate\Support\Facades\App::getLocale()
                         <div class="col-xl-2 offset-xl-1 col-lg-4 col-sm-6">
                             <div class="single-footer-caption">
                                 <div class="footer-tittle">
-                                    <h4 class="title">My Accounts</h4>
+                                    <h4 class="title">{{__('app.menu')}}</h4>
                                     <ul class="listing">
-                                        <li class="single-list"><a href="javascript:void(0)" class="single">My
-                                                Orders</a></li>
-                                        <li class="single-list"><a href="javascript:void(0)" class="single">My Credit
-                                                Slips</a></li>
-                                        <li class="single-list"><a href="javascript:void(0)" class="single">My
-                                                Addresses</a></li>
-                                        <li class="single-list"><a href="javascript:void(0)" class="single">My Personal
-                                                Info</a></li>
+                                        <li class="single-list"><a href="{{ route('about')}}" class="single">{{__('app.about')}}</a></li>
+                                        <li class="single-list"><a href="{{ route('shop')}}" class="single">{{__('app.shop')}}</a></li>
+                                        <li class="single-list"><a href="{{ route('blog')}}" class="single">{{__('app.blog')}}</a></li>
+                                        <li class="single-list"><a href="{{ route('contact')}}" class="single">{{__('app.contact')}}</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -559,10 +555,8 @@ $lang = \Illuminate\Support\Facades\App::getLocale()
                     <div class="d-flex justify-content-between gap-14 flex-wrap">
                         <div class="privacy-section d-flex">
                             <a href="https://dora.uz/">
-                                <p class="pera mr-25">© 2024 Barcha huquqlar himoyalanadi - DORA</p>
-
+                                <p class="pera mr-25">{{__('app.copyright')}}</p>
                         </div>
-
                     </div>
                 </div>
             </div>
