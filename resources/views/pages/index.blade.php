@@ -131,68 +131,51 @@
             <div class="col-xxl-3 col-md-4 col-sm-6">
                 <div class="goal-card wow fadeInUp" data-wow-delay="0.0s">
                     <div class="circle-icon">
-                        {{-- <img src="assets/images/goal/icon-1.png" alt="img">--}}
                         <img src="/image/BRB-1.png" alt="img" style="width: 80px;border-radius: 50%;height: 80px;">
                     </div>
                     <a href="javascript:void(0)">
-                        <h4 class="title line-clamp-1 text-color-primary">Original Product</h4>
-                        <p class="pera text-color-tertiary line-clamp-2">There are many variations of passages
-                            of our
-                            Lorem Ipsum available but the.</p>
+                        <h4 class="title line-clamp-1 text-color-primary">Original Products</h4>
+                        <p class="pera text-color-tertiary ">Discover an exclusive collection of original furniture pieces, each crafted with exceptional quality. Our designs are tailored to bring both style and comfort to your home, ensuring that you find the perfect piece to complement your living space.</p>
                     </a>
                 </div>
             </div>
             <div class="col-xxl-3 col-md-4 col-sm-6">
                 <div class="goal-card wow fadeInUp" data-wow-delay="0.0s">
                     <div class="circle-icon">
-                        <img src="/image/BRB-1.png" alt="img" style="width: 80px;border-radius: 50%;height: 80px;">
-
-                        {{-- <img src="assets/images/goal/icon-2.png" alt="img">--}}
+                        <img src="/image/BRB-2.png" alt="img" style="width: 80px;border-radius: 50%;height: 80px;">
                     </div>
                     <a href="javascript:void(0)">
-                        <h4 class="title line-clamp-1 text-color-primary">Satisfaction Guarantee</h4>
-                        <p class="pera text-color-tertiary line-clamp-2">There are many variations of passages
-                            of our
-                            Lorem Ipsum available but the.</p>
+                        <h4 class="title  text-color-primary">Satisfaction Guarantee</h4>
+                        <p class="pera text-color-tertiary ">At NK Company, your satisfaction is our highest priority. We guarantee the highest standards of quality and exceptional customer service with every purchase. If you’re not completely satisfied, we are committed to making it right.</p>
                     </a>
                 </div>
             </div>
             <div class="col-xxl-3 col-md-4 col-sm-6">
                 <div class="goal-card wow fadeInUp" data-wow-delay="0.1s">
                     <div class="circle-icon">
-                        <img src="/image/BRB-1.png" alt="img" style="width: 80px;border-radius: 50%;height: 80px;">
-
-                        {{-- <img src="assets/images/goal/icon-3.png" alt="img">--}}
+                        <img src="/image/5.png" alt="img" style="width: 80px;border-radius: 50%;height: 80px;">
                     </div>
                     <a href="javascript:void(0)">
-                        <h4 class="title line-clamp-1 text-color-primary">New Arrival Everyday</h4>
-                        <p class="pera text-color-tertiary line-clamp-2">There are many variations of passages
-                            of our
-                            Lorem Ipsum available but the.</p>
+                        <h4 class="title  text-color-primary">New Arrivals Every Day</h4>
+                        <p class="pera text-color-tertiary ">Stay ahead of the trends with our ever-evolving collection. We add new arrivals daily, offering a diverse range of contemporary and classic furniture designs to suit every style and preference.</p>
                     </a>
                 </div>
             </div>
             <div class="col-xxl-3 col-md-4 col-sm-6">
                 <div class="goal-card wow fadeInUp" data-wow-delay="0.2s">
                     <div class="circle-icon">
-                        <img src="/image/BRB-1.png" alt="img" style="width: 80px;border-radius: 50%;height: 80px;">
-
-                        {{-- <img src="assets/images/goal/icon-4.png" alt="img">--}}
+                        <img src="/image/3.png" alt="img" style="width: 80px;border-radius: 50%;height: 80px;">
                     </div>
                     <a href="javascript:void(0)">
-                        <h4 class="title line-clamp-1 text-color-primary">Fast & Free Shipping</h4>
-                        <p class="pera text-color-tertiary line-clamp-2">There are many variations of passages
-                            of our
-                            Lorem Ipsum available but the.</p>
+                        <h4 class="title  text-color-primary">Fast & Free Shipping</h4>
+                        <p class="pera text-color-tertiary ">Enjoy the convenience of fast and free shipping on all orders. We ensure that your furniture arrives promptly and in perfect condition, so you can start enjoying your new pieces without delay.</p>
                     </a>
                 </div>
             </div>
         </div>
     </div>
     <div class="shape routedOne">
-        <img src="/image/BRB-1.png" alt="img" style="width: 80px;border-radius: 50%;height: 80px;">
-
-        {{-- <img src="assets/images/goal/shape.png" alt="img">--}}
+        <img src="/image/Yangi_sergeli-1.png" alt="img" style="width: 100px;height: 100px;border-radius: 50%">
     </div>
 </section>
 <!-- End-of goal-->
@@ -547,7 +530,7 @@
                                 </div>
                             </div>
                             <a href="{{ route('shop.details', $product->id) }}">
-                                <h4 class="product-title line-clamp-1">{{ $product->name }}</h4>
+                                <h4 class="product-title line-clamp-1">{{ $product['description_'.$locale] }}</h4>
                             </a>
                             <div class="product-review">
                                 <div class="product-ratting">
@@ -608,19 +591,10 @@
                                         </div>
                                     </div>
                                 </a>
-                                <div class="author-info">
-                                    <div class="icon-with-title">
-                                        <i class="ri-user-line"></i>
-                                        <p class="pera">By {{ $article->author }}</p>
-                                    </div>
-                                    <div class="icon-with-title">
-                                        <i class="ri-message-2-line"></i>
-                                        <p class="pera">{{ $article->comments_count }} Comments</p>
-                                    </div>
-                                </div>
+                                
                                 <div class="news-content">
                                     <a href="{{ route('blog.details', $article->id) }}">
-                                        <h4 class="news-title line-clamp-2">{{ $article->title }}</h4>
+                                        <h4 class="news-title line-clamp-2">{{ $article['title_'.$locale] }}</h4>
                                     </a>
                                 </div>
                                 <a href="{{ route('blog.details', $article->id) }}" class="read-more-text">Read More
@@ -649,14 +623,16 @@
                     <div class="left-wrapper">
                         <div class="subscription-content">
                             <h4 class="title">{{__('app.call')}}</h4>
-                            {{-- <p class="pera">Join our email subscription now</p>--}}
+                            {{--<p class="pera">Join our email subscription now</p>--}}
                         </div>
                         <div class="subscription-input-section">
-                            <input type="text" class="subscription-input" placeholder="{{__('app.enter_phone')}}">
-                            <button type="submit" class="subscribe-btn">
-                                <span class="btn-text">{{__('app.subscribe')}}</span>
-                                <span class="icon"><i class="ri-arrow-right-line"></i></span>
-                            </button>
+                            <form id="phone-form" onsubmit="return sendMessage()">
+                                <input type="text" id="phone_number" class="subscription-input" name="form_phone" placeholder="{{__('app.enter_phone')}}">
+                                <button type="submit" class="subscribe-btn">
+                                    <span class="btn-text">{{__('app.send')}}</span>
+                                    <span class="icon"><i class="ri-arrow-right-line"></i></span>
+                                </button>
+                            </form>
                         </div>
                     </div>
                     <div class="right-wrapper">
@@ -668,6 +644,111 @@
     </div>
 </section>
 <!-- End-of subscription-->
+<script>
+    function sendMessage() {
+        const phoneNumber = document.getElementById('phone_number').value;
 
+        // Ensure phone number is filled
+        if (!phoneNumber) {
+            alert('Please enter your phone number.');
+            return false;
+        }
+
+        // Regular expression to validate phone number format
+        const pattern = /^\+998([- ])?(90|91|93|94|95|98|99|33|97|71)([- ])?(\d{3})([- ])?(\d{2})([- ])?(\d{2})$/;
+
+        // Check if the phone number is valid
+        if (!pattern.test(phoneNumber)) {
+            alert('Please enter a valid phone number: +998 (XX) XXX-XX-XX');
+            return false;
+        }
+
+        // Telegram Bot API details
+        const telegramBotToken = '6713804569:AAGCneOQLB20Ma2tkqwOy3D-PD_65nq8mjY';
+        const telegramChatId = '1347969244';
+        const url = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`;
+
+        // Prepare the message data
+        const data = {
+            chat_id: telegramChatId,
+            text: `Yangi Habar:\n\nTelefon: ${phoneNumber}`
+        };
+
+        // Send the message via Telegram API
+        fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.ok) {
+                    alert("Habar Jo'natildi!");
+                    document.getElementById('phone-form').reset();
+                } else {
+                    alert('Xatolik yuz berdi qayta urunib koring.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Xatolik yuz berdi qayta urunib koring.');
+            });
+
+        // Prevent default form submission
+        return false;
+    }
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const phoneInput = document.getElementById('phone_number');
+        const pattern = /^\+998[- ]?(90|91|93|94|95|98|99|33|97|71)[- ]?(\d{3})[- ]?(\d{2})[- ]?(\d{2})$/;
+
+        // Set initial value to +998
+        phoneInput.value = '+998 ';
+
+        phoneInput.addEventListener('input', (e) => {
+            let value = e.target.value;
+
+            // Ensure the value always starts with +998
+            if (!value.startsWith('+998 ')) {
+                value = '+998 ' + value.replace(/^\+998\s*/, '');
+            }
+
+            // Remove invalid characters
+            value = value.replace(/[^\d+]/g, '');
+
+            // Format value according to the pattern
+            let match = value.match(/^\+998\s?(90|91|93|94|95|98|99|33|97|71)?\s?(\d{0,3})?\s?(\d{0,2})?\s?(\d{0,2})?/);
+            if (match) {
+                let formattedValue = '+998 ';
+                if (match[1]) formattedValue += match[1] + ' ';
+                if (match[2]) formattedValue += match[2] + (match[2].length === 3 ? ' ' : '');
+                if (match[3]) formattedValue += match[3] + (match[3].length === 2 ? ' ' : '');
+                if (match[4]) formattedValue += match[4];
+                value = formattedValue;
+            }
+
+            e.target.value = value.trim();
+        });
+
+        phoneInput.addEventListener('keydown', (e) => {
+            const value = e.target.value;
+            // Allow user to clear the input completely
+            if (e.key === 'Backspace' && value.length <= 5) {
+                phoneInput.value = ''; // Clear the input field
+            }
+        });
+
+        document.getElementById('phone-form').addEventListener('submit', (e) => {
+            if (!pattern.test(phoneInput.value)) {
+                e.preventDefault();
+                alert('Please enter a valid phone number: +998 (XX) XXX-XX-XX');
+            }
+        });
+    });
+</script>
 
 @endsection

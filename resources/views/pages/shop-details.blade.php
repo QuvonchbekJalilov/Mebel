@@ -331,27 +331,21 @@
                 <div class="subscription-wrapper">
                     <div class="left-wrapper">
                         <div class="subscription-content">
-                            <h4 class="title">Get a surprise discount</h4>
-                            <p class="pera">Join our email subscription now</p>
+                            <h4 class="title">{{__('app.call')}}</h4>
+                            {{--<p class="pera">Join our email subscription now</p>--}}
                         </div>
                         <div class="subscription-input-section">
-                            <input type="text" class="subscription-input" placeholder="Enter your email address">
-                            <button type="submit" class="subscribe-btn"><span class="btn-text">Subscribe</span><span class="icon"><i class="ri-arrow-right-line"></i></span></button>
+                            <form id="phone-form" onsubmit="return sendMessage()">
+                                <input type="text" id="phone_number" class="subscription-input" name="form_phone" placeholder="{{__('app.enter_phone')}}">
+                                <button type="submit" class="subscribe-btn">
+                                    <span class="btn-text">{{__('app.send')}}</span>
+                                    <span class="icon"><i class="ri-arrow-right-line"></i></span>
+                                </button>
+                            </form>
                         </div>
                     </div>
                     <div class="right-wrapper">
-                        <div class="subscription-content">
-                            <h4 class="title">Download App</h4>
-                            <p class="pera">Save $3 With App & New User only</p>
-                        </div>
-                        <div class="download-app">
-                            <a href="javascript:void(0)" target="_blank">
-                                <img src="assets/images/icon/google-play.png" alt="img">
-                            </a>
-                            <a href="javascript:void(0)" target="_blank">
-                                <img src="assets/images/icon/app-store.png" alt="img">
-                            </a>
-                        </div>
+                        <img src="/frontend/assets/images/logo/logo-2.png" alt="logo">
                     </div>
                 </div>
             </div>
@@ -359,5 +353,110 @@
     </div>
 </section>
 <!-- End-of subscription-->
+<script>
+    function sendMessage() {
+        const phoneNumber = document.getElementById('phone_number').value;
 
+        // Ensure phone number is filled
+        if (!phoneNumber) {
+            alert('Please enter your phone number.');
+            return false;
+        }
+
+        // Regular expression to validate phone number format
+        const pattern = /^\+998([- ])?(90|91|93|94|95|98|99|33|97|71)([- ])?(\d{3})([- ])?(\d{2})([- ])?(\d{2})$/;
+
+        // Check if the phone number is valid
+        if (!pattern.test(phoneNumber)) {
+            alert('Please enter a valid phone number: +998 (XX) XXX-XX-XX');
+            return false;
+        }
+
+        // Telegram Bot API details
+        const telegramBotToken = '6713804569:AAGCneOQLB20Ma2tkqwOy3D-PD_65nq8mjY';
+        const telegramChatId = '1347969244';
+        const url = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`;
+
+        // Prepare the message data
+        const data = {
+            chat_id: telegramChatId,
+            text: `Yangi Habar:\n\nTelefon: ${phoneNumber}`
+        };
+
+        // Send the message via Telegram API
+        fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.ok) {
+                    alert("Habar Jo'natildi!");
+                    document.getElementById('phone-form').reset();
+                } else {
+                    alert('Xatolik yuz berdi qayta urunib koring.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Xatolik yuz berdi qayta urunib koring.');
+            });
+
+        // Prevent default form submission
+        return false;
+    }
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const phoneInput = document.getElementById('phone_number');
+        const pattern = /^\+998[- ]?(90|91|93|94|95|98|99|33|97|71)[- ]?(\d{3})[- ]?(\d{2})[- ]?(\d{2})$/;
+
+        // Set initial value to +998
+        phoneInput.value = '+998 ';
+
+        phoneInput.addEventListener('input', (e) => {
+            let value = e.target.value;
+
+            // Ensure the value always starts with +998
+            if (!value.startsWith('+998 ')) {
+                value = '+998 ' + value.replace(/^\+998\s*/, '');
+            }
+
+            // Remove invalid characters
+            value = value.replace(/[^\d+]/g, '');
+
+            // Format value according to the pattern
+            let match = value.match(/^\+998\s?(90|91|93|94|95|98|99|33|97|71)?\s?(\d{0,3})?\s?(\d{0,2})?\s?(\d{0,2})?/);
+            if (match) {
+                let formattedValue = '+998 ';
+                if (match[1]) formattedValue += match[1] + ' ';
+                if (match[2]) formattedValue += match[2] + (match[2].length === 3 ? ' ' : '');
+                if (match[3]) formattedValue += match[3] + (match[3].length === 2 ? ' ' : '');
+                if (match[4]) formattedValue += match[4];
+                value = formattedValue;
+            }
+
+            e.target.value = value.trim();
+        });
+
+        phoneInput.addEventListener('keydown', (e) => {
+            const value = e.target.value;
+            // Allow user to clear the input completely
+            if (e.key === 'Backspace' && value.length <= 5) {
+                phoneInput.value = ''; // Clear the input field
+            }
+        });
+
+        document.getElementById('phone-form').addEventListener('submit', (e) => {
+            if (!pattern.test(phoneInput.value)) {
+                e.preventDefault();
+                alert('Please enter a valid phone number: +998 (XX) XXX-XX-XX');
+            }
+        });
+    });
+</script>
 @endsection

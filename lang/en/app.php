@@ -24,4 +24,7 @@ return [
     'enter_phone' => 'Enter your phone number',
     'subscribe' => 'Subscribe',
 
+    'menu' => "Menu",
+    'copyright' => "© 2024 All rights reserved - DORA",
+
 ];

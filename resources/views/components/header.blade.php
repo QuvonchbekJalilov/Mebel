@@ -37,7 +37,7 @@
 
             <li class="menu-item">
                 <a href="{{ route('products.index')}}" class="menu-link waves-effect waves-light">
-                    <span class="menu-icon"><i class="bx bx-calendar"></i></span>
+                    <span class="menu-icon"><i class="bx bx-basket"></i></span>
                     <span class="menu-text"> Mahsulotlar </span>
                 </a>
             </li>
@@ -51,25 +51,25 @@
 
             <li class="menu-item">
                 <a href="{{ route('blogs.index')}}" class="menu-link waves-effect waves-light">
-                    <span class="menu-icon"><i class="bx bx-calendar"></i></span>
+                    <span class="menu-icon"><i class="bx bx-news"></i></span>
                     <span class="menu-text"> Bloglar </span>
                 </a>
             </li>
             <li class="menu-item">
                 <a href="{{ route('contacts.index')}}" class="menu-link waves-effect waves-light">
-                    <span class="menu-icon"><i class="bx bx-calendar"></i></span>
+                    <span class="menu-icon"><i class="bx bx-phone"></i></span>
                     <span class="menu-text"> Kontakt </span>
                 </a>
             </li>
             <li class="menu-item">
                 <a href="{{ route('brands.index')}}" class="menu-link waves-effect waves-light">
-                    <span class="menu-icon"><i class="bx bx-brand"></i></span>
+                    <span class="menu-icon"><i class="bx bx-basket"></i></span>
                     <span class="menu-text"> Brendlar </span>
                 </a>
             </li>
             <li class="menu-item">
                 <a href="{{ route('orders.index')}}" class="menu-link waves-effect waves-light">
-                    <span class="menu-icon"><i class="bx bx-brand"></i></span>
+                    <span class="menu-icon"><i class="bx bx-basket"></i></span>
                     <span class="menu-text"> Buyurtmalar </span>
                 </a>
             </li>

@@ -19,6 +19,9 @@ class OrderController extends Controller
     }
     public function store(Request $request)
     {
+        // Log the incoming request data for debugging
+        Log::info('Incoming request data:', $request->all());
+    
         // Validate request
         // $request->validate([
         //     'first_name' => 'required|string|max:255',
@@ -30,14 +33,13 @@ class OrderController extends Controller
         //     'products.*.total_price' => 'required|numeric',
         //     'total_price' => 'required|string',
         // ]);
-
         // Start a database transaction
         DB::beginTransaction();
-
+    
         try {
             // Handle total price with commas
             $totalPrice = str_replace(',', '', $request->input('total_price')); // Remove commas
-
+    
             // Prepare product details
             $products = collect($request->input('products'))->map(function ($product) {
                 return [
@@ -45,8 +47,8 @@ class OrderController extends Controller
                     'quantity' => (int) $product['quantity'],
                     'total_price' => (float) $product['total_price'],
                 ];
-            });
-
+            })->values(); // Use values() to reindex
+    
             // Debugging output
             Log::info('Creating order with data:', [
                 'first_name' => $request->first_name,
@@ -55,7 +57,7 @@ class OrderController extends Controller
                 'products' => $products->toArray(),
                 'total_price' => $totalPrice,
             ]);
-
+    
             // Create order
             $order = new Order();
             $order->first_name = $request->first_name;
@@ -64,11 +66,10 @@ class OrderController extends Controller
             $order->products = json_encode($products->toArray()); // Encode as JSON string
             $order->total_price = $totalPrice; // Use the parsed total price
             $order->save();
-
             // Update stock for each product
             foreach ($products as $product) {
                 $productModel = Product::find($product['product_id']);
-
+    
                 if ($productModel) {
                     // Ensure stock does not go below zero
                     if ($productModel->stock >= $product['quantity']) {
@@ -80,24 +81,26 @@ class OrderController extends Controller
                     }
                 }
             }
-
+    
             // Clear the cart
             Cart::destroy();
-
+    
             // Commit the transaction
             DB::commit();
-
+            Log::info('Transaction committed successfully');
+    
             // Redirect to orders page with success message
             return redirect()->route('shop')->with('success', 'Order placed successfully!');
         } catch (\Exception $e) {
             // Rollback the transaction if something went wrong
             DB::rollBack();
-
+    
             Log::error('Order creation failed: ' . $e->getMessage());
-
+    
             return redirect()->back()->with('error', 'Order creation failed. Please try again.');
         }
     }
+    
 
     public function updateStatus(Request $request)
     {

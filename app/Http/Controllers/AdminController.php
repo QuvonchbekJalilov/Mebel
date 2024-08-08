@@ -36,7 +36,7 @@ class AdminController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('index');
+        return redirect()->route('home');
     }
 
     public function changePassword(){
