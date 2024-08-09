@@ -200,32 +200,25 @@ $lang = \Illuminate\Support\Facades\App::getLocale()
                         <div class="col-xl-3 col-lg-4 col-sm-6">
                             <div class="single-footer-caption">
                                 <div class="footer-tittle">
-                                    <h4 class="title">About Us</h4>
-                                    <p class="pera">At NK company, we take pride in offering exquisite furniture that combines craftsmanship with contemporary design. </p>
+                                    <h4 class="title">{{__('app.about')}}</h4>
+                                    <p class="pera">{{__('app.footer')}}</p>
                                     <ul class="info-listing">
                                         <li class="footer-info-list">
-                                            <a href="mailto:info@yourcompany.com" class="single">
+                                            <a href="#" class="single">
                                                 <i class="ri-mail-fill"></i>
-                                                <p class="pera">info@yourcompany.com</p>
-                                            </a>
-                                        </li>
-                                        <li class="footer-info-list">
-                                            <a href="tel:+1234567890" class="single">
-                                                <div class="d-flex gap-6">
-                                                    <i class="ri-phone-fill"></i>
-                                                    <p class="pera">+123 456 7890</p>
-                                                </div>
+                                                <p class="pera">info@nk.com</p>
                                             </a>
                                         </li>
                                         <li class="footer-info-list">
                                             <a href="#" class="single">
-                                                <i class="ri-map-pin-fill"></i>
-                                                <p class="pera">123 Furniture Lane, Design City, DC 12345</p>
+                                                <div class="d-flex gap-6">
+                                                    <i class="ri-phone-fill"></i>
+                                                    <p class="pera">+998 93 588-91-14</p>
+                                                </div>
                                             </a>
                                         </li>
                                     </ul>
                                 </div>
-
                             </div>
                         </div>
                         <div class="col-xl-6">
@@ -234,7 +227,7 @@ $lang = \Illuminate\Support\Facades\App::getLocale()
                                     <a href="javascript:void(0)"><img src="/frontend/assets/images/logo/logo-dark.png" alt="logo"></a>
                                 </div>
                                 <div class="footer-social-section">
-                                    <h4 class="title">Follow Us</h4>
+                                    <h4 class="title">{{__('app.footer2')}}</h4>
                                     <ul class="footer-social-lists">
                                         <li class="list-icon">
                                             <a href="javascript:void(0)" class="list">

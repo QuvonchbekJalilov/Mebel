@@ -5,19 +5,16 @@
 
 @section('content')
 
-
-
-
 <section class="breadcrumb-section breadcrumb-bg">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb-text">
-                    <h1 class="title wow fadeInUp" data-wow-delay="0.1s">Shop Details</h1>
+                    <h1 class="title wow fadeInUp" data-wow-delay="0.1s">{{__('app.shop_detail')}}</h1>
                     <nav aria-label="breadcrumb" class="breadcrumb-nav wow fadeInUp" data-wow-delay="0.0s">
                         <ul class="breadcrumb listing">
-                            <li class="breadcrumb-item single-list"><a href="/" class="single">Home</a></li>
-                            <li class="breadcrumb-item single-list" aria-current="page"><a href="javascript:void(0)" class="single active">Shop Details</a></li>
+                            <li class="breadcrumb-item single-list"><a href="/" class="single">{{__('app.home')}}</a></li>
+                            <li class="breadcrumb-item single-list" aria-current="page"><a href="javascript:void(0)" class="single active">{{__('app.shop_detail')}}</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -48,22 +45,22 @@
                 <div class="product-details-content">
                     <div class="first-section">
                         <div class="category-name">
-                            <p class="pera"><span class="highlight">Category: </span>{{ $product->category['name_'.App::getLocale()]}}</p>
+                            <p class="pera"><span class="highlight">{{__('app.single_category')}}: </span>{{ $product->category['name_'.App::getLocale()]}}</p>
                         </div>
                         <h4 class="product-name">{{ $product['title_'.$locale]}}</h4>
                         <div class="product-price-section">
                             <div class="price-section">
                                 @if($product->getDiscount())
-                                <h4 class="price discounted">{{ $product->price }} So'm</h4>
-                                <h4 class="price">{{ $product->getDiscountedPrice() }} So'm</h4>
+                                <h4 class="price discounted">{{ $product->price }} UZS</h4>
+                                <h4 class="price">{{ $product->getDiscountedPrice() }} UZS</h4>
                                 @else
-                                <h4 class="price">{{ $product->price }} So'm</h4>
+                                <h4 class="price">{{ $product->price }} UZS</h4>
                                 @endif
                             </div>
 
                         </div>
                         <div class="stock-section">
-                            <p class="stock-count highlight">{{$product->stock}} in stock</p>
+                            <p class="stock-count highlight">{{$product->stock}} {{__('app.stock')}}</p>
                             <!-- <p class="stock-count">( Sold 21 Products in last
                                 10 Hours )</p> -->
                         </div>
@@ -73,7 +70,7 @@
                     <div class="third-section">
                         <div class="row g-4">
                             <div class="col-md-3">
-                                <h4 class="label">Quantity</h4>
+                                <h4 class="label">{{__('app.quantity')}}</h4>
                             </div>
                             <div class="col-md-9">
                                 <div class="quantity-section">
@@ -94,7 +91,7 @@
                                         @csrf
                                         <input type="hidden" name="product_id" value="{{ $product->id }}">
                                         <input type="hidden" id="hidden-quantity" name="qty" value="1"> <!-- Hidden input for quantity -->
-                                        <button type="submit" class="cart-btn" name="submit" value="addtocart">Add to Cart</button>
+                                        <button type="submit" class="cart-btn" name="submit" value="addtocart">{{__('app.cart')}}</button>
                                     </form>
                                 </div>
                                 <script>
@@ -202,7 +199,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title">
-                    <h4 class="title">Related Products</h4>
+                    <h4 class="title">{{__('app.shopdetail1')}}</h4>
                 </div>
                 <div class="swiper featureSwiper-active">
                     <div class="swiper-wrapper">
@@ -257,7 +254,7 @@
                                             @csrf
                                             <input type="hidden" name="product_id" value="{{ $relatedProduct->id }}">
                                             <input type="hidden" id="hidden-quantity" name="qty" value="1"> <!-- Hidden input for quantity -->
-                                            <button type="submit" class="cart-btn" name="submit" value="addtocart">Add to Cart</button>
+                                            <button type="submit" class="cart-btn" name="submit" value="addtocart">{{__('app.cart')}}</button>
                                         </form>
 
                                         <div class="fill-pill-btn qty-btn">
@@ -278,7 +275,7 @@
                                         @csrf
                                         <input type="hidden" name="product_id" value="{{ $relatedProduct->id }}">
                                         <input type="hidden" id="hidden-quantity" name="qty" value="1"> <!-- Hidden input for quantity -->
-                                        <button type="submit" class="cart-btn" name="submit" value="addtocart">Add to Cart</button>
+                                        <button type="submit" class="cart-btn" name="submit" value="addtocart">{{__('app.cart')}}</button>
                                     </form>
 
                                 </div>

@@ -12,11 +12,11 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb-text">
-                    <h1 class="title wow fadeInUp" data-wow-delay="0.1s">Shop</h1>
+                    <h1 class="title wow fadeInUp" data-wow-delay="0.1s">{{__('app.shop')}}</h1>
                     <nav aria-label="breadcrumb" class="breadcrumb-nav wow fadeInUp" data-wow-delay="0.0s">
                         <ul class="breadcrumb listing">
-                            <li class="breadcrumb-item single-list"><a href="/" class="single">Home</a></li>
-                            <li class="breadcrumb-item single-list" aria-current="page"><a href="javascript:void(0)" class="single active">Shop</a></li>
+                            <li class="breadcrumb-item single-list"><a href="/" class="single">{{__('app.home')}}</a></li>
+                            <li class="breadcrumb-item single-list" aria-current="page"><a href="javascript:void(0)" class="single active">{{__('app.shop')}}</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -55,11 +55,11 @@
                                     <!-- Show discounted price if available -->
                                     @if($product->getDiscount())
                                     <h4 class="price text-color-primary">
-                                        {{ $product->getDiscountedPrice() }} So'm
+                                        {{ $product->getDiscountedPrice() }} UZS
                                         <span class="text-muted text-decoration-line-through">{{ $product->price }} So'm</span>
                                     </h4>
                                     @else
-                                    <h4 class="price text-color-primary">{{ $product->price }} So'm</h4>
+                                    <h4 class="price text-color-primary">{{ $product->price }} UZS</h4>
                                     @endif
                                 </div>
                             </div>
@@ -98,7 +98,7 @@
                                         @csrf
                                         <input type="hidden" name="product_id" value="{{ $product->id }}">
                                         <input type="hidden" name="qty" value="1" class="qty-input">
-                                        <button type="submit" class="cart-btn" name="submit" value="addtocart">Add to Cart</button>
+                                        <button type="submit" class="cart-btn" name="submit" value="addtocart">{{__('app.cart')}}</button>
                                     </form>
 
                                 </div>
@@ -109,7 +109,7 @@
                                 <form action="{{ route('cart.add')}}" method="POST">
                                     @csrf
                                     <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                    <button type="submit" class="cart-btn" name="submit" value="addtocart">Add to Cart</button>
+                                    <button type="submit" class="cart-btn" name="submit" value="addtocart">{{__('app.cart')}}</button>
                                 </form>
                             </div>
                         </div>
@@ -134,7 +134,7 @@
                     </div>
                     <div class="search-section">
                         <div class="heading">
-                            <h4 class="title">Categories</h4>
+                            <h4 class="title">{{__('app.category')}}</h4>
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="10" viewBox="0 0 20 10" fill="none">
                                 <path d="M20 1.05636C19.9113 0.744994 19.7615 0.47255 19.4676 0.263351C18.9685 -0.0820697 18.2475 -0.0917998 17.7484 0.258486C17.6541 0.326597 17.5598 0.399573 17.4711 0.477415C15.042 2.60832 12.6073 4.74409 10.1782 6.875C10.1228 6.92365 10.0784 6.98203 9.94531 7.0696C9.90649 7.01122 9.88431 6.93824 9.82885 6.88959C7.37757 4.73436 4.92074 2.58399 2.46946 0.428762C2.03688 0.0492861 1.53775 -0.0966664 0.938797 0.0687463C0.0680942 0.312 -0.286842 1.29475 0.262201 1.93694C0.323206 2.00991 0.395302 2.07802 0.467398 2.14614C3.2958 4.62733 6.11865 7.10852 8.94705 9.58485C9.46282 10.0373 10.1172 10.1249 10.7106 9.82323C10.8548 9.75026 10.9824 9.64323 11.0989 9.54106C13.8441 7.13285 16.5837 4.72463 19.3345 2.32128C19.6395 2.0537 19.9113 1.78126 20 1.39692C20 1.28502 20 1.17312 20 1.05636Z" fill="currentColor" />
                             </svg>
@@ -161,7 +161,7 @@
                     <!-- Price Filter Section -->
                     <div class="search-section">
                         <div class="heading">
-                            <h4 class="title">Price Filter</h4>
+                            <h4 class="title">{{__('app.shop1')}}</h4>
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="10" viewBox="0 0 20 10" fill="none">
                                 <path d="M20 1.05636C19.9113 0.744994 19.7615 0.47255 19.4676 0.263351C18.9685 -0.0820697 18.2475 -0.0917998 17.7484 0.258486C17.6541 0.326597 17.5598 0.399573 17.4711 0.477415C15.042 2.60832 12.6073 4.74409 10.1782 6.875C10.1228 6.92365 10.0784 6.98203 9.94531 7.0696C9.90649 7.01122 9.88431 6.93824 9.82885 6.88959C7.37757 4.73436 4.92074 2.58399 2.46946 0.428762C2.03688 0.0492861 1.53775 -0.0966664 0.938797 0.0687463C0.0680942 0.312 -0.286842 1.29475 0.262201 1.93694C0.323206 2.00991 0.395302 2.07802 0.467398 2.14614C3.2958 4.62733 6.11865 7.10852 8.94705 9.58485C9.46282 10.0373 10.1172 10.1249 10.7106 9.82323C10.8548 9.75026 10.9824 9.64323 11.0989 9.54106C13.8441 7.13285 16.5837 4.72463 19.3345 2.32128C19.6395 2.0537 19.9113 1.78126 20 1.39692C20 1.28502 20 1.17312 20 1.05636Z" fill="currentColor" />
                             </svg>
@@ -170,7 +170,7 @@
                             <div id="slider-range" class="range-bar"></div>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="range-value">
-                                    <p class="pera">Price: </p>
+                                    <p class="pera">{{__('app.price')}}: </p>
                                     <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
                                 </div>
                             </div>
