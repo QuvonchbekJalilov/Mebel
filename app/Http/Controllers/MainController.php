@@ -23,7 +23,7 @@ class MainController extends Controller
         $products = Product::where('best_seller', 'on')->get();
         $news = Blog::all();
         $locale = $this->language();
-        $sell = Product::where('best_seller', 'of')->get();
+        $sell = Product::where('best_seller', 'off')->get();
         return view('pages.index', compact('locale', 'brands', 'products', 'news','sell'));
     }
 

@@ -35,8 +35,8 @@
                         <img src="/image/BRB-1.png" alt="img" style="width: 80px;border-radius: 50%;height: 80px;">
                     </div>
                     <a href="javascript:void(0)">
-                        <h4 class="title line-clamp-1 text-color-primary">Original Products</h4>
-                        <p class="pera text-color-tertiary ">Discover an exclusive collection of original furniture pieces, each crafted with exceptional quality. Our designs are tailored to bring both style and comfort to your home, ensuring that you find the perfect piece to complement your living space.</p>
+                        <h4 class="title line-clamp-1 text-color-primary">{{__('app.about1')}}</h4>
+                        <p class="pera text-color-tertiary ">{{__('app.about2')}}</p>
                     </a>
                 </div>
             </div>
@@ -46,8 +46,8 @@
                         <img src="/image/BRB-2.png" alt="img" style="width: 80px;border-radius: 50%;height: 80px;">
                     </div>
                     <a href="javascript:void(0)">
-                        <h4 class="title  text-color-primary">Satisfaction Guarantee</h4>
-                        <p class="pera text-color-tertiary ">At NK Company, your satisfaction is our highest priority. We guarantee the highest standards of quality and exceptional customer service with every purchase. If you’re not completely satisfied, we are committed to making it right.</p>
+                        <h4 class="title  text-color-primary">{{__('app.about3')}}</h4>
+                        <p class="pera text-color-tertiary ">{{__('app.about4')}}</p>
                     </a>
                 </div>
             </div>
@@ -57,8 +57,8 @@
                         <img src="/image/5.png" alt="img" style="width: 80px;border-radius: 50%;height: 80px;">
                     </div>
                     <a href="javascript:void(0)">
-                        <h4 class="title  text-color-primary">New Arrivals Every Day</h4>
-                        <p class="pera text-color-tertiary ">Stay ahead of the trends with our ever-evolving collection. We add new arrivals daily, offering a diverse range of contemporary and classic furniture designs to suit every style and preference.</p>
+                        <h4 class="title  text-color-primary">{{__('app.about5')}}</h4>
+                        <p class="pera text-color-tertiary ">{{__('app.about6')}}</p>
                     </a>
                 </div>
             </div>
@@ -68,8 +68,8 @@
                         <img src="/image/3.png" alt="img" style="width: 80px;border-radius: 50%;height: 80px;">
                     </div>
                     <a href="javascript:void(0)">
-                        <h4 class="title  text-color-primary">Fast & Free Shipping</h4>
-                        <p class="pera text-color-tertiary ">Enjoy the convenience of fast and free shipping on all orders. We ensure that your furniture arrives promptly and in perfect condition, so you can start enjoying your new pieces without delay.</p>
+                        <h4 class="title  text-color-primary">{{__('app.about7')}}</h4>
+                        <p class="pera text-color-tertiary ">{{__('app.about8')}}</p>
                     </a>
                 </div>
             </div>
@@ -102,7 +102,7 @@
                             <img src="/image/Yangi_Sergeli-2.png" alt="img">
                             <div class="main-circle">
                                 <div class="curve">
-                                    <h1 class="curve-text">Service Furniture Creative Design</h1>
+                                    <h1 class="curve-text">{{__('app.about9')}}</h1>
                                 </div>
                                 <div class="child-circle"></div>
                                 <div class="sub-child-circle"></div>
@@ -116,10 +116,10 @@
             </div>
             <div class="col-xl-6">
                 <div class="about-caption">
-                    <p class="heading">About Us</p>
+                    <p class="heading">{{__('app.about10')}}</p>
                     <div class="section-title">
-                        <h4 class="title">Pure and Organic Quality</h4>
-                        <p class="pera">At our furniture company in Uzbekistan, we are committed to providing pure and organic quality in every piece we offer. Our furniture is expertly crafted with attention to detail, ensuring durability and timeless elegance. Embrace a lifestyle of sophistication and comfort with our exquisite range.</p>
+                        <h4 class="title">{{__('app.about11')}}</h4>
+                        <p class="pera">{{__('app.about12')}}</p>
                     </div>
                 </div>
                 <div class="goal-card">
@@ -127,8 +127,8 @@
                         <img src="/image/MSMA-2.png" alt="img" style="width: 70px;height: 70px;border-radius: 50%">
                     </div>
                     <a href="javascript:void(0)">
-                        <h4 class="title line-clamp-1 text-color-primary">Product Return Policy</h4>
-                        <p class="pera text-color-tertiary line-clamp-2">We offer a hassle-free return policy to ensure your complete satisfaction. If you're not entirely pleased with your purchase, we're here to assist you.</p>
+                        <h4 class="title line-clamp-1 text-color-primary">{{__('app.about13')}}</h4>
+                        <p class="pera text-color-tertiary line-clamp-2">{{__('app.about14')}}</p>
                     </a>
                 </div>
                 <div class="goal-card mb-0">
@@ -136,8 +136,8 @@
                         <img src="/image/MSMA-2.png" alt="img" style="width: 70px;height: 70px;border-radius: 50%">
                     </div>
                     <a href="javascript:void(0)">
-                        <h4 class="title line-clamp-1 text-color-primary">100% Quality Furniture</h4>
-                        <p class="pera text-color-tertiary line-clamp-2">Our furniture is crafted to the highest standards, offering you pieces that are both beautiful and long-lasting, ensuring a valuable addition to your home.</p>
+                        <h4 class="title line-clamp-1 text-color-primary">{{__('app.about15')}}</h4>
+                        <p class="pera text-color-tertiary line-clamp-2">{{__('app.about16')}}</p>
                     </a>
                 </div>
             </div>
@@ -156,7 +156,7 @@
         <div class="row justify-content-center position-relative">
             <div class="col-xl-6">
                 <div class="section-title text-center wow fadeInUp" data-wow-delay="0.0s">
-                    <h4 class="title">Affordable Furniture for Every Budget</h4>
+                    <h4 class="title">{{__('app.about17')}}</h4>
                 </div>
             </div>
         </div>
@@ -169,8 +169,8 @@
                     </div>
                 </div>
                 <a href="javascript:void(0)">
-                    <h4 class="title line-clamp-1 text-color-primary">Choose Your Product</h4>
-                    <p class="pera text-color-tertiary line-clamp-3">Browse our extensive range of furniture to find the perfect pieces for your space. We offer a variety of styles and options to suit any taste and budget.</p>
+                    <h4 class="title line-clamp-1 text-color-primary">{{__('app.about18')}}</h4>
+                    <p class="pera text-color-tertiary line-clamp-3">{{__('app.about19')}}</p>
                 </a>
             </div>
             <div class="pointer ">
@@ -187,8 +187,8 @@
                     </div>
                 </div>
                 <a href="javascript:void(0)">
-                    <h4 class="title line-clamp-1 text-color-primary">Provide Delivery Details</h4>
-                    <p class="pera text-color-tertiary line-clamp-3">Enter your delivery information to ensure that your chosen furniture arrives at your desired location efficiently.</p>
+                    <h4 class="title line-clamp-1 text-color-primary">{{__('app.about20')}}</h4>
+                    <p class="pera text-color-tertiary line-clamp-3">{{__('app.about21')}}</p>
                 </a>
             </div>
             <div class="pointer ">
@@ -205,8 +205,8 @@
                     </div>
                 </div>
                 <a href="javascript:void(0)">
-                    <h4 class="title line-clamp-1 text-color-primary">Enjoy Your New Furniture</h4>
-                    <p class="pera text-color-tertiary line-clamp-3">Sit back and enjoy your new furniture, crafted to enhance your living space with style, comfort, and quality.</p>
+                    <h4 class="title line-clamp-1 text-color-primary">{{__('app.about22')}}</h4>
+                    <p class="pera text-color-tertiary line-clamp-3">{{__('app.about23')}}</p>
                 </a>
             </div>
         </div>
@@ -222,7 +222,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title">
-                    <h4 class="title">Brands</h4>
+                    <h4 class="title">{{__('app.brands')}}</h4>
                 </div>
                 <div class="swiper brandSwiper-active">
                     <div class="swiper-wrapper">
@@ -251,7 +251,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title text-center">
-                    <h4 class="title">What Our Clients Say</h4>
+                    <h4 class="title">{{__('app.about24')}}</h4>
                 </div>
                 <div class="swiper testimonialSwiper-active">
                     <div class="swiper-wrapper">
@@ -261,13 +261,13 @@
                                     <img src="/frontend/assets/images/logo/logo-2.png" alt="logo" style="width: 45px;height: 45px;border-radius: 50%">
                                 </div>
                                 <p class="pera line-clamp-4">
-                                    "The quality of the furniture is outstanding! The attention to detail and craftsmanship exceeded my expectations. The customer service was also top-notch."
+                                    {{__('app.testimonial1')}}
                                 </p>
                                 <div class="user-info">
                                     <div class="user-img">
                                         <img src="/frontend/assets/images/logo/logo-2.png" alt="logo">
                                     </div>
-                                    <h4 class="user-name line-clamp-1">Rhodes Jhon</h4>
+                                    <h4 class="user-name line-clamp-1">Rustam Karimov</h4> <!-- Replaced with an Uzbek name -->
                                 </div>
                             </div>
                         </div>
@@ -277,13 +277,13 @@
                                     <img src="/frontend/assets/images/logo/logo-2.png" alt="logo" style="width: 45px;height: 45px;border-radius: 50%">
                                 </div>
                                 <p class="pera line-clamp-4">
-                                    "I was impressed by the wide range of styles and options available. The delivery was prompt, and the furniture fits perfectly in my home."
+                                    {{__('app.testimonial2')}}
                                 </p>
                                 <div class="user-info">
                                     <div class="user-img">
                                         <img src="/frontend/assets/images/logo/logo-2.png" alt="logo">
                                     </div>
-                                    <h4 class="user-name line-clamp-1">Steel Golden Agave</h4>
+                                    <h4 class="user-name line-clamp-1">Gulnora Usmanova</h4> <!-- Replaced with an Uzbek name -->
                                 </div>
                             </div>
                         </div>
@@ -293,13 +293,13 @@
                                     <img src="/frontend/assets/images/logo/logo-2.png" alt="logo" style="width: 45px;height: 45px;border-radius: 50%">
                                 </div>
                                 <p class="pera line-clamp-4">
-                                    "Exceptional service and high-quality furniture. The design is both stylish and functional, and I couldn't be happier with my purchase."
+                                    {{__('app.testimonial3')}}
                                 </p>
                                 <div class="user-info">
                                     <div class="user-img">
                                         <img src="/frontend/assets/images/logo/logo-2.png" alt="logo">
                                     </div>
-                                    <h4 class="user-name line-clamp-1">Juliyet Jhon</h4>
+                                    <h4 class="user-name line-clamp-1">Azizbek Tursunov</h4> <!-- Replaced with an Uzbek name -->
                                 </div>
                             </div>
                         </div>
@@ -309,13 +309,13 @@
                                     <img src="/frontend/assets/images/logo/logo-2.png" alt="logo" style="width: 45px;height: 45px;border-radius: 50%">
                                 </div>
                                 <p class="pera line-clamp-4">
-                                    "The furniture arrived on time and in perfect condition. The quality is remarkable, and the overall experience was seamless."
+                                    {{__('app.testimonial4')}}
                                 </p>
                                 <div class="user-info">
                                     <div class="user-img">
                                         <img src="/frontend/assets/images/logo/logo-2.png" alt="logo">
                                     </div>
-                                    <h4 class="user-name line-clamp-1">Rhodes Jhon</h4>
+                                    <h4 class="user-name line-clamp-1">Rustam Karimov</h4> <!-- Replaced with an Uzbek name -->
                                 </div>
                             </div>
                         </div>
@@ -325,13 +325,13 @@
                                     <img src="/frontend/assets/images/logo/logo-2.png" alt="logo" style="width: 45px;height: 45px;border-radius: 50%">
                                 </div>
                                 <p class="pera line-clamp-4">
-                                    "Fantastic quality and design. The customer service was very responsive, and the delivery was smooth. Highly recommend!"
+                                    {{__('app.testimonial5')}}
                                 </p>
                                 <div class="user-info">
                                     <div class="user-img">
                                         <img src="/frontend/assets/images/logo/logo-2.png" alt="logo">
                                     </div>
-                                    <h4 class="user-name line-clamp-1">Steel Golden Agave</h4>
+                                    <h4 class="user-name line-clamp-1">Gulnora Usmanova</h4> <!-- Replaced with an Uzbek name -->
                                 </div>
                             </div>
                         </div>
@@ -341,13 +341,13 @@
                                     <img src="/frontend/assets/images/logo/logo-2.png" alt="logo" style="width: 45px;height: 45px;border-radius: 50%">
                                 </div>
                                 <p class="pera line-clamp-4">
-                                    "I’m extremely satisfied with my new furniture. The craftsmanship is impeccable, and it truly enhances the look of my home."
+                                    {{__('app.testimonial6')}}
                                 </p>
                                 <div class="user-info">
                                     <div class="user-img">
                                         <img src="/frontend/assets/images/logo/logo-2.png" alt="logo">
                                     </div>
-                                    <h4 class="user-name line-clamp-1">Juliyet Jhon</h4>
+                                    <h4 class="user-name line-clamp-1">Azizbek Tursunov</h4> <!-- Replaced with an Uzbek name -->
                                 </div>
                             </div>
                         </div>
@@ -359,6 +359,7 @@
     </div>
 </section>
 <!-- End of testimonial -->
+
 
 
 <!-- Subscription area S t a r t -->

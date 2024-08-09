@@ -132,299 +132,7 @@ $lang = \Illuminate\Support\Facades\App::getLocale()
                 </div>
             </div>
             <!-- search overlay -->
-            <div class="search-container">
-                <div class="top-section">
-                    <div class="search-icon">
-                        <i class="ri-search-line"></i>
-                    </div>
-                    <div class="modal-search-box">
-                        <input type="text" id="searchField" class="search-field" placeholder="Search...">
-                        <button id="closeSearch" class="close-search-btn">
-                            <kbd class="light-text"> ESC </kbd>
-                        </button>
-                    </div>
-                </div>
-                <div class="body-section">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <ul class="listing">
-                                <li>
-                                    <h4 class="search-label">Recent</h4>
-                                </li>
-                                <li class="single-list">
-                                    <a href="javascript:void(0)">
-                                        <div class="search-flex">
-                                            <div class="content-img">
-                                                <img src="./frontend/assets/images/news/news-1.png" alt="img">
-                                            </div>
-                                            <div class="content">
-                                                <h4 class="title line-clamp-1">Modern studio apartment design bedroom
-                                                    and living space</h4>
-                                                <p class="pera line-clamp-2">Wonderful evening escapade starting at
-                                                    Madinat Jumeirah to the
-                                                    musical fountains to see another. Wonderful evening escapade
-                                                    starting at Madinat Jumeirah to
-                                                    the musical fountains to see another</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="single-list">
-                                    <a href="javascript:void(0)">
-                                        <div class="search-flex">
-                                            <div class="content-img">
-                                                <img src="./frontend/assets/images/news/news-2.png" alt="img">
-                                            </div>
-                                            <div class="content">
-                                                <h4 class="title line-clamp-1">Comfortable armchair in a room decorated
-                                                </h4>
-                                                <p class="pera line-clamp-2">Give a great end to your day in Dubai with
-                                                    our premium evening Red
-                                                    Dune Desert Safari. Give a great end to your day in Dubai with our
-                                                    premium evening Red Dune
-                                                    Desert Safari.</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="single-list">
-                                    <a href="javascript:void(0)">
-                                        <div class="search-flex">
-                                            <div class="content-img">
-                                                <img src="./frontend/assets/images/news/news-3.png" alt="img">
-                                            </div>
-                                            <div class="content">
-                                                <h4 class="title line-clamp-1">Cafe with coffee tables as sofas plants
-                                                    and shelves</h4>
-                                                <p class="pera line-clamp-2">Admission to Dubai’s biggest, multicultural
-                                                    festival park with
-                                                    replicas of iconic landmarks. Admission to Dubai’s biggest,
-                                                    multicultural festival park with
-                                                    replicas of iconic landmarks</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <h4 class="search-label">Recent</h4>
-                                </li>
-                                <li class="single-list">
-                                    <a href="javascript:void(0)">
-                                        <div class="search-flex">
-                                            <div class="content-img">
-                                                <img src="./frontend/assets/images/news/news-1.png" alt="img">
-                                            </div>
-                                            <div class="content">
-                                                <h4 class="title line-clamp-1">Modern studio apartment design bedroom
-                                                    and living space</h4>
-                                                <p class="pera line-clamp-2">Wonderful evening escapade starting at
-                                                    Madinat Jumeirah to the
-                                                    musical fountains to see another. Wonderful evening escapade
-                                                    starting at Madinat Jumeirah to
-                                                    the musical fountains to see another</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="single-list">
-                                    <a href="javascript:void(0)">
-                                        <div class="search-flex">
-                                            <div class="content-img">
-                                                <img src="./frontend/assets/images/news/news-2.png" alt="img">
-                                            </div>
-                                            <div class="content">
-                                                <h4 class="title line-clamp-1">Comfortable armchair in a room decorated
-                                                </h4>
-                                                <p class="pera line-clamp-2">Give a great end to your day in Dubai with
-                                                    our premium evening Red
-                                                    Dune Desert Safari. Give a great end to your day in Dubai with our
-                                                    premium evening Red Dune
-                                                    Desert Safari.</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="single-list">
-                                    <a href="javascript:void(0)">
-                                        <div class="search-flex">
-                                            <div class="content-img">
-                                                <img src="./frontend/assets/images/news/news-3.png" alt="img">
-                                            </div>
-                                            <div class="content">
-                                                <h4 class="title line-clamp-1">Cafe with coffee tables as sofas plants
-                                                    and shelves</h4>
-                                                <p class="pera line-clamp-2">Admission to Dubai’s biggest, multicultural
-                                                    festival park with
-                                                    replicas of iconic landmarks. Admission to Dubai’s biggest,
-                                                    multicultural festival park with
-                                                    replicas of iconic landmarks</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="right-section" id="filterMenu">
-                                <h4 class="title">Filter Options</h4>
-                                <!-- List of Filter -->
-                                <ul class="listing">
-                                    <li>
-                                        <h4 class="search-label">Post Type</h4>
-                                    </li>
-                                    <li class="single-list">
-                                        <div class="d-flex align-items-center gap-8">
-                                            <label class="checkbox-label">
-                                                <input class="checkbox-style" type="checkbox" value="remember" name="remember">
-                                                <span class="checkmark-style"></span>
-                                            </label>
-                                            <div class="content">
-                                                <p class="pera">Posts (3)</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="single-list">
-                                        <div class="d-flex align-items-center gap-8">
-                                            <label class="checkbox-label">
-                                                <input class="checkbox-style" type="checkbox" value="remember" name="remember">
-                                                <span class="checkmark-style"></span>
-                                            </label>
-                                            <div class="content">
-                                                <p class="pera">Posts (3)</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="single-list">
-                                        <div class="d-flex align-items-center gap-8">
-                                            <label class="checkbox-label">
-                                                <input class="checkbox-style" type="checkbox" value="remember" name="remember">
-                                                <span class="checkmark-style"></span>
-                                            </label>
-                                            <div class="content">
-                                                <p class="pera">Links (44)</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="single-list">
-                                        <div class="d-flex align-items-center gap-8">
-                                            <label class="checkbox-label">
-                                                <input class="checkbox-style" type="checkbox" value="remember" name="remember">
-                                                <span class="checkmark-style"></span>
-                                            </label>
-                                            <div class="content">
-                                                <p class="pera">Blogs (23)</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <!-- List of Filter -->
-                                <ul class="listing">
-                                    <li>
-                                        <h4 class="search-label">Categories</h4>
-                                    </li>
-                                    <li class="single-list">
-                                        <div class="d-flex align-items-center gap-8">
-                                            <label class="checkbox-label">
-                                                <input class="checkbox-style" type="checkbox" value="remember" name="remember">
-                                                <span class="checkmark-style"></span>
-                                            </label>
-                                            <div class="content">
-                                                <p class="pera">Articles (3)</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="single-list">
-                                        <div class="d-flex align-items-center gap-8">
-                                            <label class="checkbox-label">
-                                                <input class="checkbox-style" type="checkbox" value="remember" name="remember">
-                                                <span class="checkmark-style"></span>
-                                            </label>
-                                            <div class="content">
-                                                <p class="pera">Poll (3)</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="single-list">
-                                        <div class="d-flex align-items-center gap-8">
-                                            <label class="checkbox-label">
-                                                <input class="checkbox-style" type="checkbox" value="remember" name="remember">
-                                                <span class="checkmark-style"></span>
-                                            </label>
-                                            <div class="content">
-                                                <p class="pera">Article (44)</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="single-list">
-                                        <div class="d-flex align-items-center gap-8">
-                                            <label class="checkbox-label">
-                                                <input class="checkbox-style" type="checkbox" value="remember" name="remember">
-                                                <span class="checkmark-style"></span>
-                                            </label>
-                                            <div class="content">
-                                                <p class="pera">Blogs (23)</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <!-- List of Filter -->
-                                <ul class="listing">
-                                    <li>
-                                        <h4 class="search-label">ecommerce</h4>
-                                    </li>
-                                    <li class="single-list">
-                                        <div class="d-flex align-items-center gap-8">
-                                            <label class="checkbox-label">
-                                                <input class="checkbox-style" type="checkbox" value="remember" name="remember">
-                                                <span class="checkmark-style"></span>
-                                            </label>
-                                            <div class="content">
-                                                <p class="pera">Articles (3)</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="single-list">
-                                        <div class="d-flex align-items-center gap-8">
-                                            <label class="checkbox-label">
-                                                <input class="checkbox-style" type="checkbox" value="remember" name="remember">
-                                                <span class="checkmark-style"></span>
-                                            </label>
-                                            <div class="content">
-                                                <p class="pera">Poll (3)</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="single-list">
-                                        <div class="d-flex align-items-center gap-8">
-                                            <label class="checkbox-label">
-                                                <input class="checkbox-style" type="checkbox" value="remember" name="remember">
-                                                <span class="checkmark-style"></span>
-                                            </label>
-                                            <div class="content">
-                                                <p class="pera">Article (44)</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="single-list">
-                                        <div class="d-flex align-items-center gap-8">
-                                            <label class="checkbox-label">
-                                                <input class="checkbox-style" type="checkbox" value="remember" name="remember">
-                                                <span class="checkmark-style"></span>
-                                            </label>
-                                            <div class="content">
-                                                <p class="pera">Blogs (23)</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="div">
-                            <div class="filter_menu"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </header>
     <main>
@@ -439,22 +147,20 @@ $lang = \Illuminate\Support\Facades\App::getLocale()
                         <div class="col-xl-3 col-lg-4 col-sm-6">
                             <div class="single-footer-caption">
                                 <div class="footer-tittle">
-                                    <h4 class="title">About Us</h4>
-                                    <p class="pera">Etoshi is an exciting contemporary brand which focuses on
-                                        high-quality products
-                                        graphics with a British style</p>
+                                    <h4 class="title">{{__('app.about')}}</h4>
+                                    <p class="pera">{{__('app.footer')}}</p>
                                     <ul class="info-listing">
                                         <li class="footer-info-list">
                                             <a href="#" class="single">
                                                 <i class="ri-mail-fill"></i>
-                                                <p class="pera">info@mydomain.com</p>
+                                                <p class="pera">info@nk.com</p>
                                             </a>
                                         </li>
                                         <li class="footer-info-list">
                                             <a href="#" class="single">
                                                 <div class="d-flex gap-6">
                                                     <i class="ri-phone-fill"></i>
-                                                    <p class="pera">+777 2345 7885</p>
+                                                    <p class="pera">+998 93 588-91-14</p>
                                                 </div>
                                             </a>
                                         </li>
@@ -468,7 +174,7 @@ $lang = \Illuminate\Support\Facades\App::getLocale()
                                     <a href="javascript:void(0)"><img src="./frontend/assets/images/logo/logo-dark.png" alt="logo"></a>
                                 </div>
                                 <div class="footer-social-section">
-                                    <h4 class="title">Follow Us</h4>
+                                    <h4 class="title">{{__('app.footer2')}}</h4>
                                     <ul class="footer-social-lists">
                                         <li class="list-icon">
                                             <a href="javascript:void(0)" class="list">

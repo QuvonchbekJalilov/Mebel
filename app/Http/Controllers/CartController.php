@@ -87,6 +87,6 @@ class CartController extends Controller
 
         Cart::remove($rowId);
 
-        return response()->json(['success' => true, 'newSubtotal' => number_format(Cart::subtotal(), 2)]);
+        return response()->json(['success' => true, 'newSubtotal' => Cart::subtotal()]);
     }
 }

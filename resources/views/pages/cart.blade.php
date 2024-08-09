@@ -56,11 +56,11 @@ use Gloudemans\Shoppingcart\Facades\Cart;
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb-text">
-                    <h1 class="title wow fadeInUp" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">Shopping Cart</h1>
+                    <h1 class="title wow fadeInUp" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">{{__('app.cart1')}}</h1>
                     <nav aria-label="breadcrumb" class="breadcrumb-nav wow fadeInUp" data-wow-delay="0.0s" style="visibility: visible; animation-delay: 0s; animation-name: fadeInUp;">
                         <ul class="breadcrumb listing">
-                            <li class="breadcrumb-item single-list"><a href="{{ route('home') }}" class="single">Home</a></li>
-                            <li class="breadcrumb-item single-list" aria-current="page"><a href="javascript:void(0)" class="single active">Shopping Cart</a></li>
+                            <li class="breadcrumb-item single-list"><a href="{{ route('home') }}" class="single">{{__('app.home')}}</a></li>
+                            <li class="breadcrumb-item single-list" aria-current="page"><a href="javascript:void(0)" class="single active">{{__('app.cart1')}}</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -78,7 +78,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
                 
                 @if($cartContent->isEmpty())
                 <div class="alert alert-info">
-                    Savatda hozircha mahsulot yoʻq
+                    {{__('app.cart2')}}
                 </div>
                 @else
 
@@ -88,11 +88,11 @@ use Gloudemans\Shoppingcart\Facades\Cart;
                     <table class="table product-cart-table">
                         <thead>
                             <tr>
-                                <th>Image</th>
-                                <th>Product Information</th>
-                                <th>Quantity</th>
-                                <th>Total Price</th>
-                                <th>Action</th>
+                                <th>{{__('app.cart3')}}</th>
+                                <th>{{__('app.cart4')}}</th>
+                                <th>{{__('app.quantity')}}</th>
+                                <th>{{__('app.cart5')}}</th>
+                                <th>{{__('app.cart6')}}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -121,9 +121,9 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 
                                         <p class="cart-pera">
                                             @if ($product->getDiscount())
-                                            <span class="discounted-price">{{ number_format($effectivePrice, 2) }} So'm</span>
+                                            <span class="discounted-price">{{ number_format($effectivePrice, 2) }} UZS</span>
                                             @else
-                                            {{ number_format($effectivePrice, 2) }} So'm
+                                            {{ number_format($effectivePrice, 2) }} UZS
                                             @endif
                                         </p>
                                     </div>
@@ -147,12 +147,12 @@ use Gloudemans\Shoppingcart\Facades\Cart;
                                 </td>
                                 <td class="cart-total">
                                     <div class="total-section">
-                                        <p class="total">{{ number_format($totalPrice, 2) }} so'm</p>
+                                        <p class="total">{{ number_format($totalPrice, 2) }} UZS</p>
                                     </div>
                                 </td>
                                 <td class="cart-action">
                                     <button class="btn btn-danger btn-sm remove-item" data-rowid="{{ $cart->rowId }}">
-                                        <i class="fa fa-trash"></i> Remove
+                                        <i class="fa fa-trash"></i> {{__('app.remove')}}
                                     </button>
                                 </td>
                             </tr>
@@ -163,17 +163,17 @@ use Gloudemans\Shoppingcart\Facades\Cart;
                 </div>
 
                 <div class="cart-summary mt-3">
-                    <h4>Cart Summary</h4>
+                    <h4>{{__('app.cart7')}}</h4>
                     <div class="summary-content">
                         <div class="subtotal-container">
-                            <span class="subtotal-label">Umumiy Narxi:</span>
+                            <span class="subtotal-label">{{__('app.cart8')}}:</span>
                             <span class="subtotal-amount">{{ number_format($cartContent->sum(function($cart) {
                 $product = App\Models\Product::find($cart->id);
                 return $product->getDiscountedPrice() * $cart->qty;
-            }), 2) }} so'm</span>
+            }), 2) }} UZS</span>
                         </div>
                     </div>
-                    <a href="{{ route('checkout') }}" class="btn btn-primary">Proceed to Checkout</a>
+                    <a href="{{ route('checkout') }}" class="btn btn-primary">{{__('app.cart9')}}</a>
                 </div>
                 @endif
             </div>
@@ -187,21 +187,21 @@ use Gloudemans\Shoppingcart\Facades\Cart;
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="checkoutModalLabel">Checkout</h5>
+                <h5 class="modal-title" id="checkoutModalLabel">{{__('app.cart10')}}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <!-- Order Summary -->
-                <h4>Order Summary</h4>
+                <h4>{{__('app.cart11')}}</h4>
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>Product Title</th>
-                                <th>Price</th>
-                                <th>Quantity</th>
+                                <th>{{__('app.cart12')}}</th>
+                                <th>{{__('app.cart13')}}</th>
+                                <th>{{__('app.cart14')}}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -224,19 +224,19 @@ use Gloudemans\Shoppingcart\Facades\Cart;
                 </div>
 
                 <!-- Customer Information Form -->
-                <h4>Customer Information</h4>
+                <h4>{{__('app.cart15')}}</h4>
                 <form id="orderForm" action="{{ route('order.store') }}" method="POST" onsubmit="formSubmitDR(event)">
                     @csrf
                     <div class="form-group">
-                        <label for="first_name">First Name</label>
+                        <label for="first_name">{{__('app.cart16')}}</label>
                         <input type="text" class="form-control" id="first_name" name="first_name" required>
                     </div>
                     <div class="form-group">
-                        <label for="last_name">Last Name</label>
+                        <label for="last_name">{{__('app.cart17')}}</label>
                         <input type="text" class="form-control" id="last_name" name="last_name" required>
                     </div>
                     <div class="form-group">
-                        <label for="phone_number">Phone Number</label>
+                        <label for="phone_number">{{__('app.cart18')}}</label>
                         <input type="text" class="form-control" id="phone_number" name="phone_number" required>
                     </div>
 
@@ -246,15 +246,9 @@ use Gloudemans\Shoppingcart\Facades\Cart;
                     <input type="hidden" name="products[{{ $cart->id }}][quantity]" value="{{ $cart->qty }}">
                     <input type="hidden" name="products[{{ $cart->id }}][total_price]" value="{{ $cart->qty * $cart->price }}">
                     @endforeach
-
                     <input type="hidden" name="total_price" value="{{ Cart::subtotal() }}">
-
-                    <button type="submit" class="btn btn-primary">Place Order</button>
+                    <button type="submit" class="btn btn-primary">{{__('app.cart19')}}</button>
                 </form>
-
-
-
-
             </div>
         </div>
     </div>
@@ -309,7 +303,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
-                        alert('Order placed successfully!');
+                        alert('Buyurtma muvaffaqiyatli yaratildi!');
                         window.location.href = "{{ route('shop') }}"; // Redirect to orders page
                     } else {
                         alert('Order creation failed. Please try again.');
@@ -372,8 +366,4 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 
     });
 </script>
-
-
-
-
 @endsection
